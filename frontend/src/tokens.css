@@ -1,0 +1,16 @@
+:root {
+  --background: #0B0E11;
+  --panel: #11161C;
+  --raised: #161D25;
+  --border: #29323D;
+  --divider-active: #3B4858;
+  --control-boundary: #607286;
+  --text: #E7EDF4;
+  --muted: #9AA7B5;
+  --up: #53C6A5;
+  --down: #E6818A;
+  --focus: #8FB4FF;
+  --warning: #D8B36A;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}

@@ -1,0 +1,7 @@
+{
+  "at": "2026-11-10T01:02:13.257Z",
+  "feed": "FEED / CAPTURE\nLIVE\nSource\nYahoo Finance\nUpstream\nreceiving\nApplication socket\nconnected\nPublished delay\n20 minutes\nSource-data age\n20m 1s\nSOURCE EVENT / UTC\n2026-11-10 00:42:11.000\nBACKEND RECEIPT / UTC\n2026-11-10 01:02:12.881\n\nAge uses source time. Socket heartbeats never refresh it. Session state is not inferred.\n\nInterrupt Yahoo feed\nControlled interruption for verification",
+  "footer": "Yahoo reconnection requested.\n103 displayed · 0.10ms chart update · UTC 01:02:12",
+  "saved": "SAVED EVENT #621\nquote\nSource 00:42:11 UTC\nReceipt 01:02:12 UTC\n2e4cae4faa28736a8f014c37d7a7e772e8a8ae68a8b5a90cb97b092a86c5b156\nInspect payload",
+  "state": "RECEIVING"
+}

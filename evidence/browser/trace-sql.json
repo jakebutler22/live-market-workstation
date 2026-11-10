@@ -1,0 +1,62 @@
+{
+  "classification": "Actual browser-visible event and OHLC inspector matched to canonical SQLite record/version, read-only inspection.",
+  "browser_event_id": 545,
+  "browser_candle_revision": 12,
+  "database_event": {
+    "id": 545,
+    "source": "Yahoo Finance",
+    "symbol": "BHP.AX",
+    "kind": "quote",
+    "source_ms": 1794271054000,
+    "received_ms": 1794272256702,
+    "identity": "90fd9d7c2690701224ae03ba73160b5dd0838443b6e615a00e47164717b83339",
+    "fingerprint": "90fd9d7c2690701224ae03ba73160b5dd0838443b6e615a00e47164717b83339",
+    "revision": 1,
+    "supersedes_id": null,
+    "payload": {
+      "price": 59.96,
+      "raw": {
+        "change": 0.7599983,
+        "change_percent": 1.2837809,
+        "day_volume": "2187212",
+        "exchange": "ASX",
+        "id": "BHP.AX",
+        "last_size": "6",
+        "market_hours": 1,
+        "price": 59.96,
+        "price_hint": "2",
+        "quote_type": 8,
+        "time": "1794271054000"
+      },
+      "source_ms": 1794271054000
+    }
+  },
+  "database_candle_version": {
+    "symbol": "BHP.AX",
+    "start_ms": 1794271020000,
+    "revision": 12,
+    "event_id": 545,
+    "candle": {
+      "time": 1794271020,
+      "end_ms": 1794271080000,
+      "open": 59.94,
+      "high": 59.96,
+      "low": 59.93,
+      "close": 59.96,
+      "volume": null,
+      "volume_source": "unavailable",
+      "volume_event_id": null,
+      "volume_asof_ms": null,
+      "price_source": "sampled Yahoo quotes",
+      "elapsed": true,
+      "partial": true,
+      "capture_midinterval": false,
+      "gap": false,
+      "quote_count": 12,
+      "last_quote_event_id": 545,
+      "revision": 12,
+      "last_event_id": 545
+    }
+  },
+  "integrity": "ok"
+}

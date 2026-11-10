@@ -1,0 +1,9 @@
+{
+  "clock": "Original receipt order and source times. Replay clock: 00:44:33 UTC.",
+  "feed": "FEED / CAPTURE\nREPLAY\nSource\nYahoo Finance\nUpstream\nReplay · paused\nApplication socket\nconnected\nPublished delay\n20 minutes\nAge at replay clock\n20m 1s\nSOURCE EVENT / UTC\n2026-11-10 00:24:32.000\nBACKEND RECEIPT / UTC\n2026-11-10 00:44:33.505\n\nAge uses source time. Socket heartbeats never refresh it. Session state is not inferred.",
+  "footer": "Pause requested · 60× recorded time\n85 displayed · 0.00ms chart update · UTC 00:59:31",
+  "mode": "LIVE\nREPLAY",
+  "observed_at": "2026-11-10T00:59:31.743Z",
+  "progress": "244 / 576 events\npaused",
+  "recording": "ORIGINAL RECORDING / UTC\n2026-11-10 00:37:57.271"
+}

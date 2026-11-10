@@ -1,0 +1,361 @@
+{
+  "audio_track_count": 0,
+  "duration_seconds": 55,
+  "extracted_frames": [
+    {
+      "actual_frame_time_seconds": 0,
+      "height": 900,
+      "requested_time_seconds": 0,
+      "width": 1440
+    },
+    {
+      "actual_frame_time_seconds": 19.808333333333334,
+      "height": 900,
+      "requested_time_seconds": 20,
+      "width": 1440
+    },
+    {
+      "actual_frame_time_seconds": 32.76,
+      "height": 900,
+      "requested_time_seconds": 33,
+      "width": 1440
+    },
+    {
+      "actual_frame_time_seconds": 49.96666666666667,
+      "height": 900,
+      "requested_time_seconds": 50,
+      "width": 1440
+    }
+  ],
+  "playable": true,
+  "tracks": [
+    {
+      "codec_types": [
+        "avc1"
+      ],
+      "duration_seconds": 55,
+      "estimated_data_rate_bps": 478778.59375,
+      "height": 900,
+      "nominal_frame_rate": 3.7446601390838623,
+      "transform": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "width": 1440
+    }
+  ],
+  "video": "evidence/demo-4-1.mp4",
+  "video_track_count": 1,
+  "bytes": 3295740,
+  "sha256": "ff7dacef30b44ffb1e6dfb32230759c2fbd109c5be6fc1a359d6edd80fdc5961",
+  "top_level_atoms": [
+    {
+      "type": "ftyp",
+      "offset": 0,
+      "size": 28
+    },
+    {
+      "type": "moov",
+      "offset": 28,
+      "size": 3395
+    },
+    {
+      "type": "mdat",
+      "offset": 3423,
+      "size": 3292317
+    }
+  ],
+  "fast_start": true,
+  "capture": {
+    "source_frame_count": 205,
+    "first_seconds": 0,
+    "last_seconds": 54.989,
+    "action_times": [
+      {
+        "time_seconds": 15.349,
+        "action": "Show actual saved payload"
+      },
+      {
+        "time_seconds": 27.815,
+        "action": "Open replay"
+      },
+      {
+        "time_seconds": 28.265,
+        "action": "Start recorded replay at 60x"
+      },
+      {
+        "time_seconds": 36.298,
+        "action": "Pause replay"
+      },
+      {
+        "time_seconds": 39.397,
+        "action": "Resume replay"
+      },
+      {
+        "time_seconds": 42.947,
+        "action": "Induce actual upstream interruption"
+      }
+    ],
+    "method": "205 genuine browser-only screenshots captured in real time through CUA; encoded by system AVFoundation with original elapsed timing. No generated motion, audio or overlays."
+  },
+  "database_trace": {
+    "mode": "SQLite read-only; no mutation",
+    "integrity": "ok",
+    "action_payload_event_892_exact_match": true,
+    "events": [
+      {
+        "event": {
+          "id": 892,
+          "source": "Yahoo Finance",
+          "symbol": "BHP.AX",
+          "kind": "quote",
+          "source_ms": 1794272069000,
+          "received_ms": 1794273271169,
+          "identity": "724572417290f67b8439e14872f2563113d969d02777ee6e613cfd31b320d1ce",
+          "fingerprint": "724572417290f67b8439e14872f2563113d969d02777ee6e613cfd31b320d1ce",
+          "revision": 1,
+          "supersedes_id": null,
+          "payload": {
+            "price": 59.97,
+            "raw": {
+              "change": 0.77000046,
+              "change_percent": 1.3006765,
+              "exchange": "ASX",
+              "id": "BHP.AX",
+              "market_hours": 1,
+              "price": 59.97,
+              "price_hint": "2",
+              "quote_type": 8,
+              "time": "1794272069000"
+            },
+            "source_ms": 1794272069000
+          }
+        },
+        "resulting_candle_versions": [
+          {
+            "symbol": "BHP.AX",
+            "start_ms": 1794272040000,
+            "revision": 9,
+            "event_id": 892,
+            "candle": {
+              "time": 1794272040,
+              "end_ms": 1794272100000,
+              "open": 59.96,
+              "high": 59.97,
+              "low": 59.96,
+              "close": 59.97,
+              "volume": null,
+              "volume_source": "unavailable",
+              "volume_event_id": null,
+              "volume_asof_ms": null,
+              "price_source": "sampled Yahoo quotes",
+              "elapsed": true,
+              "partial": true,
+              "capture_midinterval": true,
+              "gap": false,
+              "quote_count": 9,
+              "last_quote_event_id": 892,
+              "revision": 9,
+              "last_event_id": 892
+            }
+          }
+        ]
+      },
+      {
+        "event": {
+          "id": 894,
+          "source": "Yahoo Finance",
+          "symbol": "BHP.AX",
+          "kind": "quote",
+          "source_ms": 1794272075000,
+          "received_ms": 1794273278109,
+          "identity": "5358772caee9fbcfc66cb394d36670b681b5ea3b699c1b712e69935a2ebe756b",
+          "fingerprint": "5358772caee9fbcfc66cb394d36670b681b5ea3b699c1b712e69935a2ebe756b",
+          "revision": 1,
+          "supersedes_id": null,
+          "payload": {
+            "price": 59.97,
+            "raw": {
+              "change": 0.77000046,
+              "change_percent": 1.3006765,
+              "exchange": "ASX",
+              "id": "BHP.AX",
+              "market_hours": 1,
+              "price": 59.97,
+              "price_hint": "2",
+              "quote_type": 8,
+              "time": "1794272075000"
+            },
+            "source_ms": 1794272075000
+          }
+        },
+        "resulting_candle_versions": [
+          {
+            "symbol": "BHP.AX",
+            "start_ms": 1794272040000,
+            "revision": 11,
+            "event_id": 894,
+            "candle": {
+              "time": 1794272040,
+              "end_ms": 1794272100000,
+              "open": 59.96,
+              "high": 59.97,
+              "low": 59.96,
+              "close": 59.97,
+              "volume": null,
+              "volume_source": "unavailable",
+              "volume_event_id": null,
+              "volume_asof_ms": null,
+              "price_source": "sampled Yahoo quotes",
+              "elapsed": true,
+              "partial": true,
+              "capture_midinterval": true,
+              "gap": false,
+              "quote_count": 11,
+              "last_quote_event_id": 894,
+              "revision": 11,
+              "last_event_id": 894
+            }
+          }
+        ]
+      },
+      {
+        "event": {
+          "id": 904,
+          "source": "Yahoo Finance",
+          "symbol": "BHP.AX",
+          "kind": "quote",
+          "source_ms": 1794272102000,
+          "received_ms": 1794273303219,
+          "identity": "15d4f21897160adac7cf10b1a81cd5166521d79da13ae544a1bf323753341e78",
+          "fingerprint": "15d4f21897160adac7cf10b1a81cd5166521d79da13ae544a1bf323753341e78",
+          "revision": 1,
+          "supersedes_id": null,
+          "payload": {
+            "price": 59.96,
+            "raw": {
+              "change": 0.7599983,
+              "change_percent": 1.2836725,
+              "day_volume": "2286508",
+              "exchange": "ASX",
+              "id": "BHP.AX",
+              "last_size": "11",
+              "market_hours": 1,
+              "price": 59.96,
+              "price_hint": "2",
+              "quote_type": 8,
+              "time": "1794272102000"
+            },
+            "source_ms": 1794272102000
+          }
+        },
+        "resulting_candle_versions": [
+          {
+            "symbol": "BHP.AX",
+            "start_ms": 1794272100000,
+            "revision": 3,
+            "event_id": 904,
+            "candle": {
+              "time": 1794272100,
+              "end_ms": 1794272160000,
+              "open": 59.95,
+              "high": 59.96,
+              "low": 59.95,
+              "close": 59.96,
+              "volume": null,
+              "volume_source": "unavailable",
+              "volume_event_id": null,
+              "volume_asof_ms": null,
+              "price_source": "sampled Yahoo quotes",
+              "elapsed": true,
+              "partial": true,
+              "capture_midinterval": false,
+              "gap": false,
+              "quote_count": 3,
+              "last_quote_event_id": 904,
+              "revision": 3,
+              "last_event_id": 904
+            }
+          }
+        ]
+      },
+      {
+        "event": {
+          "id": 905,
+          "source": "Yahoo Finance",
+          "symbol": "BHP.AX",
+          "kind": "feed",
+          "source_ms": null,
+          "received_ms": 1794273303949,
+          "identity": "1794273303949:905:ca7ad969ede8efed2998adfa9d7e0e0b5441b1f3a713460354b3380b05cc6f04",
+          "fingerprint": "ca7ad969ede8efed2998adfa9d7e0e0b5441b1f3a713460354b3380b05cc6f04",
+          "revision": 1,
+          "supersedes_id": null,
+          "payload": {
+            "detail": "Controlled upstream interruption; local browser/backend connection stays active",
+            "state": "paused"
+          }
+        },
+        "resulting_candle_versions": [
+          {
+            "symbol": "BHP.AX",
+            "start_ms": 1794272100000,
+            "revision": 4,
+            "event_id": 905,
+            "candle": {
+              "time": 1794272100,
+              "end_ms": 1794272160000,
+              "open": 59.95,
+              "high": 59.96,
+              "low": 59.95,
+              "close": 59.96,
+              "volume": null,
+              "volume_source": "unavailable",
+              "volume_event_id": null,
+              "volume_asof_ms": null,
+              "price_source": "sampled Yahoo quotes",
+              "elapsed": true,
+              "partial": true,
+              "capture_midinterval": false,
+              "gap": true,
+              "quote_count": 3,
+              "last_quote_event_id": 904,
+              "revision": 4,
+              "last_event_id": 905
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "action_evidence": {
+    "recorded_payload_id": 892,
+    "recorded_source_ms": 1794272069000,
+    "recorded_receipt_ms": 1794273271169,
+    "recorded_price": 59.97,
+    "replay_original_recording_utc": "2026-11-10 00:37:57.271",
+    "replay_original_recording_visible_in_action": true,
+    "replay_started": true,
+    "replay_paused": true,
+    "replay_resumed": true,
+    "outage_induced_label": true,
+    "application_socket_remained_connected_during_outage": true
+  },
+  "visual_inspection": {
+    "method": "Decoded actual MP4 frames inspected at requested times 0,20,33,50 seconds using AVFoundation and image viewer",
+    "orientation": "upright",
+    "live_frame": "Candlesticks, aligned volume, Yahoo source, receiving and connected labels, 20-minute published delay, source age and receipt/source times visible",
+    "payload_frame": "Actual saved quote #894 expanded; identity, source and receipt timestamps, raw provider payload visible",
+    "replay_frame": "REPLAY playing label, original recording time, recorded replay clock, corresponding volume and Pause/Restart/speed controls visible",
+    "outage_frame": "Unavailable \u00b7 induced, connected application socket, retained candle/volume history and source age 20m8s visible",
+    "limits": "Silent screenshot-based video at irregular approximately 4fps; no narration; current quote interval volume unavailable is displayed as \u2014 while earlier corresponding volume remains visible."
+  },
+  "publication": {
+    "accessible_url": null,
+    "status": "Awaiting confirmed GitHub repository destination and push; no upload/access claimed."
+  }
+}

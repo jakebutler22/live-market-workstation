@@ -1,0 +1,33 @@
+{
+  "classification": "Actual stopped/restarted backend process with same canonical SQLite DB; new one-command launcher readiness verified.",
+  "launcher": "python3 scripts/start.py",
+  "frontend": "http://127.0.0.1:5173/",
+  "backend": "http://127.0.0.1:8000",
+  "preserved_event_count": 129,
+  "preserved_candle_versions": 127,
+  "events_sha256": "ff5839235337c15e906e576e61ff93c90f2838592069a6417f0c4a1a9298711a",
+  "candle_versions_sha256": "524b946ea71d8c3d67038c3f5d55a444afae4bab4912d032abf9350452a49b4d",
+  "matches_pre_restart_digests": true,
+  "sqlite_integrity": "ok",
+  "recovered_status": {
+    "symbol": "BHP.AX",
+    "interval": 60,
+    "source": "Yahoo Finance",
+    "state": "receiving",
+    "upstream_state": "receiving",
+    "expected_delay_seconds": 1200,
+    "data_label": "ASX \u00b7 20 min delayed \u00b7 AUD",
+    "price_unit": "AUD",
+    "volume_unit": "shares",
+    "last_source_ms": 1794270017000,
+    "last_received_ms": 1794271219411,
+    "last_event_id": 139,
+    "event_count": 139,
+    "quote_count": 54,
+    "duplicate_count": 79,
+    "error": null,
+    "volume_status": "Yahoo 1m reconciliation \u00b7 up to 30s polling lag; vendor delay additional",
+    "processing_ms": 0.864,
+    "database": "data/market.sqlite3"
+  }
+}

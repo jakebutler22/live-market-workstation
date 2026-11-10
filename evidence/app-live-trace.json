@@ -1,0 +1,173 @@
+{
+  "classification": "LIVE application yfinance\u2192SQLite\u2192frontend-proxied WebSocket. Browser pixels not observed.",
+  "websocket": "ws://127.0.0.1:5173/ws/live",
+  "event": {
+    "id": 104,
+    "source": "Yahoo Finance",
+    "symbol": "BHP.AX",
+    "kind": "quote",
+    "source_ms": 1794269922000,
+    "received_ms": 1794271124348,
+    "identity": "7e275e85b67c47a3910378f00cd17548fd59b38de870b55427b927242ab1ca91",
+    "fingerprint": "7e275e85b67c47a3910378f00cd17548fd59b38de870b55427b927242ab1ca91",
+    "revision": 1,
+    "supersedes_id": null,
+    "payload": {
+      "price": 60.04,
+      "raw": {
+        "change": 0.84000015,
+        "change_percent": 1.4189192,
+        "day_volume": "2028060",
+        "exchange": "ASX",
+        "id": "BHP.AX",
+        "last_size": "25",
+        "market_hours": 1,
+        "price": 60.04,
+        "price_hint": "2",
+        "quote_type": 8,
+        "time": "1794269922000"
+      },
+      "source_ms": 1794269922000
+    }
+  },
+  "database_event": {
+    "id": 104,
+    "source": "Yahoo Finance",
+    "symbol": "BHP.AX",
+    "kind": "quote",
+    "source_ms": 1794269922000,
+    "received_ms": 1794271124348,
+    "identity": "7e275e85b67c47a3910378f00cd17548fd59b38de870b55427b927242ab1ca91",
+    "fingerprint": "7e275e85b67c47a3910378f00cd17548fd59b38de870b55427b927242ab1ca91",
+    "revision": 1,
+    "supersedes_id": null,
+    "payload": {
+      "price": 60.04,
+      "raw": {
+        "change": 0.84000015,
+        "change_percent": 1.4189192,
+        "day_volume": "2028060",
+        "exchange": "ASX",
+        "id": "BHP.AX",
+        "last_size": "25",
+        "market_hours": 1,
+        "price": 60.04,
+        "price_hint": "2",
+        "quote_type": 8,
+        "time": "1794269922000"
+      },
+      "source_ms": 1794269922000
+    }
+  },
+  "published_candles": [
+    {
+      "time": 1794269880,
+      "end_ms": 1794269940000,
+      "open": 60.01,
+      "high": 60.04,
+      "low": 60.01,
+      "close": 60.04,
+      "volume": null,
+      "volume_source": "unavailable",
+      "volume_event_id": null,
+      "volume_asof_ms": null,
+      "price_source": "sampled Yahoo quotes",
+      "elapsed": true,
+      "partial": true,
+      "capture_midinterval": false,
+      "gap": false,
+      "quote_count": 22,
+      "last_quote_event_id": 104,
+      "revision": 22,
+      "last_event_id": 104
+    }
+  ],
+  "matching_database_versions": [
+    {
+      "symbol": "BHP.AX",
+      "start_ms": 1794269880000,
+      "revision": 22,
+      "event_id": 104,
+      "candle": {
+        "time": 1794269880,
+        "end_ms": 1794269940000,
+        "open": 60.01,
+        "high": 60.04,
+        "low": 60.01,
+        "close": 60.04,
+        "volume": null,
+        "volume_source": "unavailable",
+        "volume_event_id": null,
+        "volume_asof_ms": null,
+        "price_source": "sampled Yahoo quotes",
+        "elapsed": true,
+        "partial": true,
+        "capture_midinterval": false,
+        "gap": false,
+        "quote_count": 22,
+        "last_quote_event_id": 104,
+        "revision": 22,
+        "last_event_id": 104
+      }
+    }
+  ],
+  "socket_consumer_received_ms": 1794271124350,
+  "status": {
+    "symbol": "BHP.AX",
+    "interval": 60,
+    "source": "Yahoo Finance",
+    "state": "receiving",
+    "upstream_state": "receiving",
+    "expected_delay_seconds": 1200,
+    "data_label": "ASX \u00b7 20 min delayed \u00b7 AUD",
+    "price_unit": "AUD",
+    "volume_unit": "shares",
+    "last_source_ms": 1794269922000,
+    "last_received_ms": 1794271124348,
+    "last_event_id": 104,
+    "event_count": 104,
+    "quote_count": 24,
+    "duplicate_count": 4,
+    "error": null,
+    "volume_status": "Yahoo 1m reconciliation \u00b7 up to 30s polling lag; vendor delay additional",
+    "processing_ms": 0.929,
+    "database": "data/market.sqlite3"
+  },
+  "latency_observation": {
+    "sample_count": 8,
+    "receipt_to_proxied_ws_consumer_ms": [
+      2,
+      3,
+      8,
+      2,
+      3,
+      3,
+      2,
+      3
+    ],
+    "median_ms": 3.0,
+    "max_ms": 8,
+    "scope": "Local backend receipt/commit to Python WebSocket consumer through Vite proxy; excludes Yahoo delay and browser rendering."
+  },
+  "current_status": {
+    "symbol": "BHP.AX",
+    "interval": 60,
+    "source": "Yahoo Finance",
+    "state": "receiving",
+    "upstream_state": "receiving",
+    "expected_delay_seconds": 1200,
+    "data_label": "ASX \u00b7 20 min delayed \u00b7 AUD",
+    "price_unit": "AUD",
+    "volume_unit": "shares",
+    "last_source_ms": 1794269942000,
+    "last_received_ms": 1794271143378,
+    "last_event_id": 111,
+    "event_count": 111,
+    "quote_count": 31,
+    "duplicate_count": 9,
+    "error": null,
+    "volume_status": "Yahoo 1m reconciliation \u00b7 up to 30s polling lag; vendor delay additional",
+    "processing_ms": 2.118,
+    "database": "data/market.sqlite3"
+  }
+}

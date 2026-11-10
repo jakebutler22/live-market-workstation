@@ -1,0 +1,1119 @@
+{
+  "method": "Independent direct Yahoo endpoint probe using Node.js v24 built-in WebSocket; not yfinance integration proof. Protobuf decoded from yfinance 1.8.0 pricing.proto field definitions. Unknown future fields retained.",
+  "endpoint": "wss://streamer.finance.yahoo.com/?version=2",
+  "symbols": [
+    "BHP.AX",
+    "7203.T"
+  ],
+  "started_at": "2026-11-10T00:15:35.484Z",
+  "events": [
+    {
+      "event": "connected",
+      "at": "2026-11-10T00:15:35.746Z"
+    },
+    {
+      "event": "resubscribed",
+      "at": "2026-11-10T00:15:50.674Z"
+    },
+    {
+      "event": "resubscribed",
+      "at": "2026-11-10T00:16:05.674Z"
+    }
+  ],
+  "samples": [
+    {
+      "receipt_at": "2026-11-10T00:15:35.834Z",
+      "source_time_utc": "2026-11-09T23:55:34.000Z",
+      "decoded": {
+        "id": "BHP.AX",
+        "price": 59.869998931884766,
+        "time": "1794268534000",
+        "exchange": "ASX",
+        "quote_type": "8",
+        "market_hours": "1",
+        "change_percent": 1.13175368309021,
+        "day_volume": "1613830",
+        "change": 0.6699981689453125,
+        "last_size": "111",
+        "price_hint": "2",
+        "unknown_field_46": 0.6699981689453125,
+        "unknown_field_47": 1.13175368309021
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgZCSFAuQVgV4XpvQhjg0+iruGgqA0FTWDAIOAFFTt2QP0iMgMUBZQCFKz+wAd4B2AEE9QIAhSs//QJO3ZA/"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:37.357Z",
+      "source_time_utc": "2026-11-10T00:00:36.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268836000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37605300",
+        "last_size": "100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYwMKNrLhoKgNKUFgwCEjovu4jsAHIAdgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:39.386Z",
+      "source_time_utc": "2026-11-10T00:00:38.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268838000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37610900",
+        "last_size": "100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQY4OGNrLhoKgNKUFgwCEiolu8jsAHIAdgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:39.815Z",
+      "source_time_utc": "2026-11-09T23:55:38.000Z",
+      "decoded": {
+        "id": "BHP.AX",
+        "price": 59.8849983215332,
+        "time": "1794268538000",
+        "exchange": "ASX",
+        "quote_type": "8",
+        "market_hours": "1",
+        "change_percent": 1.157090425491333,
+        "day_volume": "1614044",
+        "change": 0.68499755859375,
+        "last_size": "62",
+        "price_hint": "2",
+        "unknown_field_46": 0.68499755859375,
+        "unknown_field_47": 1.157090425491333
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgZCSFAuQVgVPYpvQhigkumruGgqA0FTWDAIOAFFihuUP0i4g8UBZQBcLz+wAXzYAQT1AgBcLz/9AooblD8="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:41.363Z",
+      "source_time_utc": "2026-11-10T00:00:40.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268840000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37612400",
+        "last_size": "300",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYgIGOrLhoKgNKUFgwCEjgre8jsAHYBNgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:43.370Z",
+      "source_time_utc": "2026-11-10T00:00:42.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268842000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37622200",
+        "last_size": "400",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYoKCOrLhoKgNKUFgwCEjwxvAjsAGgBtgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:45.370Z",
+      "source_time_utc": "2026-11-10T00:00:44.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268844000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37627800",
+        "last_size": "100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYwL+OrLhoKgNKUFgwCEiwnvEjsAHIAdgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:46.388Z",
+      "source_time_utc": "2026-11-10T00:00:45.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268845000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37631600",
+        "last_size": "200",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYkM+OrLhoKgNKUFgwCEjg2fEjsAGQA9gBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:48.411Z",
+      "source_time_utc": "2026-11-10T00:00:46.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268846000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37633300",
+        "last_size": "100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQY4N6OrLhoKgNKUFgwCEio9PEjsAHIAdgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:48.813Z",
+      "source_time_utc": "2026-11-09T23:55:47.000Z",
+      "decoded": {
+        "id": "BHP.AX",
+        "price": 59.900001525878906,
+        "time": "1794268547000",
+        "exchange": "ASX",
+        "quote_type": "8",
+        "market_hours": "1",
+        "change_percent": 1.1824337244033813,
+        "day_volume": "1614538",
+        "change": 0.7000007629394531,
+        "last_size": "13",
+        "price_hint": "2",
+        "unknown_field_46": 0.7000007629394531,
+        "unknown_field_47": 1.1824337244033813
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgZCSFAuQVgVmplvQhjwnuqruGgqA0FTWDAIOAFF/VmXP0iUi8UBZUAzMz+wARrYAQT1AkAzMz/9Av1Zlz8="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:49.409Z",
+      "source_time_utc": "2026-11-10T00:00:48.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268848000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37646200",
+        "last_size": "100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYgP6OrLhoKgNKUFgwCEjwvfMjsAHIAdgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:51.387Z",
+      "source_time_utc": "2026-11-10T00:00:50.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268850000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37664500",
+        "day_low": 3469,
+        "last_size": "4100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYoJ2PrLhoKgNKUFgwCEjo2/UjXQDQWEWwAYhA2AEI"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:53.425Z",
+      "source_time_utc": "2026-11-10T00:00:52.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268852000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37680200",
+        "day_low": 3463,
+        "last_size": "400",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYwLyPrLhoKgNKUFgwCEiQ0fcjXQBwWEWwAaAG2AEI"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:53.823Z",
+      "source_time_utc": "2026-11-09T23:55:52.000Z",
+      "decoded": {
+        "id": "BHP.AX",
+        "price": 59.900001525878906,
+        "time": "1794268552000",
+        "exchange": "ASX",
+        "quote_type": "8",
+        "market_hours": "1",
+        "change_percent": 1.1824337244033813,
+        "day_volume": "1614653",
+        "change": 0.7000007629394531,
+        "last_size": "115",
+        "price_hint": "2",
+        "unknown_field_46": 0.7000007629394531,
+        "unknown_field_47": 1.1824337244033813
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgZCSFAuQVgVmplvQhiA7eqruGgqA0FTWDAIOAFF/VmXP0j6jMUBZUAzMz+wAeYB2AEE9QJAMzM//QL9WZc/"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:54.386Z",
+      "source_time_utc": "2026-11-10T00:00:53.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268853000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37684900",
+        "day_low": 3462,
+        "last_size": "300",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYkMyPrLhoKgNKUFgwCEjImvgjXQBgWEWwAdgE2AEI"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:55.824Z",
+      "source_time_utc": "2026-11-09T23:55:53.000Z",
+      "decoded": {
+        "id": "BHP.AX",
+        "price": 59.90999984741211,
+        "time": "1794268553000",
+        "exchange": "ASX",
+        "quote_type": "8",
+        "market_hours": "1",
+        "change_percent": 1.1993228197097778,
+        "day_volume": "1614955",
+        "change": 0.7099990844726562,
+        "last_size": "6",
+        "price_hint": "2",
+        "unknown_field_46": 0.7099990844726562,
+        "unknown_field_47": 1.1993228197097778
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgZCSFAuQVgV16NvQhjQ/OqruGgqA0FTWDAIOAFFaYOZP0jWkcUBZYDCNT+wAQzYAQT1AoDCNT/9AmmDmT8="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:56.356Z",
+      "source_time_utc": "2026-11-10T00:00:55.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268855000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37690900",
+        "day_low": 3460,
+        "last_size": "100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYsOuPrLhoKgNKUFgwCEio+PgjXQBAWEWwAcgB2AEI"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:15:58.387Z",
+      "source_time_utc": "2026-11-10T00:00:57.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268857000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37709000",
+        "day_low": 3459,
+        "last_size": "200",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQY0IqQrLhoKgNKUFgwCEiQk/sjXQAwWEWwAZAD2AEI"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:00.398Z",
+      "source_time_utc": "2026-11-10T00:00:59.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268859000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37714400",
+        "last_size": "700",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQY8KmQrLhoKgNKUFgwCEjA5/sjsAH4CtgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:01.406Z",
+      "source_time_utc": "2026-11-10T00:01:00.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268860000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37725400",
+        "last_size": "300",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYwLmQrLhoKgNKUFgwCEiwk/0jsAHYBNgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:02.374Z",
+      "source_time_utc": "2026-11-10T00:01:02.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268862000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37730900",
+        "last_size": "100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQY4NiQrLhoKgNKUFgwCEio6f0jsAHIAdgBCA=="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:04.366Z",
+      "source_time_utc": "2026-11-10T00:01:03.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268863000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37743800",
+        "day_low": 3458,
+        "last_size": "400",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYsOiQrLhoKgNKUFgwCEjwsv8jXQAgWEWwAaAG2AEI"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:04.836Z",
+      "source_time_utc": "2026-11-09T23:56:03.000Z",
+      "decoded": {
+        "id": "BHP.AX",
+        "price": 59.90999984741211,
+        "time": "1794268563000",
+        "exchange": "ASX",
+        "quote_type": "8",
+        "market_hours": "1",
+        "change_percent": 1.1993228197097778,
+        "day_volume": "1614966",
+        "change": 0.7099990844726562,
+        "last_size": "11",
+        "ask": 59.90999984741211,
+        "price_hint": "2",
+        "unknown_field_46": 0.7099990844726562,
+        "unknown_field_47": 1.1993228197097778
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgZCSFAuQVgV16NvQhjwmOyruGgqA0FTWDAIOAFFaYOZP0jskcUBZYDCNT+wARbNAdejb0LYAQT1AoDCNT/9AmmDmT8="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:05.821Z",
+      "source_time_utc": "2026-11-09T23:56:04.000Z",
+      "decoded": {
+        "id": "BHP.AX",
+        "price": 59.90999984741211,
+        "time": "1794268564000",
+        "exchange": "ASX",
+        "quote_type": "8",
+        "market_hours": "1",
+        "change_percent": 1.1993228197097778,
+        "day_volume": "1614981",
+        "change": 0.7099990844726562,
+        "last_size": "15",
+        "price_hint": "2",
+        "unknown_field_46": 0.7099990844726562,
+        "unknown_field_47": 1.1993228197097778
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgZCSFAuQVgV16NvQhjAqOyruGgqA0FTWDAIOAFFaYOZP0iKksUBZYDCNT+wAR7YAQT1AoDCNT/9AmmDmT8="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:06.392Z",
+      "source_time_utc": "2026-11-10T00:01:05.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268865000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37796300",
+        "day_low": 3456,
+        "last_size": "400",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQY0IeRrLhoKgNKUFgwCEiY54UkXQAAWEWwAaAG2AEI"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:06.849Z",
+      "source_time_utc": "2026-11-09T23:56:05.000Z",
+      "decoded": {
+        "id": "BHP.AX",
+        "price": 59.90999984741211,
+        "time": "1794268565000",
+        "exchange": "ASX",
+        "quote_type": "8",
+        "market_hours": "1",
+        "change_percent": 1.1993228197097778,
+        "day_volume": "1614984",
+        "change": 0.7099990844726562,
+        "last_size": "3",
+        "price_hint": "2",
+        "unknown_field_46": 0.7099990844726562,
+        "unknown_field_47": 1.1993228197097778
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgZCSFAuQVgV16NvQhiQuOyruGgqA0FTWDAIOAFFaYOZP0iQksUBZYDCNT+wAQbYAQT1AoDCNT/9AmmDmT8="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:08.375Z",
+      "source_time_utc": "2026-11-10T00:01:07.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268867000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37806600",
+        "day_low": 3453,
+        "last_size": "100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQY8KaRrLhoKgNKUFgwCEiQiIckXQDQV0WwAcgB2AEI"
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:08.820Z",
+      "source_time_utc": "2026-11-09T23:56:07.000Z",
+      "decoded": {
+        "id": "BHP.AX",
+        "price": 59.904998779296875,
+        "time": "1794268567000",
+        "exchange": "ASX",
+        "quote_type": "8",
+        "market_hours": "1",
+        "change_percent": 1.1908750534057617,
+        "day_volume": "1615012",
+        "change": 0.7049980163574219,
+        "last_size": "28",
+        "price_hint": "2",
+        "unknown_field_46": 0.7049980163574219,
+        "unknown_field_47": 1.1908750534057617
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgZCSFAuQVgVuJ5vQhiw1+yruGgqA0FTWDAIOAFFmG6YP0jIksUBZcB6ND+wATjYAQT1AsB6ND/9AphumD8="
+      }
+    },
+    {
+      "receipt_at": "2026-11-10T00:16:10.405Z",
+      "source_time_utc": "2026-11-10T00:01:09.000Z",
+      "decoded": {
+        "id": "7203.T",
+        "time": "1794268869000",
+        "exchange": "JPX",
+        "quote_type": "8",
+        "day_volume": "37826100",
+        "day_low": 3450,
+        "last_size": "100",
+        "price_hint": "4"
+      },
+      "raw": {
+        "type": "pricing",
+        "message": "CgY3MjAzLlQYkMaRrLhoKgNKUFgwCEjouIkkXQCgV0WwAcgB2AEI"
+      }
+    }
+  ],
+  "historical": [
+    {
+      "symbol": "BHP.AX",
+      "status": 200,
+      "receipt_at": "2026-11-10T00:15:35.614Z",
+      "meta": {
+        "currency": "AUD",
+        "symbol": "BHP.AX",
+        "exchangeName": "ASX",
+        "fullExchangeName": "ASX",
+        "instrumentType": "EQUITY",
+        "firstTradeDate": 570409200,
+        "regularMarketTime": 1794268534,
+        "hasPrePostMarketData": false,
+        "gmtoffset": 39600,
+        "timezone": "AEDT",
+        "exchangeTimezoneName": "Australia/Sydney",
+        "regularMarketPrice": 59.87,
+        "regularMarketChangePercent": 1.132,
+        "fulldayPrice": 59.87,
+        "fulldayChange": 0.67,
+        "fulldayChangePercent": 1.132,
+        "fiftyTwoWeekHigh": 68.77,
+        "fiftyTwoWeekLow": 40.175,
+        "regularMarketDayHigh": 60.09,
+        "regularMarketDayLow": 59.65,
+        "regularMarketVolume": 1613830,
+        "longName": "BHP Group Limited",
+        "shortName": "BHP GROUP FPO [BHP]",
+        "chartPreviousClose": 59.2,
+        "previousClose": 59.2,
+        "scale": 3,
+        "priceHint": 2,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "AEDT",
+            "start": 1794254400,
+            "end": 1794265200,
+            "gmtoffset": 39600
+          },
+          "regular": {
+            "timezone": "AEDT",
+            "start": 1794265200,
+            "end": 1794287520,
+            "gmtoffset": 39600
+          },
+          "post": {
+            "timezone": "AEDT",
+            "start": 1794287520,
+            "end": 1794287520,
+            "gmtoffset": 39600
+          }
+        },
+        "tradingPeriods": [
+          [
+            {
+              "timezone": "AEDT",
+              "start": 1794265200,
+              "end": 1794287520,
+              "gmtoffset": 39600
+            }
+          ]
+        ],
+        "dataGranularity": "1m",
+        "range": "1d",
+        "validRanges": [
+          "1d",
+          "5d",
+          "1mo",
+          "3mo",
+          "6mo",
+          "1y",
+          "2y",
+          "5y",
+          "10y",
+          "ytd",
+          "max"
+        ]
+      },
+      "timestamps": [
+        1794265200,
+        1794265260,
+        1794265320,
+        1794265380,
+        1794265440,
+        1794265500,
+        1794265560,
+        1794265620,
+        1794265680,
+        1794265740,
+        1794265800,
+        1794265860,
+        1794265920,
+        1794265980,
+        1794266040,
+        1794266100,
+        1794266160,
+        1794266220,
+        1794266280,
+        1794266340,
+        1794266400,
+        1794266460,
+        1794266520,
+        1794266580,
+        1794266640,
+        1794266700,
+        1794266760,
+        1794266820,
+        1794266880,
+        1794266940,
+        1794267000,
+        1794267060,
+        1794267120,
+        1794267180,
+        1794267240,
+        1794267300,
+        1794267360,
+        1794267420,
+        1794267480,
+        1794267540,
+        1794267600,
+        1794267660,
+        1794267720,
+        1794267780,
+        1794267840,
+        1794267900,
+        1794267960,
+        1794268020,
+        1794268080,
+        1794268140,
+        1794268200,
+        1794268260,
+        1794268320,
+        1794268380,
+        1794268440,
+        1794268500,
+        1794268534
+      ],
+      "quote": {
+        "high": [
+          60.09000015258789,
+          59.83000183105469,
+          59.779998779296875,
+          59.77000045776367,
+          59.79999923706055,
+          59.79999923706055,
+          59.80500030517578,
+          59.79999923706055,
+          59.810001373291016,
+          59.84000015258789,
+          59.849998474121094,
+          59.79999923706055,
+          59.81999969482422,
+          59.849998474121094,
+          59.849998474121094,
+          59.900001525878906,
+          59.939998626708984,
+          59.95000076293945,
+          59.939998626708984,
+          59.93000030517578,
+          59.92499923706055,
+          59.8849983215332,
+          59.84000015258789,
+          59.81999969482422,
+          59.86000061035156,
+          59.88999938964844,
+          59.880001068115234,
+          59.8849983215332,
+          59.8849983215332,
+          59.869998931884766,
+          59.959999084472656,
+          59.939998626708984,
+          59.90999984741211,
+          59.880001068115234,
+          59.900001525878906,
+          59.845001220703125,
+          59.77000045776367,
+          59.75,
+          59.70000076293945,
+          59.709999084472656,
+          59.709999084472656,
+          59.689998626708984,
+          59.689998626708984,
+          59.75,
+          59.779998779296875,
+          59.810001373291016,
+          59.810001373291016,
+          59.810001373291016,
+          59.8650016784668,
+          59.880001068115234,
+          59.88999938964844,
+          59.8849983215332,
+          59.89500045776367,
+          59.88999938964844,
+          59.88999938964844,
+          null,
+          59.869998931884766
+        ],
+        "low": [
+          59.7599983215332,
+          59.7400016784668,
+          59.66999816894531,
+          59.709999084472656,
+          59.72999954223633,
+          59.68000030517578,
+          59.75,
+          59.7599983215332,
+          59.779998779296875,
+          59.790000915527344,
+          59.779998779296875,
+          59.77000045776367,
+          59.77000045776367,
+          59.79999923706055,
+          59.79999923706055,
+          59.83000183105469,
+          59.849998474121094,
+          59.880001068115234,
+          59.86000061035156,
+          59.91999816894531,
+          59.84000015258789,
+          59.810001373291016,
+          59.790000915527344,
+          59.779998779296875,
+          59.810001373291016,
+          59.84000015258789,
+          59.84000015258789,
+          59.869998931884766,
+          59.849998474121094,
+          59.81999969482422,
+          59.849998474121094,
+          59.900001525878906,
+          59.85499954223633,
+          59.849998474121094,
+          59.84000015258789,
+          59.66999816894531,
+          59.689998626708984,
+          59.68000030517578,
+          59.66999816894531,
+          59.68000030517578,
+          59.65999984741211,
+          59.66999816894531,
+          59.650001525878906,
+          59.65999984741211,
+          59.709999084472656,
+          59.75,
+          59.76499938964844,
+          59.779998779296875,
+          59.79999923706055,
+          59.845001220703125,
+          59.86000061035156,
+          59.869998931884766,
+          59.869998931884766,
+          59.84000015258789,
+          59.845001220703125,
+          null,
+          59.869998931884766
+        ],
+        "volume": [
+          0,
+          40082,
+          33621,
+          15018,
+          28040,
+          18609,
+          10485,
+          18856,
+          17642,
+          8987,
+          13573,
+          17853,
+          4525,
+          9775,
+          5952,
+          60357,
+          19848,
+          14658,
+          43795,
+          4699,
+          19988,
+          7580,
+          7672,
+          10194,
+          109373,
+          5590,
+          5178,
+          2536,
+          9232,
+          20268,
+          59871,
+          28275,
+          6441,
+          6264,
+          19991,
+          19023,
+          13993,
+          10934,
+          11713,
+          8308,
+          18286,
+          3097,
+          22052,
+          12531,
+          6410,
+          26849,
+          13934,
+          4632,
+          9577,
+          12368,
+          8236,
+          4634,
+          12607,
+          9283,
+          4018,
+          null,
+          0
+        ],
+        "open": [
+          60.029998779296875,
+          59.790000915527344,
+          59.779998779296875,
+          59.73500061035156,
+          59.77000045776367,
+          59.77000045776367,
+          59.77000045776367,
+          59.790000915527344,
+          59.790000915527344,
+          59.790000915527344,
+          59.82500076293945,
+          59.779998779296875,
+          59.790000915527344,
+          59.810001373291016,
+          59.82500076293945,
+          59.84000015258789,
+          59.85499954223633,
+          59.935001373291016,
+          59.89500045776367,
+          59.92499923706055,
+          59.92499923706055,
+          59.880001068115234,
+          59.810001373291016,
+          59.79499816894531,
+          59.81999969482422,
+          59.84000015258789,
+          59.849998474121094,
+          59.880001068115234,
+          59.875,
+          59.86000061035156,
+          59.849998474121094,
+          59.904998779296875,
+          59.90999984741211,
+          59.86000061035156,
+          59.8650016784668,
+          59.845001220703125,
+          59.71500015258789,
+          59.75,
+          59.685001373291016,
+          59.685001373291016,
+          59.709999084472656,
+          59.68000030517578,
+          59.685001373291016,
+          59.65999984741211,
+          59.720001220703125,
+          59.75,
+          59.77000045776367,
+          59.79999923706055,
+          59.79999923706055,
+          59.86000061035156,
+          59.8650016784668,
+          59.880001068115234,
+          59.869998931884766,
+          59.875,
+          59.845001220703125,
+          null,
+          59.869998931884766
+        ],
+        "close": [
+          59.779998779296875,
+          59.779998779296875,
+          59.72999954223633,
+          59.7599983215332,
+          59.779998779296875,
+          59.75,
+          59.779998779296875,
+          59.79999923706055,
+          59.78499984741211,
+          59.82500076293945,
+          59.779998779296875,
+          59.790000915527344,
+          59.814998626708984,
+          59.83000183105469,
+          59.849998474121094,
+          59.86000061035156,
+          59.935001373291016,
+          59.900001525878906,
+          59.91999816894531,
+          59.91999816894531,
+          59.875,
+          59.810001373291016,
+          59.79499816894531,
+          59.81999969482422,
+          59.849998474121094,
+          59.85499954223633,
+          59.880001068115234,
+          59.875,
+          59.849998474121094,
+          59.845001220703125,
+          59.900001525878906,
+          59.91999816894531,
+          59.85499954223633,
+          59.8650016784668,
+          59.845001220703125,
+          59.71500015258789,
+          59.7599983215332,
+          59.68000030517578,
+          59.685001373291016,
+          59.709999084472656,
+          59.68000030517578,
+          59.689998626708984,
+          59.65999984741211,
+          59.72999954223633,
+          59.75,
+          59.77000045776367,
+          59.79999923706055,
+          59.79999923706055,
+          59.8650016784668,
+          59.86000061035156,
+          59.8849983215332,
+          59.869998931884766,
+          59.875,
+          59.849998474121094,
+          59.8849983215332,
+          null,
+          59.869998931884766
+        ]
+      }
+    },
+    {
+      "symbol": "7203.T",
+      "status": 200,
+      "receipt_at": "2026-11-10T00:15:35.670Z",
+      "meta": {
+        "currency": "JPY",
+        "symbol": "7203.T",
+        "exchangeName": "JPX",
+        "fullExchangeName": "Tokyo",
+        "instrumentType": "EQUITY",
+        "firstTradeDate": 925948800,
+        "regularMarketTime": 1794268833,
+        "hasPrePostMarketData": false,
+        "gmtoffset": 32400,
+        "timezone": "JST",
+        "exchangeTimezoneName": "Asia/Tokyo",
+        "regularMarketPrice": 3491,
+        "regularMarketChangePercent": 4.584,
+        "fulldayPrice": 3491,
+        "fulldayChange": 153,
+        "fulldayChangePercent": 4.584,
+        "fiftyTwoWeekHigh": 4000,
+        "fiftyTwoWeekLow": 2686,
+        "regularMarketDayHigh": 3493,
+        "regularMarketDayLow": 3471,
+        "regularMarketVolume": 37601400,
+        "longName": "Toyota Motor Corporation",
+        "shortName": "TOYOTA MOTOR CORP",
+        "chartPreviousClose": 3338,
+        "previousClose": 3338,
+        "scale": 3,
+        "priceHint": 2,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "JST",
+            "end": 1794268800,
+            "start": 1794268800,
+            "gmtoffset": 32400
+          },
+          "regular": {
+            "timezone": "JST",
+            "end": 1794292200,
+            "start": 1794268800,
+            "gmtoffset": 32400
+          },
+          "post": {
+            "timezone": "JST",
+            "end": 1794292200,
+            "start": 1794292200,
+            "gmtoffset": 32400
+          }
+        },
+        "tradingPeriods": [
+          [
+            {
+              "timezone": "JST",
+              "end": 1794292200,
+              "start": 1794268800,
+              "gmtoffset": 32400
+            }
+          ]
+        ],
+        "dataGranularity": "1m",
+        "range": "1d",
+        "validRanges": [
+          "1d",
+          "5d",
+          "1mo",
+          "3mo",
+          "6mo",
+          "1y",
+          "2y",
+          "5y",
+          "10y",
+          "ytd",
+          "max"
+        ]
+      },
+      "timestamps": [
+        1794268833
+      ],
+      "quote": {
+        "open": [
+          3491
+        ],
+        "volume": [
+          0
+        ],
+        "low": [
+          3491
+        ],
+        "high": [
+          3491
+        ],
+        "close": [
+          3491
+        ]
+      }
+    }
+  ],
+  "finished_at": "2026-11-10T00:16:10.674Z"
+}

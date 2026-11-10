@@ -1,0 +1,96 @@
+{
+  "active": {
+    "outline": "rgb(143, 180, 255) solid 2px",
+    "text": "REPLAY"
+  },
+  "chart": {
+    "bottom": 569,
+    "height": 340,
+    "left": 17,
+    "right": 955,
+    "top": 229,
+    "width": 938,
+    "x": 17,
+    "y": 229
+  },
+  "controls": [
+    {
+      "height": 30,
+      "name": "LIVE",
+      "width": 68
+    },
+    {
+      "height": 30,
+      "name": "REPLAY",
+      "width": 68
+    },
+    {
+      "height": 28,
+      "name": "Fit all displayed candles",
+      "width": 58.234375
+    },
+    {
+      "height": 25,
+      "name": "Follow latest",
+      "width": 76.625
+    },
+    {
+      "height": 24,
+      "name": "Inspect 2026-11-10 00:38:00.000 UTC candle",
+      "width": 68.2265625
+    },
+    {
+      "height": 24,
+      "name": "Inspect 2026-11-10 00:37:00.000 UTC candle",
+      "width": 68.2265625
+    },
+    {
+      "height": 24,
+      "name": "Inspect 2026-11-10 00:36:00.000 UTC candle",
+      "width": 68.2265625
+    },
+    {
+      "height": 24,
+      "name": "Inspect 2026-11-10 00:35:00.000 UTC candle",
+      "width": 68.2265625
+    },
+    {
+      "height": 24,
+      "name": "Inspect 2026-11-10 00:34:00.000 UTC candle",
+      "width": 68.2265625
+    },
+    {
+      "height": 24,
+      "name": "Inspect 2026-11-10 00:33:00.000 UTC candle",
+      "width": 68.2265625
+    },
+    {
+      "height": 24,
+      "name": "Inspect 2026-11-10 00:32:00.000 UTC candle",
+      "width": 68.2265625
+    },
+    {
+      "height": 24,
+      "name": "Inspect 2026-11-10 00:31:00.000 UTC candle",
+      "width": 68.2265625
+    },
+    {
+      "height": 30,
+      "name": "Interrupt Yahoo feed",
+      "width": 272
+    },
+    {
+      "height": 30,
+      "name": "Open recorded session\n→",
+      "width": 272
+    },
+    {
+      "height": 24,
+      "name": "Inspect payload",
+      "width": 95.0078125
+    }
+  ],
+  "height": 800,
+  "scrollWidth": 1280,
+  "width": 1280
+}

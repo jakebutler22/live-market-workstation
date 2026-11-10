@@ -1,0 +1,69 @@
+{
+  "chart_status": "Live capture restored. Loading the saved chart.\n98 displayed · 0.10ms chart update · UTC 00:57:50",
+  "event": {
+    "fingerprint": "90fd9d7c2690701224ae03ba73160b5dd0838443b6e615a00e47164717b83339",
+    "id": 545,
+    "identity": "90fd9d7c2690701224ae03ba73160b5dd0838443b6e615a00e47164717b83339",
+    "kind": "quote",
+    "payload": {
+      "price": 59.96,
+      "raw": {
+        "change": 0.7599983,
+        "change_percent": 1.2837809,
+        "day_volume": "2187212",
+        "exchange": "ASX",
+        "id": "BHP.AX",
+        "last_size": "6",
+        "market_hours": 1,
+        "price": 59.96,
+        "price_hint": "2",
+        "quote_type": 8,
+        "time": "1794271054000"
+      },
+      "source_ms": 1794271054000
+    },
+    "received_ms": 1794272256702,
+    "revision": 1,
+    "source": "Yahoo Finance",
+    "source_ms": 1794271054000,
+    "supersedes_id": null,
+    "symbol": "BHP.AX"
+  },
+  "feed": "FEED / CAPTURE\nLIVE\nSource\nYahoo Finance\nUpstream\nreceiving\nApplication socket\nconnected\nPublished delay\n20 minutes\nSource-data age\n20m 16s\nSOURCE EVENT / UTC\n2026-11-10 00:37:34.000\nBACKEND RECEIPT / UTC\n2026-11-10 00:57:36.702\n\nAge uses source time. Socket heartbeats never refresh it. Session state is not inferred.\n\nInterrupt Yahoo feed\nControlled interruption for verification",
+  "observed_at": "2026-11-10T00:57:51.253Z",
+  "ohlcv": "00:37–00:38\n2026-11-10 · UTC [start, end)\nO\n59.94\nH\n59.96\nL\n59.93\nC\n59.96\nVOL\n—\n+0.02",
+  "selected_interval": [
+    {
+      "field": "Completion",
+      "value": "Elapsed interval"
+    },
+    {
+      "field": "Coverage",
+      "value": "Partial coverage"
+    },
+    {
+      "field": "Candle revision",
+      "value": "v12"
+    },
+    {
+      "field": "Last saved event",
+      "value": "#545"
+    },
+    {
+      "field": "Last quote event",
+      "value": "#545"
+    },
+    {
+      "field": "Quote observations",
+      "value": "12"
+    },
+    {
+      "field": "Volume event",
+      "value": "—"
+    },
+    {
+      "field": "Duplicate receipts",
+      "value": "311"
+    }
+  ]
+}

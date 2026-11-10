@@ -1,0 +1,40 @@
+# Browser audit — Assignment 4.1
+
+Observed in the actual local application during the November 9, 2026 New York working session (raw evidence uses November 10 UTC). The observations below are browser evidence; a separate genuine 55-second demo is now recorded locally. The audit used the normal browser inventory/tab APIs against the running `http://127.0.0.1:5173/` application. An earlier attempt failed; normal access to the running page subsequently succeeded without changing or bypassing a security policy.
+
+## Compact evidence set
+
+| Check | Actual observation | Evidence |
+|---|---|---|
+| Real Yahoo → chart → SQLite | Visible quote **545**, source `1794271054000`, receipt `1794272256702`, price **AUD 59.96**, matched its canonical SQL record and the displayed **00:37–00:38 UTC candle v12**: O 59.94 / H 59.96 / L 59.93 / C 59.96. Volume was honestly unknown for this still-unreconciled interval. SQL integrity was `ok`. | [Visible fields](browser/visible-live-trace.json), [direct SQL](browser/trace-sql.json), [rendered record](browser/visible-record.jpg) |
+| Corresponding volume and keyboard access | Keyboard arrow selection moved to **00:36–00:37**, showing **5,451 shares**, matching vendor volume event **541** / candle **v20**. Selected control had a visible 2 px focus outline. | [Fields/focus](browser/keyboard-volume.json), [screenshot](browser/selected-volume-keyboard.jpg) |
+| Live layout | Candles and aligned volume rendered at 1440×900 and 1280×800. Measured controls were at least 24 px high, with no document-width overflow at 1280. Changing prices/times stayed aligned in their numeric columns. | [1440×900](browser/live-1440x900.jpg), [1280×800/focus](browser/live-1280x800-focus.jpg), [measurements](browser/layout-1280x800.json) |
+| Replay controls and timestamps | Start, pause and resume worked; paused at **244/576** events. Restart returned playback to **85/576**. REPLAY, original recording time **2026-11-10 00:37:57.271 UTC**, and recorded replay clock were visible. | [Replay](browser/replay-1440.jpg), [paused](browser/replay-paused.json), [restart](browser/replay-restarted.json), [paused screenshot](browser/replay-paused.jpg) |
+| Induced upstream unavailability | UI showed **UNAVAILABLE · INDUCED**, while the application socket remained connected and chart/history remained visible. Source age increased **20m 11s → 20m 25s** with source/receipt times unchanged. | [Initial state](browser/unavailable.json), [later age](browser/unavailable-later.json), [screenshot](browser/unavailable.jpg) |
+| Replay while Yahoo paused | A frozen **606-event** recording replayed to **307/606 paused** while the actual live backend stayed paused. Canonical event count remained **606**, establishing isolation. | [Recorded/live state and counts](browser/replay-while-source-paused.json) |
+| Recovery | Resume restored **RECEIVING** and a genuine saved quote **621**; source `00:42:11 UTC`, receipt `01:02:12 UTC`, source age approximately 20m 1s. | [Recovered UI](browser/recovered.json) |
+| Equivalent increased-zoom reflow | **853×533 CSS pixels**, approximately the viewport available when a 1280×800 window is zoomed to 150%, reflowed to one column. No horizontal document overflow; minimum control height 24 px. Vertical scrolling retained content. This did not change the browser's actual zoom setting. | [Measurements](browser/reflow-150-equivalent.json), [screenshot](browser/reflow-853x533.jpg) |
+
+The main browser session inspected console warning/error logs and observed an empty result. Captured footer values included 0.00–0.80 ms for local chart-update calls; these do not measure completed paint, external network latency, or Yahoo's published 20-minute delay.
+
+## Demonstrated fixes
+
+1. Global `td` styling affected a Lightweight Charts internal table and produced a 29 px pane divider. Scoped record-table styling restored the divider to 1 px, checked in the browser.
+2. Returning from replay briefly retained replay status/timestamps/counts while the new live snapshot loaded. Reset now clears them and shows unknown/connecting/zero until actual live data arrives, checked in the browser.
+
+A new production build passed after these frontend-only fixes. Backend code was unchanged, so the existing 29-test/14-subtest run and actual restart/rule evidence remain applicable; no unrelated test reruns were added to inflate the count. The exact final application/test/dependency hashes are frozen in [the manifest](tested-source-manifest.json) for commit/review.
+
+## Remaining limits
+
+- Literal 150% browser zoom could not be set through the available browser controls; its shortcut had no effect. The measured equivalent viewport test is explicitly distinct.
+- Native Codex application control was blocked and the permitted browser tools expose no native recording API. A genuine browser-only screenshot sequence was instead captured with the normal allowed APIs and encoded using system AVFoundation; its real-time method is disclosed below. The accessible hosting URL remains missing.
+- No assistive-technology screen-reader session was performed. Contrast and reduced-motion rules have static coverage; observed keyboard/focus/control checks are listed above.
+- GitHub remote, exact pushed commit, instructor access and accessible video URL remain submission inputs. The reviewed implementation has explicit user commit/push authorization; do not request it again.
+
+Final checks also captured chart panning across additional incoming observations ([before](browser/panned.jpg), [after](browser/panned-after-update.jpg)); the time range stayed panned until explicit Fit. The final captured browser console contained no warnings/errors ([console](browser/console.json)). Temporary viewport overrides were reset and the live tab was left open. No native video capability was advertised by the browser/tab tools and native app control was denied. Normal screenshot APIs remained available for the genuine real-time sequence recorded below.
+
+## Recorded demonstration
+
+[demo-4-1.mp4](demo-4-1.mp4) is a **55-second**, **1440×900**, H.264 fast-start MP4, **no audio**, **3,295,740 bytes**. It was encoded by the existing system AVFoundation framework from **205 genuine browser-page screenshots at their actual irregular timestamps** over 55 real seconds. No synthetic data or invented motion was used. [Metadata](demo-video.json) and [actual sequence/publishing steps](../docs/demo-run-sheet.md). The sequence shows live capture, saved payload (15.349s), replay (27.815s), start at 60× (28.265s), pause (36.298s), resume (39.397s), and induced upstream unavailability (42.947s onward). Yahoo capture was resumed afterward. The upload URL and instructor access remain missing; local creation alone does not establish accessibility.
+
+Actual MP4 frames decoded around 0, 20, 33 and 50 seconds were inspected upright/readable, showing live data, quote **894**, recorded replay and induced outage. The visible quote matches SQLite candle **v11** (O 59.96 / H 59.97 / L 59.96 / C 59.97); induced feed event **905** preserves its gap revision. The file has one `avc1` video track, no audio, nominal approximately **3.74 fps**, and `moov` before `mdat` for fast-start. SHA-256: `ff7dacef30b44ffb1e6dfb32230759c2fbd109c5be6fc1a359d6edd80fdc5961`. Recovery after recording reached genuine Yahoo quote **918**. The approximately four-frame-per-second screenshot recording is a documented limitation, not a claim of native full-motion capture.

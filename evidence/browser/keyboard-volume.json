@@ -1,0 +1,7 @@
+{
+  "capture": "SELECTED INTERVAL\nSAVED\nCompletion\nElapsed interval\nCoverage\nObserved coverage\nCandle revision\nv20\nLast saved event\n#541\nLast quote event\n#531\nQuote observations\n18\nVolume event\n#541\nDuplicate receipts\n323\nVOLUME PROVENANCE\n\nYahoo 1m reconciliation · may lag · received 00:57:32 UTC\n\nPRICE PROVENANCE\n\nYahoo 1m aggregate\n\nElapsed ≠ complete trade coverage. Late observations may revise closed intervals.",
+  "focused": "Inspect 2026-11-10 00:36:00.000 UTC candle",
+  "inspector": "00:36–00:37\n2026-11-10 · UTC [start, end)\nO\n59.90\nH\n59.94\nL\n59.90\nC\n59.94\nVOL\n5,451\n+0.04",
+  "outline": "rgb(143, 180, 255) solid 2px",
+  "pressed": "true"
+}

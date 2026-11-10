@@ -1,0 +1,30 @@
+{
+  "clock": "Original receipt order and source times. Replay clock: 00:47:39 UTC.",
+  "observed_at": "2026-11-10T01:01:31.752Z",
+  "progress": "307 / 606 events\npaused",
+  "recording": "ORIGINAL RECORDING / UTC\n2026-11-10 00:37:57.271",
+  "state": "REPLAY \u00b7 PAUSED",
+  "actual_live_backend_status": {
+    "symbol": "BHP.AX",
+    "interval": 60,
+    "source": "Yahoo Finance",
+    "state": "paused",
+    "upstream_state": "paused",
+    "expected_delay_seconds": 1200,
+    "data_label": "ASX \u00b7 20 min delayed \u00b7 AUD",
+    "price_unit": "AUD",
+    "volume_unit": "shares",
+    "last_source_ms": 1794271254000,
+    "last_received_ms": 1794272455861,
+    "last_event_id": 605,
+    "event_count": 606,
+    "quote_count": 495,
+    "duplicate_count": 337,
+    "error": "Controlled upstream interruption; local browser/backend connection stays active",
+    "volume_status": "Yahoo 1m reconciliation \u00b7 up to 30s polling lag; vendor delay additional",
+    "processing_ms": 1.109,
+    "database": "data/market.sqlite3"
+  },
+  "canonical_events_at_induced_pause": 606,
+  "canonical_events_after_browser_replay": 606
+}

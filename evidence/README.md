@@ -1,0 +1,53 @@
+# Evidence log — Assignment 4.1
+
+All timestamps in raw market evidence are UTC; local working date is November 9, 2026 (America/New_York). Data is public market data; no credentials are recorded. Runtime evidence below is from the real local application. A WebSocket consumer alone is not browser proof; the final audit also captured actual rendered browser evidence, identified separately.
+
+## Start here
+
+The compact review set is [the genuine 55-second demo](demo-4-1.mp4) with [recording metadata](demo-video.json), [verification results](../docs/verification.md), [the curated final browser audit](browser-audit.md), [the event 104 source/database/socket trace](app-live-trace.json), [its corresponding interval volume](app-volume-reconciliation.json), [induced outage and recorded replay](app-failure-replay.json), [source recovery](app-recovery.json), and [restart retention](restart-after.json). [Automated output](runtime-tests.txt) and [build output](frontend-build.txt) support those checks. The larger direct-provider probes and earlier dependency-free test output are preserved for provenance, rather than presented as additional application/browser proof.
+
+The [final-submission audit prompt](../prompts/02-final-submission-audit.md) records the continuation request. The repository and report remain drafts until actual GitHub, immutable commit, video and access evidence replace the missing fields. No capture database was deleted during evidence curation.
+
+The personal absolute project-path prefix in `runtime-tests.txt` is redacted as `<project>`; the warning and test results are unchanged.
+
+## Requirement index
+
+| Requirement/decision | Actual evidence | Status |
+|---|---|---|
+| User scope and course checkpoints | [Original implementation prompt](../prompts/01-assignment-4-1.md); subsequent user instruction to fix the inaccessible site authorized the listed local dependency installation and continued runtime work | Recorded; installation completed |
+| Empty repository; scoped branch | Initial shell inspection; `codex/assignment-4-1`, no remote/no initial commit | Observed; no commit/push performed |
+| Real Yahoo provider semantics | [First direct probe](provider-sample.json), [active equity probe](alternate-provider-sample.json), [primary-source analysis](../docs/provider-research.md) | Real direct-node probes; distinct from application evidence |
+| Actual Yahoo → yfinance → SQLite → proxied application WebSocket | [Event 104 trace](app-live-trace.json) has matching raw payload, immutable SQL event and candle revision 22 | Verified transport/database path; later rendered quote 545 also matched SQL, see browser audit |
+| Corresponding genuine interval share volume | [Same-interval reconciliation](app-volume-reconciliation.json): quote event 104's minute later receives 7,296 shares through bar event 123/candle revision 29. [Historical adapter sample](historical-adapter-sample.json) | Verified actual saved reconciliation; browser also displayed 5,451 shares for interval 00:36–00:37 |
+| Market rules, persistence and API controls | [29 tests plus 14 subtests passed](runtime-tests.txt), no skips; synthetic/disposable test fixtures | Verified; historical [24-pass dependency-free run](unit-test-results.txt) retained |
+| Frontend production build | [Actual Vite build output](frontend-build.txt); local dependency trees/imports checked | Passed |
+| Source interruption and increasing age | [Actual induced interruption](app-failure-replay.json): live socket retained, source age increases, history retained | Verified API/socket behavior and actual UNAVAILABLE · INDUCED UI; source age rose 20m 11s → 20m 25s |
+| Source recovery | [Actual pause/resume](app-recovery.json): same socket receives newly saved quote event 157; upstream becomes receiving | Verified transport behavior; browser recovery later received quote 621 |
+| Replay independent of source/live capture | [Paused-source replay](app-failure-replay.json): 129 original events played to finished, canonical count stays 129 | Verified real recording through replay socket; browser start/pause/resume/restart and offline replay observed separately |
+| SQLite initialization and restart | [Initial schema/integrity result](database-initialization.txt); [before restart](restart-before.json), [after restart](restart-after.json) preserve exact SHA-256 digests of 129 events and 127 candle versions | Verified initialization and actual process restart, integrity ok; capture not erased |
+| One-command startup | `scripts/start.py` launches backend 8000/frontend 5173 and waits for HTTP readiness; [actual restart result](restart-after.json) | Verified; services left running |
+| Local latency | [Eight receipt-to-proxy-consumer samples](app-live-trace.json): median 3 ms, maximum 8 ms | Measured; excludes browser rendering and Yahoo delay |
+| Rendered chart, keyboard, layout and volume | [Curated browser audit](browser-audit.md), [live 1440×900](browser/live-1440x900.jpg), [1280×800/focus](browser/live-1280x800-focus.jpg), [volume keyboard selection](browser/keyboard-volume.json) | Observed; controls ≥24 px; 2 px focus; no horizontal overflow at 1280 |
+| Visible event-to-SQL trace | [Visible quote 545/candle v12](browser/visible-live-trace.json), [matching SQL event/candle](browser/trace-sql.json), [rendered record](browser/visible-record.jpg) | Actual Yahoo, browser and canonical database match, integrity ok |
+| Browser replay/outage/recovery | [Paused replay](browser/replay-paused.json), [offline isolation](browser/replay-while-source-paused.json), [unavailable](browser/unavailable.json), [later age](browser/unavailable-later.json), [recovery quote 621](browser/recovered.json) | Observed UI; paused-source canonical count stayed 606 during replay |
+| Reflow, console and local update timing | [853×533 reflow measurements](browser/reflow-150-equivalent.json), [screenshot](browser/reflow-853x533.jpg), [audit facts/limits](browser-audit.md) | Equivalent 150% reflow observed, literal zoom unverified; console warning/error result empty; sampled chart-update calls 0.00–0.20 ms, not completed paint |
+| Recorded demonstration | [55-second H.264 MP4](demo-4-1.mp4), [metadata](demo-video.json), [sequence/method](../docs/demo-run-sheet.md) | Actual browser-only real-time frames, 1440×900, no audio; accessible upload URL missing |
+| Submission links and reviewed commit | [report.md](../report.md) | DRAFT: repository URL/remote commit/video URL/access outstanding; user approved reviewed commit/push |
+
+## Genuine findings / revised approaches
+
+- The folder was empty; no prior application could be reused.
+- BTC-USD had active price motion, but its rolling volume totals could not safely represent minute volume. AAPL/futures did not produce quotes during bounded probes. BHP.AX produced usable equity quotes and interval share volume with a documented 20-minute delay, so it became the default.
+- yfinance history fills missing volume with zero. Reconciliation reads the same Yahoo chart endpoint as raw JSON to retain null volume; streaming still uses yfinance `AsyncWebSocket`.
+- Globally deduplicating feed lifecycle payloads would erase repeated outages. Lifecycle occurrences preserve availability order separately from market-message deduplication.
+- Explicit corrections preserve original identity/version and deduplicate actual resends. Differing same-time Yahoo quotes remain separate sampled observations because no correction/trade ID is supplied by the stream.
+- Static review caught SQLite rollback/reducer divergence, a delayed-source receipt-bucket gap error and a simultaneous socket queue/input readiness race. Focused fixes/regressions were followed by the installed-dependency test run.
+- Framework Python's missing default CA path initially caused HTTPS verification failure. The verified existing system trust bundle resolves it without disabling TLS verification. The finite-close adapter guards a yfinance 1.8.0 exhausted-iterator loop.
+- Dependency-enabled tests exposed normal WebSocket-disconnect cleanup handling; the focused cleanup fix passed the full test run.
+- The user could not see the site while dependencies/services were absent. After authorized local installation, the actual services and proxy path worked; the tested one-command launcher now reports readiness and keeps both services running together.
+- An initial browser attempt failed. During the final audit, normal inventory and tab selection reached the running localhost page; no policy change or bypass was used. Actual screenshots, keyboard/control checks, and SQL/UI trace are now recorded. No video was fabricated.
+- The browser audit found chart-internal pane dividers widened by global table-cell styles (29 px). Scoping styles to the records table restored 1 px. It also found replay status briefly carrying into live mode; resetting status before a new snapshot removed that misleading transition. Both frontend fixes were browser-verified and followed by a production build.
+
+AI use is documented in [AI-USE.md](../AI-USE.md). Implementation files and responsibilities are mapped in [design-pipeline.md](../docs/design-pipeline.md). User approval of the reviewed commit/push has been received. Real repository/video URLs, verified remote commit and instructor access remain separate from runtime verification.
+
+The final report draft has all eight required sections and intentionally contains no local/relative instructor evidence links. Publication URLs await the actual repository/full implementation SHA. Application/test/dependency hashes are frozen in [the tested-source manifest](tested-source-manifest.json). The user’s second prompt is preserved byte-for-byte, including valid Markdown hard-break spaces; `.gitattributes` exempts that one prompt from end-of-line whitespace warnings.

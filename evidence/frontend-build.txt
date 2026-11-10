@@ -1,0 +1,9 @@
+Final observed command: npm --prefix frontend run build
+Vite 8.3.7 production build succeeded after the final audit's scoped table CSS and mode-loading status fixes.
+19 modules transformed.
+dist/index.html: 0.47 kB (gzip 0.30 kB)
+dist/assets/index-BqYGkRSP.css: 13.32 kB (gzip 3.52 kB)
+dist/assets/index-IpftwiG0.js: 252.21 kB (gzip 86.21 kB)
+Build completed in 100 ms.
+Classification: actual production compiler/build output. Separate actual browser observations are in evidence/browser-audit.md.
+Backend source is unchanged; the existing 29-test/14-subtest result is retained rather than rerunning unrelated checks.

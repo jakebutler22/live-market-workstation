@@ -1,0 +1,4 @@
+{
+  "at": "2026-11-10T01:01:20.028Z",
+  "feed": "FEED / CAPTURE\nLIVE\nSource\nYahoo Finance\nUpstream\nUnavailable · induced\nApplication socket\nconnected\nPublished delay\n20 minutes\nSource-data age\n20m 25s\nSOURCE EVENT / UTC\n2026-11-10 00:40:54.000\nBACKEND RECEIPT / UTC\n2026-11-10 01:00:55.861\n\nAge uses source time. Socket heartbeats never refresh it. Session state is not inferred.\n\nResume Yahoo feed\nControlled interruption for verification"
+}

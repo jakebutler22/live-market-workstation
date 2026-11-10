@@ -1,0 +1,48 @@
+{
+  "created_utc": "2026-11-10T01:07:32.552979+00:00",
+  "classification": "Application/test source SHA-256 manifest, not a Git commit identifier.",
+  "application_sha256": "1df242aa5cee739e3d4679497be0e9a3d89ce51d4df535a8a99b409ea1dc60f1",
+  "files": {
+    "backend/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/config.py": "7b83f77010a7e09e47538fab734331ce0cdffc75f3168f20685f6fa3895535c6",
+    "backend/main.py": "559297b41adec34b314a238e64cb4fd4201623ea12088bea865063b7cec00127",
+    "backend/market.py": "4bbd6bde69cd219a470dd2d0dd0da2de52eef14eab00268b3fdd14d0fb62cf50",
+    "backend/provider.py": "0379d8693c934ebb364c5e254a260cee72907be8249acf631a02f07bfe5959a4",
+    "backend/replay.py": "fe7519debf8802ec3943477227441448dfbe844a155f760f0918bfaaf8643756",
+    "backend/service.py": "01ec39099cf6c94aba5e1deed0da3b6177f39751d4fba27624e905cb5d3d366d",
+    "backend/store.py": "f0aabfb639ca8795e8998adf4d4ab2a00fc2432ca37c335f55cbbab113302801",
+    "frontend/index.html": "6b3cedb92c72de31f0d06b0582cf7083e9f3a2131fcdb7318caac1f91043e587",
+    "frontend/package-lock.json": "a9277e3b1b0e45bb13eb77c2eed4db5000c17a08f864ca61e44b96fbc15a5cb5",
+    "frontend/package.json": "321d4ab530e12dee83e4b13919cccbfff4fd410e803e8762ede55815735a83f9",
+    "frontend/src/App.vue": "53b2dbada829c227819092e568f9622ef18931559ba99ea34092af88a5947566",
+    "frontend/src/MarketChart.vue": "d9b7342aa9dea440f6b3fbafbc50a5c1549bb3ad2d9fe7b1160a6583b70cf957",
+    "frontend/src/main.js": "1da85a2a4a50aa9d67ae02f76b8fb30672576e95f091d1e02702d0cbf4983ddf",
+    "frontend/src/style.css": "fc620ac501ffab1271e83f65fb247c38de8019f8ecbab101174f348db42fc287",
+    "frontend/src/tokens.css": "5e784932ce67dec682ecd7bb423cfe0ea1fcabe40e2a4a3efd6a1e9c99aed21c",
+    "frontend/vite.config.js": "319b64a085b291abd640a595cec6a1a17a7b1ef0cca5e8c684fbf8f0b9270019",
+    "requirements.in": "2ce63d076b96212a8e7197db0d75682e40a50b2b9cb371c7cadb873ed08e1834",
+    "requirements.lock": "deee7674af55cec406fe730ad0507146021828d4d19210eae0e166e145de66dc",
+    "scripts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts/init_db.py": "d7dcecd6118a58dcfdd587642956edd9a0850565024a98f4cabde43458dd5c15",
+    "scripts/start.py": "aace634d531b77572fd6188028a1c9141705f669f17b8e9fc6ac343595ccc58c",
+    "tests/test_api.py": "d9435436aabb7e132cce899a408f5d6d3d8839da85798bc7f28ccbd4e7486d43",
+    "tests/test_market.py": "31315c9d157e5766d58646220d4364aa121e41eb0e08651dedcdeed79f39433a",
+    "tests/test_provider.py": "88d81f7216076eeae0b7ac2652c3cce2fe3730f7b7b8ebb03f7f9114b5e6adb1",
+    "tests/test_replay.py": "67770f907533e27678d0d58a72645072b375b2d24f3baf7a10e1ec2e3c65aaf5"
+  },
+  "python": "3.14.7",
+  "node": "v24.12.0",
+  "python_direct_versions": {
+    "fastapi": "0.162.2",
+    "uvicorn": "0.54.0",
+    "yfinance": "1.8.0",
+    "pytest": "9.2.0",
+    "httpx": "0.28.1"
+  },
+  "verification": {
+    "backend": "Existing unchanged-backend result: 29 passing tests and 14 subtests in evidence/runtime-tests.txt",
+    "final_frontend": "Production build passed after the two scoped browser-observed fixes; evidence/frontend-build.txt",
+    "actual_browser": "evidence/browser-audit.md and evidence/browser/trace-sql.json",
+    "remaining": "Literal browser zoom setting, screen reader and full paint timing not observed; publication inputs missing"
+  }
+}

@@ -1,0 +1,9 @@
+Command: python3 -m scripts.init_db
+Database: data/market.sqlite3 (actual canonical local capture, ignored by Git)
+Symbol: BHP.AX
+Tables: events, candle_versions
+View: latest_candles
+Indexes: events_available, events_fingerprint, events_kind_time, events_symbol_time
+PRAGMA integrity_check: ok
+SELECT COUNT(*) FROM events: 0
+No fixture observations inserted. Runtime Yahoo ingestion awaits dependency approval.

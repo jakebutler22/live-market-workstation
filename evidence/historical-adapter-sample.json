@@ -1,0 +1,60 @@
+{
+  "method": "Actual backend YahooProvider.fetch_bars via verified HTTPS. Historical adapter only; no running FastAPI app or yfinance stream proof.",
+  "received_at": "2026-11-10T00:23:44.905143+00:00",
+  "symbol": "BHP.AX",
+  "currency": "AUD",
+  "volume_unit": "shares",
+  "bar_count": 63,
+  "last_bars": [
+    {
+      "start_ms": 1794268680000,
+      "open": 59.90999984741211,
+      "high": 59.94499969482422,
+      "low": 59.904998779296875,
+      "close": 59.94499969482422,
+      "volume": 4428,
+      "finalized": true,
+      "vendor_source_ms": 1794269022000
+    },
+    {
+      "start_ms": 1794268740000,
+      "open": 59.95000076293945,
+      "high": 59.970001220703125,
+      "low": 59.939998626708984,
+      "close": 59.970001220703125,
+      "volume": 6559,
+      "finalized": true,
+      "vendor_source_ms": 1794269022000
+    },
+    {
+      "start_ms": 1794268800000,
+      "open": 59.959999084472656,
+      "high": 59.97999954223633,
+      "low": 59.939998626708984,
+      "close": 59.959999084472656,
+      "volume": 16633,
+      "finalized": true,
+      "vendor_source_ms": 1794269022000
+    },
+    {
+      "start_ms": 1794268860000,
+      "open": 59.970001220703125,
+      "high": 59.9900016784668,
+      "low": 59.939998626708984,
+      "close": 59.959999084472656,
+      "volume": 25273,
+      "finalized": true,
+      "vendor_source_ms": 1794269022000
+    },
+    {
+      "start_ms": 1794268920000,
+      "open": 59.95500183105469,
+      "high": 59.97999954223633,
+      "low": 59.94499969482422,
+      "close": 59.959999084472656,
+      "volume": 4064,
+      "finalized": true,
+      "vendor_source_ms": 1794269022000
+    }
+  ]
+}

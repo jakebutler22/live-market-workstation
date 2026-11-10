@@ -1,0 +1,8 @@
+{
+  "feed": "FEED / CAPTURE\nLIVE\nSource\nYahoo Finance\nUpstream\nUnavailable · induced\nApplication socket\nconnected\nPublished delay\n20 minutes\nSource-data age\n20m 11s\nSOURCE EVENT / UTC\n2026-11-10 00:40:54.000\nBACKEND RECEIPT / UTC\n2026-11-10 01:00:55.861\n\nAge uses source time. Socket heartbeats never refresh it. Session state is not inferred.\n\nResume Yahoo feed\nControlled interruption for verification",
+  "footer": "Controlled upstream interruption; local browser/backend connection stays active\n101 displayed · 0.20ms chart update · UTC 01:01:05",
+  "headline": "59.95\nLAST OBSERVED PRICE / AUD",
+  "observed_at": "2026-11-10T01:01:06.429Z",
+  "rows": "Recent candles. Select an interval to inspect it. Arrow keys move between intervals. Times UTC.\nINTERVAL / UTC\tOPEN\tHIGH\tLOW\tCLOSE\tVOLUME\tSTATE\tREV\tEVENT\n00:40–00:41\t59.98\t59.98\t59.92\t59.95\t—\tElapsed · partial\tv18\t#606\n00:39–00:40\t59.97\t59.97\t59.95\t59.97\t2,849\tElapsed\tv15\t#590\n00:38–00:39\t59.97\t59.98\t59.96\t59.96\t2,884\tElapsed\tv20\t#574\n00:37–00:38\t59.94\t59.97\t59.93\t59.96\t5,242\tElapsed\tv20\t#564\n00:36–00:37\t59.90\t59.94\t59.90\t59.94\t5,451\tElapsed\tv20\t#541\n00:35–00:36\t59.90\t59.90\t59.87\t59.89\t4,278\tElapsed\tv22\t#517\n00:34–00:35\t59.91\t59.91\t59.89\t59.90\t4,552\tElapsed\tv29\t#492\n00:33–00:34\t59.92\t59.94\t59.91\t59.92\t4,269\tElapsed\tv26\t#477",
+  "state": "UNAVAILABLE · INDUCED"
+}

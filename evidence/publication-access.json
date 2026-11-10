@@ -1,0 +1,53 @@
+{
+  "checked_at_utc": "2026-11-10T01:26:59.055164+00:00",
+  "authentication": "No Authorization header, no cookies, no owner session in HTTP checks. Browser additionally showed Sign in and Public with repository files.",
+  "repository": "https://github.com/jakebutler22/live-market-workstation",
+  "private": false,
+  "default_branch": "codex/assignment-4-1",
+  "tested_implementation_sha": "a176567c9ff06ac131d08f142269e8a7d5b2bd0e",
+  "checks": [
+    {
+      "name": "repository",
+      "url": "https://github.com/jakebutler22/live-market-workstation",
+      "final_url": "https://github.com/jakebutler22/live-market-workstation",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes_received": 250381
+    },
+    {
+      "name": "implementation_commit",
+      "url": "https://github.com/jakebutler22/live-market-workstation/commit/a176567c9ff06ac131d08f142269e8a7d5b2bd0e",
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/commit/a176567c9ff06ac131d08f142269e8a7d5b2bd0e",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes_received": 991931
+    },
+    {
+      "name": "video",
+      "url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/demo-4-1.mp4",
+      "final_url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/demo-4-1.mp4",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "bytes_received": 3295740,
+      "sha256": "ff7dacef30b44ffb1e6dfb32230759c2fbd109c5be6fc1a359d6edd80fdc5961",
+      "matches_local_verified_video": true
+    },
+    {
+      "name": "video_range",
+      "url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/demo-4-1.mp4",
+      "final_url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/demo-4-1.mp4",
+      "status": 206,
+      "content_type": "application/octet-stream",
+      "bytes_received": 1024,
+      "content_range": "bytes 0-1023/3295740"
+    }
+  ],
+  "video_duration_seconds": 55,
+  "video_duration_basis": "Anonymous remote bytes SHA256 exactly matches the locally decoded and duration-verified MP4.",
+  "instructor_access": "Public repository, commit and video verified without authentication; no instructor account needed.",
+  "notes": [
+    "Created new repository after user explicitly requested making the GitHub URL. No existing repository visibility changed.",
+    "Canonical captured SQLite database, dependencies and secrets remain excluded from Git.",
+    "Initial Python request required the existing system certificate bundle; TLS verification remained enabled."
+  ]
+}

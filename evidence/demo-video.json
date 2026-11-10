@@ -355,7 +355,15 @@
     "limits": "Silent screenshot-based video at irregular approximately 4fps; no narration; current quote interval volume unavailable is displayed as \u2014 while earlier corresponding volume remains visible."
   },
   "publication": {
-    "accessible_url": null,
-    "status": "Awaiting confirmed GitHub repository destination and push; no upload/access claimed."
+    "accessible_url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/demo-4-1.mp4",
+    "repository_url": "https://github.com/jakebutler22/live-market-workstation",
+    "implementation_commit": "a176567c9ff06ac131d08f142269e8a7d5b2bd0e",
+    "implementation_commit_url": "https://github.com/jakebutler22/live-market-workstation/commit/a176567c9ff06ac131d08f142269e8a7d5b2bd0e",
+    "status": "Published and anonymously verified: public repository and exact commit HTTP 200; MP4 HTTP 200 with matching full-file bytes/hash; byte-range request HTTP 206. Signed-out browser repository inspection also passed.",
+    "repository_visibility": "public",
+    "repository_default_branch": "codex/assignment-4-1",
+    "http_content_type": "application/octet-stream",
+    "playback_note": "Download/open the MP4; an inline GitHub player is not promised.",
+    "access_evidence": "evidence/publication-access.json"
   }
 }

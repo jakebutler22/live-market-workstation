@@ -1,8 +1,8 @@
 # Personal review — Assignment 4.1
 
-The actual local app, source/database/browser trace, replay, induced outage/recovery, and final frontend production build have been checked. The user explicitly approved the reviewed implementation's commit and push in the final-audit continuation. Reuse that authorization; do not request it again for this scoped milestone. Git still has **no commits or remote**. The actual repository URL and instructor access remain unresolved. No new dependency approval is pending.
+The actual local app, source/database/browser trace, replay, induced outage/recovery, and final frontend production build have been checked. The user explicitly approved the reviewed implementation's commit and push in the final-audit continuation. Reuse that authorization; do not request it again for this scoped milestone. The approved implementation is now frozen locally as **`a176567c9ff06ac131d08f142269e8a7d5b2bd0e`**. No remote is configured. The actual repository URL and instructor access remain unresolved. No new dependency approval is pending.
 
-The complete scoped changes are on `codex/assignment-4-1`. All initial files are intent-to-add because this repository has no first commit. Review `git diff --stat`, `git diff`, `git diff --check` and the untracked browser evidence/prompt files; ordinary `git diff` does not include untracked files. Exact application/test/dependency hashes are frozen in `evidence/tested-source-manifest.json`; the implementation Git commit is still missing.
+The complete scoped changes are on `codex/assignment-4-1`. The first-commit diff and checks were prepared before approval; the approved initial implementation is now committed. Review it with `git show --stat a176567c9ff06ac131d08f142269e8a7d5b2bd0e` and `git show a176567c9ff06ac131d08f142269e8a7d5b2bd0e`. Exact application/test/dependency hashes are frozen in `evidence/tested-source-manifest.json`; the committed application files match them. Later report/handoff publication metadata is documentation-only.
 
 ## Concrete result to review
 

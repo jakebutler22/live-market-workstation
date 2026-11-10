@@ -9,9 +9,10 @@
 ## Repository and submitted version
 
 - **GitHub URL: MISSING.** The local repository has no remote. The connected account did not identify a matching project; the intended destination has been requested.
-- **Full tested implementation SHA and direct commit URL: MISSING.** The user approved the reviewed commit and push. The local implementation commit is being frozen; remote confirmation awaits the actual repository destination.
+- **Full tested implementation SHA (local): `a176567c9ff06ac131d08f142269e8a7d5b2bd0e`.** This is the approved frozen implementation, including the verified video.
+- **Direct GitHub commit URL: MISSING.** The actual repository destination and push remain unresolved; no remote confirmation is claimed.
 
-Application, test and dependency file hashes are frozen in `evidence/tested-source-manifest.json`. That SHA-256 manifest is not a Git commit. After publication, this report will identify the frozen tested implementation commit explicitly, even if the completed report is committed separately.
+Application, test and dependency file hashes are frozen in `evidence/tested-source-manifest.json`. That SHA-256 manifest is not a Git commit. The implementation SHA above stays explicit if report-only publication details are committed later. The application files at that commit match the verified manifest.
 
 ## Demonstration video
 
@@ -19,18 +20,19 @@ Application, test and dependency file hashes are frozen in `evidence/tested-sour
 
 ## Completed work
 
-These evidence filenames identify prepared materials. Full commit-pinned GitHub links remain unavailable until the actual repository and implementation SHA exist; filenames are not presented as instructor-accessible links.
+These evidence filenames identify prepared materials. Full commit-pinned GitHub links remain unavailable until the actual repository is confirmed and the implementation commit is pushed; filenames are not presented as instructor-accessible links.
 
-| Part 4.1 requirement | Observed behavior and evidence |
-|---|---|
-| Yahoo streaming and frontend WebSocket | Real yfinance observations reach the backend, SQLite and rendered Vue chart. Displayed quote **545** and candle **v12** match SQL exactly: `evidence/browser/trace-sql.json`. |
-| Updating candlesticks and volume | Lightweight Charts renders aligned candles/volume. Keyboard selection displayed **5,451 shares** for 00:36–00:37 UTC. Current unknown volume stays unavailable: `evidence/browser/selected-volume-keyboard.jpg`. |
-| Source, freshness and completion | Yahoo source, source/receipt timestamps, age, delay, independent upstream/app state, revisions and elapsed/partial coverage are visible: `evidence/browser/live-final.jpg`. |
-| SQLite history and restart | Immutable events and versioned candles preserve identity, payloads, timestamps, revisions and coverage. A real restart retained exact digests of **129 events/127 versions**: `evidence/restart-after.json`. |
-| Recorded replay | Start/pause/resume/restart and original recording time were observed. Replay while Yahoo was paused left canonical count **606** unchanged: `evidence/browser/replay-while-source-paused.json`. |
-| Duplicates, revisions and late arrivals | **29 tests plus 14 subtests** pass, including hand-calculated candles, boundaries, duplicate/correction chains, equal-time ties, late arrivals and replay isolation: `evidence/runtime-tests.txt`. Edge cases use labeled fixtures. |
-| Live trace and unavailable feed | An induced UI interruption retained history and app connectivity while age rose **20m 11s→20m 25s**. Resume recovered real quote **621**: `evidence/browser-audit.md`. |
-| Documentation and startup | README, AGENTS, design/schema notes, verification, AI disclosure and prompts match the application. Locked local installation, one-command startup and automatic/explicit SQLite initialization are documented. |
+| Part 4.1 requirement | Status | Observed behavior and evidence |
+|---|---|---|
+| Yahoo streaming and frontend WebSocket | Verified locally | Real yfinance observations reach the backend, SQLite and rendered Vue chart. Displayed quote **545** and candle **v12** match SQL exactly: `evidence/browser/trace-sql.json`. |
+| Updating candlesticks and volume | Verified locally | Lightweight Charts renders aligned candles/volume. Keyboard selection displayed **5,451 shares** for 00:36–00:37 UTC. Current unknown volume stays unavailable: `evidence/browser/selected-volume-keyboard.jpg`. |
+| Source, freshness and completion | Verified locally | Yahoo source, source/receipt timestamps, age, delay, independent upstream/app state, revisions and elapsed/partial coverage are visible: `evidence/browser/live-final.jpg`. |
+| SQLite history and restart | Verified locally | Immutable events and versioned candles preserve identity, payloads, timestamps, revisions and coverage. A real restart retained exact digests of **129 events/127 versions**: `evidence/restart-after.json`. |
+| Recorded replay | Verified locally | Start/pause/resume/restart and original recording time were observed. Replay while Yahoo was paused left canonical count **606** unchanged: `evidence/browser/replay-while-source-paused.json`. |
+| Duplicates, revisions and late arrivals | Verified locally | **29 tests plus 14 subtests** pass, including hand-calculated candles, boundaries, duplicate/correction chains, equal-time ties, late arrivals and replay isolation: `evidence/runtime-tests.txt`. Edge cases use labeled fixtures. |
+| Live trace and unavailable feed | Verified locally | An induced UI interruption retained history and app connectivity while age rose **20m 11s→20m 25s**. Resume recovered real quote **621**: `evidence/browser-audit.md`. |
+| Documentation and startup | Verified locally | README, AGENTS, design/schema notes, verification, AI disclosure and prompts match the application. Locked local installation, one-command startup and automatic/explicit SQLite initialization are documented. |
+| Repository, accessible video and final report links | Blocked | Local commit and 55-second video exist. Confirmed GitHub destination, remote verification and instructor-accessible links remain missing. |
 
 ## Key design decisions
 
@@ -57,7 +59,7 @@ Equivalent 150% reflow passed at 853×533 CSS pixels; the literal browser zoom s
 
 ## Supporting documentation and evidence
 
-**Full commit-pinned GitHub URLs: MISSING pending the real repository and implementation SHA.** Before submission, this section/table will link directly to:
+**Full commit-pinned GitHub URLs: MISSING pending the real repository and verification of the pushed implementation commit.** Before submission, this section/table will link directly to:
 
 - README, AGENTS, `docs/design-pipeline.md`, `docs/verification.md` and AI-USE.
 - The curated `evidence/browser-audit.md`, its live/record/replay/outage screenshots and direct SQL trace.

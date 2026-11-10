@@ -1,0 +1,144 @@
+{
+  "checked_at_utc": "2026-11-10T01:29:45.655327+00:00",
+  "authentication": "Anonymous HTTP HEAD, no Authorization header or cookies. Full video hash/range checks are in publication-access.json.",
+  "report_sha256": "53ca63d8bad30d301659037395bf9b0375719a0cbc4abe9c7d65c95643f72fb0",
+  "required_sections": 8,
+  "unique_links": 22,
+  "all_links_http_200": true,
+  "tested_implementation_sha": "a176567c9ff06ac131d08f142269e8a7d5b2bd0e",
+  "publication_documentation_sha": "8ddf6d60ece9310a8020a78019cb91b414e9adf0",
+  "checks": [
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/AGENTS.md",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/AGENTS.md",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/AI-USE.md",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/AI-USE.md",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/README.md",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/README.md",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/demo-run-sheet.md",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/demo-run-sheet.md",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/design-pipeline.md",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/design-pipeline.md",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/verification.md",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/verification.md",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/README.md",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/README.md",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/browser-audit.md",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/browser-audit.md",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/demo-video.json",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/demo-video.json",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/publication-access.json",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/publication-access.json",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/app-volume-reconciliation.json",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/app-volume-reconciliation.json",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/live-final.jpg",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/live-final.jpg",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/replay-while-source-paused.json",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/replay-while-source-paused.json",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/selected-volume-keyboard.jpg",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/selected-volume-keyboard.jpg",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/trace-sql.json",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/trace-sql.json",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/frontend-build.txt",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/frontend-build.txt",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/restart-after.json",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/restart-after.json",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/runtime-tests.txt",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/runtime-tests.txt",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/tested-source-manifest.json",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/tested-source-manifest.json",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/commit/a176567c9ff06ac131d08f142269e8a7d5b2bd0e",
+      "status": 200,
+      "final_url": "https://github.com/jakebutler22/live-market-workstation/commit/a176567c9ff06ac131d08f142269e8a7d5b2bd0e",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/demo-4-1.mp4",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/demo-4-1.mp4",
+      "content_type": "application/octet-stream"
+    }
+  ]
+}

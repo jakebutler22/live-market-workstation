@@ -1,68 +1,68 @@
 # Assignment 4.1 — Market Data and the Dashboard
 
-**NOT READY TO SUBMIT.** The application and core browser/data checks pass. The GitHub destination, verified pushed implementation commit, accessible video URL and instructor-access checks remain missing. Commit/push authorization has been received. No publication link or commit is invented.
+**READY TO SUBMIT.** The implementation, recorded demonstration and supporting evidence are published. Repository, commit and video access were checked without authentication.
 
 ## Assignment and project
 
-**Live Market Workstation** is a local Vue/FastAPI/SQLite application for Yahoo Finance streaming, updating one-minute candles and volume, durable capture and recorded replay. This submission covers Part 4.1 only.
+**Live Market Workstation** is a localhost application using Vue, Python/FastAPI and SQLite. It captures Yahoo Finance observations, displays updating one-minute candles with corresponding volume, preserves their history and replays recorded observations. This submission covers Assignment 4.1 only.
 
 ## Repository and submitted version
 
-- **GitHub URL: MISSING.** The local repository has no remote. The connected account did not identify a matching project; the intended destination has been requested.
-- **Full tested implementation SHA (local): `a176567c9ff06ac131d08f142269e8a7d5b2bd0e`.** This is the approved frozen implementation, including the verified video.
-- **Direct GitHub commit URL: MISSING.** The actual repository destination and push remain unresolved; no remote confirmation is claimed.
+- Repository: [jakebutler22/live-market-workstation](https://github.com/jakebutler22/live-market-workstation).
+- Tested implementation: **`a176567c9ff06ac131d08f142269e8a7d5b2bd0e`** — [direct commit](https://github.com/jakebutler22/live-market-workstation/commit/a176567c9ff06ac131d08f142269e8a7d5b2bd0e).
+- [Verified source manifest](https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/tested-source-manifest.json) matches all 26 application, test and dependency files in that commit.
 
-Application, test and dependency file hashes are frozen in `evidence/tested-source-manifest.json`. That SHA-256 manifest is not a Git commit. The implementation SHA above stays explicit if report-only publication details are committed later. The application files at that commit match the verified manifest.
+Publication documents were updated afterward without changing application code. Documentation links below are pinned to that later documentation snapshot; recorded market evidence and video remain pinned to the tested implementation.
 
 ## Demonstration video
 
-**Accessible URL: MISSING. Verified duration: 55 seconds.** The real demonstration is saved as `evidence/demo-4-1.mp4` (H.264, 1440×900, 3.3 MB, silent). It shows live Yahoo updates, the saved observation payload, recorded replay with pause/resume, and an induced upstream interruption. It was captured as 205 real browser frames with their actual elapsed timing, then encoded with the system video framework. Decoded MP4 frames and database records were checked; `evidence/demo-video.json` records the results and file hash. Upload/access remain unverified pending the actual publication destination.
+[Download/open the 55-second demonstration (MP4)](https://raw.githubusercontent.com/jakebutler22/live-market-workstation/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/demo-4-1.mp4).
+
+The video shows actual Yahoo updates and freshness, an expanded saved observation, replay with pause/resume and original recording time, then an induced upstream interruption with history retained. It is a silent 1440×900 H.264 recording, 3.3 MB. Codex captured 205 real browser frames over 55 seconds and encoded their actual elapsed timing, approximately 3.74 frames/second. No market motion or UI state was generated for the video.
+
+Decoded MP4 frames were inspected. The anonymously downloaded file exactly matches the duration-verified local file: [video metadata and database trace](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/demo-video.json), [public-access checks](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/publication-access.json). GitHub serves the MP4 as a downloadable file; open it in a video player if it does not play in the browser.
 
 ## Completed work
 
-These evidence filenames identify prepared materials. Full commit-pinned GitHub links remain unavailable until the actual repository is confirmed and the implementation commit is pushed; filenames are not presented as instructor-accessible links.
-
-| Part 4.1 requirement | Status | Observed behavior and evidence |
+| Part 4.1 requirement | Status | Result and evidence |
 |---|---|---|
-| Yahoo streaming and frontend WebSocket | Verified locally | Real yfinance observations reach the backend, SQLite and rendered Vue chart. Displayed quote **545** and candle **v12** match SQL exactly: `evidence/browser/trace-sql.json`. |
-| Updating candlesticks and volume | Verified locally | Lightweight Charts renders aligned candles/volume. Keyboard selection displayed **5,451 shares** for 00:36–00:37 UTC. Current unknown volume stays unavailable: `evidence/browser/selected-volume-keyboard.jpg`. |
-| Source, freshness and completion | Verified locally | Yahoo source, source/receipt timestamps, age, delay, independent upstream/app state, revisions and elapsed/partial coverage are visible: `evidence/browser/live-final.jpg`. |
-| SQLite history and restart | Verified locally | Immutable events and versioned candles preserve identity, payloads, timestamps, revisions and coverage. A real restart retained exact digests of **129 events/127 versions**: `evidence/restart-after.json`. |
-| Recorded replay | Verified locally | Start/pause/resume/restart and original recording time were observed. Replay while Yahoo was paused left canonical count **606** unchanged: `evidence/browser/replay-while-source-paused.json`. |
-| Duplicates, revisions and late arrivals | Verified locally | **29 tests plus 14 subtests** pass, including hand-calculated candles, boundaries, duplicate/correction chains, equal-time ties, late arrivals and replay isolation: `evidence/runtime-tests.txt`. Edge cases use labeled fixtures. |
-| Live trace and unavailable feed | Verified locally | An induced UI interruption retained history and app connectivity while age rose **20m 11s→20m 25s**. Resume recovered real quote **621**: `evidence/browser-audit.md`. |
-| Documentation and startup | Verified locally | README, AGENTS, design/schema notes, verification, AI disclosure and prompts match the application. Locked local installation, one-command startup and automatic/explicit SQLite initialization are documented. |
-| Repository, accessible video and final report links | Blocked | Local commit and 55-second video exist. Confirmed GitHub destination, remote verification and instructor-accessible links remain missing. |
+| Real Yahoo streaming and frontend WebSocket | Verified | yfinance observations reach the backend, SQLite and rendered Vue chart. Displayed quote **545** and candle **v12** match [direct SQL records](https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/trace-sql.json). |
+| Candlesticks and corresponding volume | Verified | Lightweight Charts renders aligned candle/volume panes. Keyboard selection displayed **5,451 shares** for 00:36–00:37 UTC; unknown current volume remains unavailable. [Rendered evidence](https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/selected-volume-keyboard.jpg). |
+| Source, data age and feed/completion states | Verified | Yahoo source, source/receipt times, source-derived age, published delay, separate upstream/application states and elapsed/partial coverage are visible. [Live screen](https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/live-final.jpg). |
+| Durable SQLite observations and candle revisions | Verified | Immutable events and versioned candles preserve identity, useful payloads, original times, revisions and coverage. An actual restart retained exact digests of **129 events/127 versions**. [Restart result](https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/restart-after.json). |
+| Recorded replay | Verified | Start/pause/resume/restart use original recording times. Replay while Yahoo was paused left **606 canonical events** unchanged. [Replay isolation](https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/browser/replay-while-source-paused.json). |
+| Duplicates, revisions and out-of-order observations | Verified | **29 tests plus 14 subtests** passed, including hand-calculated candles, interval boundaries, correction chains, equal-time ties and late arrivals. [Test output](https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/runtime-tests.txt). Edge cases use labeled fixtures. |
+| Live trace, unavailable feed and recovery | Verified | An induced UI interruption retained history and application connectivity while age rose **20m 11s→20m 25s**. Resume recovered actual quote **621**. [Browser audit](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/browser-audit.md). |
+| Startup, schema and agent documentation | Verified | Locked installation, ports, SQLite initialization, responsibilities and limitations are documented in the [README](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/README.md), [design notes](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/design-pipeline.md) and [AGENTS](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/AGENTS.md). |
+| Repository, submitted commit and video access | Verified | Public repository and exact commit returned HTTP 200 without authentication. The full video and byte-range retrieval returned HTTP 200/206. [Access evidence](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/publication-access.json). |
 
 ## Key design decisions
 
-The path is **Yahoo → provider adapter → validation → SQLite/candle processing → application WebSocket → Vue chart**. One backend-owned upstream session serves all browsers. Observations and candle versions commit together before saved updates publish. SQLite's immutable event log and versioned candle records retain the earlier accepted state; retrieval reads the latest saved view.
+The path is **Yahoo → provider adapter → validation → SQLite/candle processing → application WebSocket → Vue chart**. One backend-owned upstream session serves all browsers. Observations and candle versions commit together before saved updates publish. An immutable event log and versioned candle records retain earlier accepted states; bounded retrieval reads the latest saved view.
 
-Times are UTC and minute intervals are `[start,end)`. Sampled quote open/close follow source chronology with a deterministic fingerprint tie-breaker. Late data can revise elapsed candles; elapsed time does not imply complete trade coverage. Colors follow each candle's own close/open, including its volume bar; equal prices are neutral.
+Times are UTC and intervals are `[start,end)`. Sampled quote open/close follow source chronology with a deterministic fingerprint tie-breaker. Late observations can revise elapsed candles; elapsed time does not establish complete trade coverage. Candle and volume colors follow that candle's own close/open; equal prices are neutral.
 
-Yahoo exposes no genuine trade/correction ID here. Exact normalized-payload fingerprints suppress indistinguishable duplicates; differing same-time messages remain separate observations. Explicit application correction links and stable vendor minute-bar identity preserve revisions. Raw Yahoo minute aggregates supply interval volume and finalized historical OHLC; stream session counters are never summed, and null volume remains unknown. Replay uses original availability order and recorded clock events, without future revisions or canonical writes.
+Yahoo exposes no genuine trade/correction ID here. Normalized useful-payload fingerprints suppress indistinguishable duplicates; differing same-time messages remain separate observations. Explicit application correction links and stable Yahoo minute-bar identities preserve revisions. Finalized Yahoo minute aggregates reconcile historical OHLC and supply interval volume. Stream session counters are never summed, and null volume stays unknown. Replay uses immutable availability order and recorded clock events, excluding future revisions and canonical writes.
 
-The compact terminal uses the specified tokens, numeric/source inspectors, accessible candle table and small replay controls. Default **BHP.AX** has AUD prices, share volume and a published **20-minute ASX delay**. LIVE means an actual subscription, not instantaneous exchange data.
+The compact terminal provides numeric/source inspectors, an accessible candle table and small replay controls. Default **BHP.AX** uses AUD prices and share volume with a published **20-minute ASX delay**. LIVE means an actual subscription, not instantaneous exchange data. See the [file/data-flow/schema map and design tokens](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/design-pipeline.md).
 
 ## Verification results
 
-- **Actual live/browser/SQL:** quote 545 was received at **00:57:36.702 UTC**, source **00:37:34 UTC**, price **AUD 59.96**. Stored candle v12 matches displayed O 59.94 / H 59.96 / L 59.93 / C 59.96. The earlier event 104 interval also reconciled to genuine **7,296-share** volume through bar 123.
-- **Rules, API, restart and replay:** the unchanged backend retains its 29-test/14-subtest passing result. Separate actual process-restart, offline replay and induced outage/recovery evidence supports the live implementation; fixtures are not represented as Yahoo captures.
-- **Frontend/usability:** the final production build passed after two demonstrated fixes: record-table CSS no longer enlarges the chart divider, and mode switches clear previous-session status before loading the new snapshot. Browser checks covered 1440×900/1280×800, ≥24 px controls, visible keyboard focus, arrow-key selection, narrow reflow and pan preservation during updates. Captured console warning/error logs were empty.
-- **Timing:** eight earlier backend-receipt-to-proxied-consumer samples measured median **3 ms**, maximum **8 ms**. Browser footer timing measures synchronous chart API work. Neither measures full paint or claims zero network/provider delay. A non-failing Starlette test-client deprecation warning is disclosed.
+Actual browser/SQL tracing matched quote **545**: source **00:37:34 UTC**, receipt **00:57:36.702 UTC**, price **AUD 59.96**. Candle v12 matched displayed O 59.94 / H 59.96 / L 59.93 / C 59.96. An earlier captured interval reconciled to **7,296 shares** through Yahoo bar 123: [volume reconciliation](https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/app-volume-reconciliation.json). The video's saved quote **894** also matches SQLite and candle v11.
+
+The unchanged backend retains the **29-test/14-subtest** passing result. The frontend production build passed after two browser-demonstrated fixes: scoping record-table CSS restored the chart divider, and mode switches clear prior-session status before the new snapshot. [Build result](https://github.com/jakebutler22/live-market-workstation/blob/a176567c9ff06ac131d08f142269e8a7d5b2bd0e/evidence/frontend-build.txt). Actual restart, replay and induced outage/recovery checks are separate from synthetic tests.
+
+Browser checks covered 1440×900 and 1280×800 layouts, controls at least 24 px, visible keyboard focus, arrow-key selection, narrow reflow and pan preservation during updates. Captured console warning/error logs were empty. Eight backend-receipt-to-proxied-consumer samples measured median **3 ms**, maximum **8 ms**; these exclude external provider delay and completed browser paint. [Full verification results](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/verification.md).
 
 ## Limitations
 
-Yahoo is sampled, delayed and potentially unavailable. Stream OHLC is not exchange-complete; volume can lag, and missing values remain unknown. Automatic same-time correction inference is impossible without provider identity.
+Yahoo observations are sampled, delayed and potentially unavailable. Stream OHLC is not exchange-complete; interval volume can lag, and unknown values stay unavailable. Automatic same-time correction inference is impossible without provider identity.
 
-Equivalent 150% reflow passed at 853×533 CSS pixels; the literal browser zoom setting still needs the manual pre-recording check. A screen reader and complete paint latency were not measured. The actual video duration is verified at 55 seconds. Repository/video publication and instructor access remain unverified; authenticated owner access would not prove instructor access.
+Equivalent 150% reflow passed at 853×533 CSS pixels; literal browser zoom and screen-reader behavior remain unverified. Complete browser paint latency was not measured. A non-failing Starlette TestClient deprecation warning is retained in the test output. The demonstration is silent and uses the actual irregular screenshot cadence described above.
 
 ## Supporting documentation and evidence
 
-**Full commit-pinned GitHub URLs: MISSING pending the real repository and verification of the pushed implementation commit.** Before submission, this section/table will link directly to:
+- [README/startup](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/README.md), [AGENTS/SmokeTest/AutoLoop](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/AGENTS.md), [design/data/schema notes](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/design-pipeline.md), [AI-use disclosure](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/AI-USE.md).
+- [Verification](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/verification.md), [curated evidence index](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/README.md), [browser audit](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/browser-audit.md), [demo sequence](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/docs/demo-run-sheet.md), [publication/access evidence](https://github.com/jakebutler22/live-market-workstation/blob/8ddf6d60ece9310a8020a78019cb91b414e9adf0/evidence/publication-access.json).
 
-- README, AGENTS, `docs/design-pipeline.md`, `docs/verification.md` and AI-USE.
-- The curated `evidence/browser-audit.md`, its live/record/replay/outage screenshots and direct SQL trace.
-- Runtime test results, volume reconciliation, restart results and tested-source manifest.
-
-No local path, localhost page or relative Markdown link is presented as instructor evidence. The missing publication fields and access checks must be resolved before removing NOT READY. **Canvas receives only this file, named exactly `report.md`. Source files and ZIP archives are not uploaded to Canvas.**
+**Canvas receives only this file, named exactly `report.md`. Source files and ZIP archives are not uploaded to Canvas.**

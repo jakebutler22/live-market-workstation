@@ -14,9 +14,11 @@ Branch: `codex/assignment-4-2`. Repository: [jakebutler22/live-market-workstatio
 - [x] Rerun affected build/browser checks after the final UI edits. Record actual outcomes and fix concrete failures within the scoped AutoLoop.
 - [x] Check the complete final diff, protected 4.1 artifact hashes and deliverables for secrets/private data. Keep the canonical database local and intact.
 - [x] Replace the earlier demo with a real 30–60-second recording of the finished interface; verify duration/content and record its actual capture method/hash.
-- [ ] Freeze and push the reviewed implementation; confirm the exact hosted push-triggered Actions run succeeds for that SHA.
-- [ ] Verify anonymous repository/commit/video/evidence access and finish the standalone report with immutable links. A later report-only commit must retain the tested implementation SHA.
+- [x] Freeze and push the reviewed implementation; confirm the exact hosted push-triggered Actions run succeeds for that SHA.
+- [x] Verify anonymous repository/commit/video/evidence access and finish the standalone report with immutable links. A later report-only commit must retain the tested implementation SHA.
 
 ## Publication boundary
 
 The user has delegated the review; another personal-review approval request is not required. A passing local run does not establish hosted Actions success, and a local video does not establish accessible publication. Keep `submissions/4.2/report.md` **NOT READY** until the actual submitted SHA, exact Actions result and accessible final video links are verified. Canvas receives only that `report.md`; Codex does not upload it to Canvas or change repository visibility.
+
+Completed: implementation `18f89d505464d704a73b485dc03b4cebdd1baed2`, [passing push run](https://github.com/jakebutler22/live-market-workstation/actions/runs/44425505313), and anonymous full-file video/evidence access. The final report is published separately so it can name the frozen tested implementation. No personal human-review claim is made.

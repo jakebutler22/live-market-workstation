@@ -1,0 +1,60 @@
+{
+  "checked_at": "2026-11-19T00:01:08.127302+00:00",
+  "implementation_sha": "18f89d505464d704a73b485dc03b4cebdd1baed2",
+  "method": "Anonymous HTTPS requests, no Authorization header or owner browser session; certificate verification enabled. Full video hash matches local AVFoundation-verified55second file.",
+  "checks": [
+    {
+      "resource": "repository",
+      "url": "https://github.com/jakebutler22/live-market-workstation",
+      "status": 200,
+      "bytes": 252583,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "5d1f3f148bb937cc3d393992e1eaed66d846a68e74f8f8e3cde5e71224d5765e",
+      "anonymous": true
+    },
+    {
+      "resource": "implementation",
+      "url": "https://github.com/jakebutler22/live-market-workstation/commit/18f89d505464d704a73b485dc03b4cebdd1baed2",
+      "status": 200,
+      "bytes": 623752,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "a1a1cae92e9d7a4568737893223613841efce8d1a3e53812903ab923c749df4a",
+      "anonymous": true
+    },
+    {
+      "resource": "historical_screenshot",
+      "url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/historical-screen.jpg",
+      "status": 200,
+      "bytes": 138327,
+      "content_type": "image/jpeg",
+      "sha256": "6c2344590d33f7e719ca60efda0986344a1a683d2f4571508e7815f26595a156",
+      "anonymous": true
+    },
+    {
+      "resource": "numerical_evidence",
+      "url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/numerical-verification.json",
+      "status": 200,
+      "bytes": 73244,
+      "content_type": "text/plain; charset=utf-8",
+      "sha256": "286fe1dee4d06ed2605478c4c6e3088e86256544dd18a101aed54cf65e52b567",
+      "anonymous": true
+    },
+    {
+      "resource": "video",
+      "url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/demo.mp4",
+      "status": 200,
+      "bytes": 1949799,
+      "content_type": "application/octet-stream",
+      "sha256": "5b95acd7ba1eed72bdb03face9dac1da8d07cc0575a8ca67f4d65d74475f9c36",
+      "anonymous": true,
+      "matches_local_verified_55_second_file": true
+    }
+  ],
+  "video_range": {
+    "status": 206,
+    "content_range": "bytes 0-1023/1949799",
+    "bytes": 1024,
+    "prefix_matches": true
+  },
+  "access_limit": "Public anonymous access is verified; instructor-specific network/LMS restrictions cannot be tested as the instructor. MP4 link offers download/open; no inline-player claim."
+}

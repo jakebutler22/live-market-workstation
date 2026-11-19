@@ -1,14 +1,34 @@
 import asyncio
+import os
 from contextlib import asynccontextmanager
 import anyio
-from fastapi import FastAPI, Query, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, Query, WebSocket, WebSocketDisconnect, HTTPException
+from pydantic import BaseModel, Field
+from typing import Literal
 from .config import Config
 from .service import Service
 from .replay import Replay
+from .trading import batch_indicators
 
 
-def create_app(config=None, start_provider=True):
+class BacktestRequest(BaseModel):
+    dataset_id: Literal["yahoo-4-1", "worked-eight"] = "yahoo-4-1"
+    fast: int | None = Field(None, ge=1, le=199, strict=True)
+    slow: int | None = Field(None, ge=2, le=200, strict=True)
+    start_ms: int | None = Field(None, ge=0, strict=True)
+    end_ms: int | None = Field(None, ge=0, strict=True)
+
+
+class IndicatorRequest(BaseModel):
+    candles: list[dict] = Field(default_factory=list, max_length=600)
+    fast: int = Field(5, ge=1, le=199, strict=True)
+    slow: int = Field(20, ge=2, le=200, strict=True)
+
+
+def create_app(config=None, start_provider=None):
     config = config or Config()
+    if start_provider is None:
+        start_provider = os.getenv("CAPTURE_ENABLED", "1") != "0"
 
     @asynccontextmanager
     async def lifespan(app):
@@ -18,7 +38,34 @@ def create_app(config=None, start_provider=True):
         yield
         await app.state.service.close()
 
-    app = FastAPI(title="Live Market Workstation · Assignment 4.1", lifespan=lifespan)
+    app = FastAPI(title="Live Market Workstation · Assignments 4.1 / 4.2", lifespan=lifespan)
+
+    @app.get("/api/strategy")
+    async def strategy():
+        return app.state.service.trading.overview()
+
+    @app.post("/api/backtests")
+    async def backtest(request: BacktestRequest):
+        try:
+            return app.state.service.trading.backtest(request.dataset_id, request.fast, request.slow,
+                                                     request.start_ms, request.end_ms)
+        except (ValueError, TypeError) as exc:
+            raise HTTPException(422, str(exc)) from exc
+
+    @app.get("/api/backtests/{run_id}")
+    async def backtest_result(run_id: str):
+        result = app.state.service.trading.get_run(run_id)
+        if not result:
+            raise HTTPException(404, "Saved backtest not found")
+        return result
+
+    @app.post("/api/indicators")
+    async def indicators(request: IndicatorRequest):
+        try:
+            points = batch_indicators(request.candles, request.fast, request.slow)
+            return {"points":points,"signals":[],"fills":[],"config":{"fast":request.fast,"slow":request.slow}}
+        except (ValueError, TypeError, KeyError) as exc:
+            raise HTTPException(422, str(exc)) from exc
 
     @app.get("/api/status")
     async def status():
@@ -54,7 +101,7 @@ def create_app(config=None, start_provider=True):
         return app.state.service.status()
 
     def allowed(ws):
-        return ws.headers.get("origin") in (None,"http://127.0.0.1:5173","http://localhost:5173","http://127.0.0.1:4173","http://localhost:4173")
+        return ws.headers.get("origin") in (None,"http://127.0.0.1:5173","http://localhost:5173","http://127.0.0.1:5174","http://localhost:5174","http://127.0.0.1:4173","http://localhost:4173")
 
     @app.websocket("/ws/live")
     async def live(ws:WebSocket):
@@ -66,7 +113,9 @@ def create_app(config=None, start_provider=True):
         queue = asyncio.Queue(maxsize=256)
         # Registration + snapshot occur before yielding, eliminating the HTTP/snapshot race.
         service.clients.add(queue)
-        snapshot = {"type":"snapshot","mode":"live","candles":service.store.history(),"status":service.status()}
+        paper = service.trading.paper()
+        snapshot = {"type":"snapshot","mode":"live","candles":service.store.history(),"status":service.status(),
+                    "strategy":paper,"indicators":{k:paper[k] for k in ("points","signals","fills","config")}}
         reader = asyncio.create_task(ws.receive_text())
         next_message = None
         try:

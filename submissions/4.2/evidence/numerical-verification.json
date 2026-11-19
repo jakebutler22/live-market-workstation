@@ -1,0 +1,2855 @@
+{
+  "assignment": "4.2",
+  "recorded_at_utc": "2026-11-18T23:51:14.253705+00:00",
+  "python": "3.14.7",
+  "reference_library": "pandas",
+  "reference_version": "3.1.1",
+  "production": "Python Decimal at 40-digit calculation precision; no pandas production dependency",
+  "references": [
+    {
+      "title": "Fidelity simple moving average and moving-average crossover definition",
+      "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/sma"
+    },
+    {
+      "title": "pandas Series.rolling trailing full-window means",
+      "url": "https://pandas.pydata.org/docs/reference/api/pandas.Series.rolling.html"
+    }
+  ],
+  "reference_definition": "Series.rolling(window=N,min_periods=N,center=False).mean(); separately coded persistent-side crossover; equality tolerance 1e-10",
+  "reference_comparisons": [
+    {
+      "name": "eight_bar",
+      "classification": "SYNTHETIC numerical fixture",
+      "fast": 2,
+      "slow": 3,
+      "input": [
+        {
+          "time": 0,
+          "end_ms": 60000,
+          "open": 12,
+          "high": 12,
+          "low": 12,
+          "close": 12,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 60,
+          "end_ms": 120000,
+          "open": 12,
+          "high": 12,
+          "low": 10,
+          "close": 10,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 120,
+          "end_ms": 180000,
+          "open": 10,
+          "high": 10,
+          "low": 8,
+          "close": 8,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 180,
+          "end_ms": 240000,
+          "open": 8,
+          "high": 12,
+          "low": 8,
+          "close": 12,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 240,
+          "end_ms": 300000,
+          "open": 12,
+          "high": 13,
+          "low": 12,
+          "close": 13,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 300,
+          "end_ms": 360000,
+          "open": 14,
+          "high": 14,
+          "low": 11,
+          "close": 11,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 360,
+          "end_ms": 420000,
+          "open": 11,
+          "high": 11,
+          "low": 9,
+          "close": 9,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 420,
+          "end_ms": 480000,
+          "open": 10,
+          "high": 10,
+          "low": 9,
+          "close": 9,
+          "volume": 100,
+          "eligible": true
+        }
+      ],
+      "reference": [
+        {
+          "time": 0,
+          "eligible": true,
+          "close": 12.0,
+          "fast": null,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 60,
+          "eligible": true,
+          "close": 10.0,
+          "fast": 11.0,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 120,
+          "eligible": true,
+          "close": 8.0,
+          "fast": 9.0,
+          "slow": 10.0,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 180,
+          "eligible": true,
+          "close": 12.0,
+          "fast": 10.0,
+          "slow": 10.0,
+          "event": null,
+          "side": "equal"
+        },
+        {
+          "time": 240,
+          "eligible": true,
+          "close": 13.0,
+          "fast": 12.5,
+          "slow": 11.0,
+          "event": "UP",
+          "side": "above"
+        },
+        {
+          "time": 300,
+          "eligible": true,
+          "close": 11.0,
+          "fast": 12.0,
+          "slow": 12.0,
+          "event": null,
+          "side": "equal"
+        },
+        {
+          "time": 360,
+          "eligible": true,
+          "close": 9.0,
+          "fast": 10.0,
+          "slow": 11.0,
+          "event": "DOWN",
+          "side": "below"
+        },
+        {
+          "time": 420,
+          "eligible": true,
+          "close": 9.0,
+          "fast": 9.0,
+          "slow": 9.666666666666666,
+          "event": null,
+          "side": "below"
+        }
+      ],
+      "production": [
+        {
+          "time": 0,
+          "fast_exact": null,
+          "slow_exact": null,
+          "eligible": true,
+          "fast": null,
+          "slow": null,
+          "close": 12.0,
+          "close_exact": "12",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 60,
+          "fast_exact": "11",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 11.0,
+          "slow": null,
+          "close": 10.0,
+          "close_exact": "10",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 120,
+          "fast_exact": "9",
+          "slow_exact": "10",
+          "eligible": true,
+          "fast": 9.0,
+          "slow": 10.0,
+          "close": 8.0,
+          "close_exact": "8",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 180,
+          "fast_exact": "10",
+          "slow_exact": "10",
+          "eligible": true,
+          "fast": 10.0,
+          "slow": 10.0,
+          "close": 12.0,
+          "close_exact": "12",
+          "event": null,
+          "side": "equal",
+          "confirmed": true
+        },
+        {
+          "time": 240,
+          "fast_exact": "12.5",
+          "slow_exact": "11",
+          "eligible": true,
+          "fast": 12.5,
+          "slow": 11.0,
+          "close": 13.0,
+          "close_exact": "13",
+          "event": "UP",
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 300,
+          "fast_exact": "12",
+          "slow_exact": "12",
+          "eligible": true,
+          "fast": 12.0,
+          "slow": 12.0,
+          "close": 11.0,
+          "close_exact": "11",
+          "event": null,
+          "side": "equal",
+          "confirmed": true
+        },
+        {
+          "time": 360,
+          "fast_exact": "10",
+          "slow_exact": "11",
+          "eligible": true,
+          "fast": 10.0,
+          "slow": 11.0,
+          "close": 9.0,
+          "close_exact": "9",
+          "event": "DOWN",
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 420,
+          "fast_exact": "9",
+          "slow_exact": "9.666666666666666666666666666666666666667",
+          "eligible": true,
+          "fast": 9.0,
+          "slow": 9.666666666666666,
+          "close": 9.0,
+          "close_exact": "9",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        }
+      ],
+      "maximum_absolute_difference": 0.0,
+      "tolerance": 1e-10,
+      "mismatches": [],
+      "confirmed_crosses": [
+        {
+          "time": 240,
+          "direction": "UP"
+        },
+        {
+          "time": 360,
+          "direction": "DOWN"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "ties_gaps_precision",
+      "classification": "SYNTHETIC numerical fixture",
+      "fast": 2,
+      "slow": 3,
+      "input": [
+        {
+          "time": 0,
+          "end_ms": 60000,
+          "open": 12,
+          "high": 12,
+          "low": 12,
+          "close": 12,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 60,
+          "end_ms": 120000,
+          "open": 12,
+          "high": 12,
+          "low": 10,
+          "close": 10,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 120,
+          "end_ms": 180000,
+          "open": 10,
+          "high": 10,
+          "low": 8,
+          "close": 8,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 180,
+          "end_ms": 240000,
+          "open": 8,
+          "high": 12,
+          "low": 8,
+          "close": 12,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 240,
+          "end_ms": 300000,
+          "open": 12,
+          "high": 13,
+          "low": 12,
+          "close": 13,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 300,
+          "end_ms": 360000,
+          "open": 14,
+          "high": 14,
+          "low": 11,
+          "close": 11,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 360,
+          "end_ms": 420000,
+          "open": 11,
+          "high": 11,
+          "low": 9,
+          "close": 9,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 420,
+          "end_ms": 480000,
+          "open": 10,
+          "high": 10,
+          "low": 9,
+          "close": 9,
+          "volume": 100,
+          "eligible": true
+        },
+        {
+          "time": 600,
+          "end_ms": 660000,
+          "open": "9.00000000002",
+          "close": "9.00000000002"
+        },
+        {
+          "time": 660,
+          "end_ms": 720000,
+          "open": 9,
+          "close": 9,
+          "gap": true
+        },
+        {
+          "time": 720,
+          "end_ms": 780000,
+          "open": 10,
+          "close": 10
+        },
+        {
+          "time": 780,
+          "end_ms": 840000,
+          "open": 10,
+          "close": 10
+        },
+        {
+          "time": 840,
+          "end_ms": 900000,
+          "open": 10,
+          "close": 10
+        },
+        {
+          "time": 900,
+          "end_ms": 960000,
+          "open": 10,
+          "close": 10
+        }
+      ],
+      "reference": [
+        {
+          "time": 0,
+          "eligible": true,
+          "close": 12.0,
+          "fast": null,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 60,
+          "eligible": true,
+          "close": 10.0,
+          "fast": 11.0,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 120,
+          "eligible": true,
+          "close": 8.0,
+          "fast": 9.0,
+          "slow": 10.0,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 180,
+          "eligible": true,
+          "close": 12.0,
+          "fast": 10.0,
+          "slow": 10.0,
+          "event": null,
+          "side": "equal"
+        },
+        {
+          "time": 240,
+          "eligible": true,
+          "close": 13.0,
+          "fast": 12.5,
+          "slow": 11.0,
+          "event": "UP",
+          "side": "above"
+        },
+        {
+          "time": 300,
+          "eligible": true,
+          "close": 11.0,
+          "fast": 12.0,
+          "slow": 12.0,
+          "event": null,
+          "side": "equal"
+        },
+        {
+          "time": 360,
+          "eligible": true,
+          "close": 9.0,
+          "fast": 10.0,
+          "slow": 11.0,
+          "event": "DOWN",
+          "side": "below"
+        },
+        {
+          "time": 420,
+          "eligible": true,
+          "close": 9.0,
+          "fast": 9.0,
+          "slow": 9.666666666666666,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 600,
+          "eligible": true,
+          "close": 9.00000000002,
+          "fast": null,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 660,
+          "eligible": false,
+          "close": 9.0,
+          "fast": null,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 720,
+          "eligible": true,
+          "close": 10.0,
+          "fast": null,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 780,
+          "eligible": true,
+          "close": 10.0,
+          "fast": 10.0,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 840,
+          "eligible": true,
+          "close": 10.0,
+          "fast": 10.0,
+          "slow": 10.0,
+          "event": null,
+          "side": "equal"
+        },
+        {
+          "time": 900,
+          "eligible": true,
+          "close": 10.0,
+          "fast": 10.0,
+          "slow": 10.0,
+          "event": null,
+          "side": "equal"
+        }
+      ],
+      "production": [
+        {
+          "time": 0,
+          "fast_exact": null,
+          "slow_exact": null,
+          "eligible": true,
+          "fast": null,
+          "slow": null,
+          "close": 12.0,
+          "close_exact": "12",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 60,
+          "fast_exact": "11",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 11.0,
+          "slow": null,
+          "close": 10.0,
+          "close_exact": "10",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 120,
+          "fast_exact": "9",
+          "slow_exact": "10",
+          "eligible": true,
+          "fast": 9.0,
+          "slow": 10.0,
+          "close": 8.0,
+          "close_exact": "8",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 180,
+          "fast_exact": "10",
+          "slow_exact": "10",
+          "eligible": true,
+          "fast": 10.0,
+          "slow": 10.0,
+          "close": 12.0,
+          "close_exact": "12",
+          "event": null,
+          "side": "equal",
+          "confirmed": true
+        },
+        {
+          "time": 240,
+          "fast_exact": "12.5",
+          "slow_exact": "11",
+          "eligible": true,
+          "fast": 12.5,
+          "slow": 11.0,
+          "close": 13.0,
+          "close_exact": "13",
+          "event": "UP",
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 300,
+          "fast_exact": "12",
+          "slow_exact": "12",
+          "eligible": true,
+          "fast": 12.0,
+          "slow": 12.0,
+          "close": 11.0,
+          "close_exact": "11",
+          "event": null,
+          "side": "equal",
+          "confirmed": true
+        },
+        {
+          "time": 360,
+          "fast_exact": "10",
+          "slow_exact": "11",
+          "eligible": true,
+          "fast": 10.0,
+          "slow": 11.0,
+          "close": 9.0,
+          "close_exact": "9",
+          "event": "DOWN",
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 420,
+          "fast_exact": "9",
+          "slow_exact": "9.666666666666666666666666666666666666667",
+          "eligible": true,
+          "fast": 9.0,
+          "slow": 9.666666666666666,
+          "close": 9.0,
+          "close_exact": "9",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 600,
+          "fast_exact": null,
+          "slow_exact": null,
+          "eligible": true,
+          "fast": null,
+          "slow": null,
+          "close": 9.00000000002,
+          "close_exact": "9.00000000002",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 660,
+          "fast_exact": null,
+          "slow_exact": null,
+          "eligible": false,
+          "fast": null,
+          "slow": null,
+          "close": 9.0,
+          "close_exact": "9",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 720,
+          "fast_exact": null,
+          "slow_exact": null,
+          "eligible": true,
+          "fast": null,
+          "slow": null,
+          "close": 10.0,
+          "close_exact": "10",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 780,
+          "fast_exact": "10",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 10.0,
+          "slow": null,
+          "close": 10.0,
+          "close_exact": "10",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 840,
+          "fast_exact": "10",
+          "slow_exact": "10",
+          "eligible": true,
+          "fast": 10.0,
+          "slow": 10.0,
+          "close": 10.0,
+          "close_exact": "10",
+          "event": null,
+          "side": "equal",
+          "confirmed": true
+        },
+        {
+          "time": 900,
+          "fast_exact": "10",
+          "slow_exact": "10",
+          "eligible": true,
+          "fast": 10.0,
+          "slow": 10.0,
+          "close": 10.0,
+          "close_exact": "10",
+          "event": null,
+          "side": "equal",
+          "confirmed": true
+        }
+      ],
+      "maximum_absolute_difference": 0.0,
+      "tolerance": 1e-10,
+      "mismatches": [],
+      "confirmed_crosses": [
+        {
+          "time": 240,
+          "direction": "UP"
+        },
+        {
+          "time": 360,
+          "direction": "DOWN"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "default_windows_fixed_series",
+      "classification": "SYNTHETIC numerical fixture",
+      "fast": 5,
+      "slow": 20,
+      "input": [
+        {
+          "time": 0,
+          "open": "60.0334567890123",
+          "close": "60.0334567890123",
+          "volume": 100
+        },
+        {
+          "time": 60,
+          "open": "60.1034567890123",
+          "close": "60.1034567890123",
+          "volume": 100
+        },
+        {
+          "time": 120,
+          "open": "60.1734567890123",
+          "close": "60.1734567890123",
+          "volume": 100
+        },
+        {
+          "time": 180,
+          "open": "60.0534567890123",
+          "close": "60.0534567890123",
+          "volume": 100
+        },
+        {
+          "time": 240,
+          "open": "60.1234567890123",
+          "close": "60.1234567890123",
+          "volume": 100
+        },
+        {
+          "time": 300,
+          "open": "60.1934567890123",
+          "close": "60.1934567890123",
+          "volume": 100
+        },
+        {
+          "time": 360,
+          "open": "60.0734567890123",
+          "close": "60.0734567890123",
+          "volume": 100
+        },
+        {
+          "time": 420,
+          "open": "60.1434567890123",
+          "close": "60.1434567890123",
+          "volume": 100
+        },
+        {
+          "time": 480,
+          "open": "60.2134567890123",
+          "close": "60.2134567890123",
+          "volume": 100
+        },
+        {
+          "time": 540,
+          "open": "60.0934567890123",
+          "close": "60.0934567890123",
+          "volume": 100
+        },
+        {
+          "time": 600,
+          "open": "60.1634567890123",
+          "close": "60.1634567890123",
+          "volume": 100
+        },
+        {
+          "time": 660,
+          "open": "60.0434567890123",
+          "close": "60.0434567890123",
+          "volume": 100
+        },
+        {
+          "time": 720,
+          "open": "60.1134567890123",
+          "close": "60.1134567890123",
+          "volume": 100
+        },
+        {
+          "time": 780,
+          "open": "60.1834567890123",
+          "close": "60.1834567890123",
+          "volume": 100
+        },
+        {
+          "time": 840,
+          "open": "60.0634567890123",
+          "close": "60.0634567890123",
+          "volume": 100
+        },
+        {
+          "time": 900,
+          "open": "60.1334567890123",
+          "close": "60.1334567890123",
+          "volume": 100
+        },
+        {
+          "time": 960,
+          "open": "60.2034567890123",
+          "close": "60.2034567890123",
+          "volume": 100
+        },
+        {
+          "time": 1020,
+          "open": "60.0834567890123",
+          "close": "60.0834567890123",
+          "volume": 100
+        },
+        {
+          "time": 1080,
+          "open": "60.1534567890123",
+          "close": "60.1534567890123",
+          "volume": 100
+        },
+        {
+          "time": 1140,
+          "open": "60.0334567890123",
+          "close": "60.0334567890123",
+          "volume": 100
+        },
+        {
+          "time": 1200,
+          "open": "60.1034567890123",
+          "close": "60.1034567890123",
+          "volume": 100
+        },
+        {
+          "time": 1260,
+          "open": "60.1734567890123",
+          "close": "60.1734567890123",
+          "volume": 100
+        },
+        {
+          "time": 1320,
+          "open": "60.0534567890123",
+          "close": "60.0534567890123",
+          "volume": 100
+        },
+        {
+          "time": 1380,
+          "open": "60.1234567890123",
+          "close": "60.1234567890123",
+          "volume": 100
+        },
+        {
+          "time": 1440,
+          "open": "60.1934567890123",
+          "close": "60.1934567890123",
+          "volume": 100
+        },
+        {
+          "time": 1500,
+          "open": "60.0734567890123",
+          "close": "60.0734567890123",
+          "volume": 100
+        },
+        {
+          "time": 1560,
+          "open": "60.1434567890123",
+          "close": "60.1434567890123",
+          "volume": 100
+        },
+        {
+          "time": 1620,
+          "open": "60.2134567890123",
+          "close": "60.2134567890123",
+          "volume": 100
+        },
+        {
+          "time": 1680,
+          "open": "60.0934567890123",
+          "close": "60.0934567890123",
+          "volume": 100
+        },
+        {
+          "time": 1740,
+          "open": "60.1634567890123",
+          "close": "60.1634567890123",
+          "volume": 100
+        },
+        {
+          "time": 1800,
+          "open": "60.0434567890123",
+          "close": "60.0434567890123",
+          "volume": 100
+        },
+        {
+          "time": 1860,
+          "open": "60.1134567890123",
+          "close": "60.1134567890123",
+          "volume": 100
+        },
+        {
+          "time": 1920,
+          "open": "60.1834567890123",
+          "close": "60.1834567890123",
+          "volume": 100
+        },
+        {
+          "time": 1980,
+          "open": "60.0634567890123",
+          "close": "60.0634567890123",
+          "volume": 100
+        },
+        {
+          "time": 2040,
+          "open": "60.1334567890123",
+          "close": "60.1334567890123",
+          "volume": 100
+        },
+        {
+          "time": 2100,
+          "open": "60.2034567890123",
+          "close": "60.2034567890123",
+          "volume": 100
+        },
+        {
+          "time": 2160,
+          "open": "60.0834567890123",
+          "close": "60.0834567890123",
+          "volume": 100
+        },
+        {
+          "time": 2220,
+          "open": "60.1534567890123",
+          "close": "60.1534567890123",
+          "volume": 100
+        },
+        {
+          "time": 2280,
+          "open": "60.0334567890123",
+          "close": "60.0334567890123",
+          "volume": 100
+        },
+        {
+          "time": 2340,
+          "open": "60.1034567890123",
+          "close": "60.1034567890123",
+          "volume": 100
+        },
+        {
+          "time": 2400,
+          "open": "60.1734567890123",
+          "close": "60.1734567890123",
+          "volume": 100
+        },
+        {
+          "time": 2460,
+          "open": "60.0534567890123",
+          "close": "60.0534567890123",
+          "volume": 100
+        },
+        {
+          "time": 2520,
+          "open": "60.1234567890123",
+          "close": "60.1234567890123",
+          "volume": 100
+        },
+        {
+          "time": 2580,
+          "open": "60.1934567890123",
+          "close": "60.1934567890123",
+          "volume": 100
+        },
+        {
+          "time": 2640,
+          "open": "60.0734567890123",
+          "close": "60.0734567890123",
+          "volume": 100
+        },
+        {
+          "time": 2700,
+          "open": "60.1434567890123",
+          "close": "60.1434567890123",
+          "volume": 100
+        },
+        {
+          "time": 2760,
+          "open": "60.2134567890123",
+          "close": "60.2134567890123",
+          "volume": 100
+        },
+        {
+          "time": 2820,
+          "open": "60.0934567890123",
+          "close": "60.0934567890123",
+          "volume": 100
+        },
+        {
+          "time": 2880,
+          "open": "60.1634567890123",
+          "close": "60.1634567890123",
+          "volume": 100
+        },
+        {
+          "time": 2940,
+          "open": "60.0434567890123",
+          "close": "60.0434567890123",
+          "volume": 100
+        },
+        {
+          "time": 3000,
+          "open": "60.1134567890123",
+          "close": "60.1134567890123",
+          "volume": 100
+        },
+        {
+          "time": 3060,
+          "open": "60.1834567890123",
+          "close": "60.1834567890123",
+          "volume": 100
+        },
+        {
+          "time": 3120,
+          "open": "60.0634567890123",
+          "close": "60.0634567890123",
+          "volume": 100
+        },
+        {
+          "time": 3180,
+          "open": "60.1334567890123",
+          "close": "60.1334567890123",
+          "volume": 100
+        },
+        {
+          "time": 3240,
+          "open": "60.2034567890123",
+          "close": "60.2034567890123",
+          "volume": 100
+        },
+        {
+          "time": 3300,
+          "open": "60.0834567890123",
+          "close": "60.0834567890123",
+          "volume": 100
+        },
+        {
+          "time": 3360,
+          "open": "60.1534567890123",
+          "close": "60.1534567890123",
+          "volume": 100
+        },
+        {
+          "time": 3420,
+          "open": "60.0334567890123",
+          "close": "60.0334567890123",
+          "volume": 100
+        },
+        {
+          "time": 3480,
+          "open": "60.1034567890123",
+          "close": "60.1034567890123",
+          "volume": 100
+        },
+        {
+          "time": 3540,
+          "open": "60.1734567890123",
+          "close": "60.1734567890123",
+          "volume": 100
+        },
+        {
+          "time": 3600,
+          "open": "60.0534567890123",
+          "close": "60.0534567890123",
+          "volume": 100
+        },
+        {
+          "time": 3660,
+          "open": "60.1234567890123",
+          "close": "60.1234567890123",
+          "volume": 100
+        },
+        {
+          "time": 3720,
+          "open": "60.1934567890123",
+          "close": "60.1934567890123",
+          "volume": 100
+        },
+        {
+          "time": 3780,
+          "open": "60.0734567890123",
+          "close": "60.0734567890123",
+          "volume": 100
+        }
+      ],
+      "reference": [
+        {
+          "time": 0,
+          "eligible": true,
+          "close": 60.0334567890123,
+          "fast": null,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 60,
+          "eligible": true,
+          "close": 60.1034567890123,
+          "fast": null,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 120,
+          "eligible": true,
+          "close": 60.1734567890123,
+          "fast": null,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 180,
+          "eligible": true,
+          "close": 60.0534567890123,
+          "fast": null,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 240,
+          "eligible": true,
+          "close": 60.1234567890123,
+          "fast": 60.0974567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 300,
+          "eligible": true,
+          "close": 60.1934567890123,
+          "fast": 60.12945678901231,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 360,
+          "eligible": true,
+          "close": 60.0734567890123,
+          "fast": 60.1234567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 420,
+          "eligible": true,
+          "close": 60.1434567890123,
+          "fast": 60.11745678901231,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 480,
+          "eligible": true,
+          "close": 60.2134567890123,
+          "fast": 60.1494567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 540,
+          "eligible": true,
+          "close": 60.0934567890123,
+          "fast": 60.14345678901229,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 600,
+          "eligible": true,
+          "close": 60.1634567890123,
+          "fast": 60.1374567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 660,
+          "eligible": true,
+          "close": 60.0434567890123,
+          "fast": 60.131456789012304,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 720,
+          "eligible": true,
+          "close": 60.1134567890123,
+          "fast": 60.1254567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 780,
+          "eligible": true,
+          "close": 60.1834567890123,
+          "fast": 60.11945678901229,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 840,
+          "eligible": true,
+          "close": 60.0634567890123,
+          "fast": 60.1134567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 900,
+          "eligible": true,
+          "close": 60.1334567890123,
+          "fast": 60.1074567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 960,
+          "eligible": true,
+          "close": 60.2034567890123,
+          "fast": 60.1394567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 1020,
+          "eligible": true,
+          "close": 60.0834567890123,
+          "fast": 60.1334567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 1080,
+          "eligible": true,
+          "close": 60.1534567890123,
+          "fast": 60.1274567890123,
+          "slow": null,
+          "event": null,
+          "side": "warming"
+        },
+        {
+          "time": 1140,
+          "eligible": true,
+          "close": 60.0334567890123,
+          "fast": 60.1214567890123,
+          "slow": 60.1189567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 1200,
+          "eligible": true,
+          "close": 60.1034567890123,
+          "fast": 60.1154567890123,
+          "slow": 60.122456789012304,
+          "event": "DOWN",
+          "side": "below"
+        },
+        {
+          "time": 1260,
+          "eligible": true,
+          "close": 60.1734567890123,
+          "fast": 60.1094567890123,
+          "slow": 60.1259567890123,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 1320,
+          "eligible": true,
+          "close": 60.0534567890123,
+          "fast": 60.103456789012306,
+          "slow": 60.11995678901229,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 1380,
+          "eligible": true,
+          "close": 60.1234567890123,
+          "fast": 60.0974567890123,
+          "slow": 60.1234567890123,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 1440,
+          "eligible": true,
+          "close": 60.1934567890123,
+          "fast": 60.129456789012295,
+          "slow": 60.1269567890123,
+          "event": "UP",
+          "side": "above"
+        },
+        {
+          "time": 1500,
+          "eligible": true,
+          "close": 60.0734567890123,
+          "fast": 60.1234567890123,
+          "slow": 60.12095678901229,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 1560,
+          "eligible": true,
+          "close": 60.1434567890123,
+          "fast": 60.117456789012294,
+          "slow": 60.1244567890123,
+          "event": "DOWN",
+          "side": "below"
+        },
+        {
+          "time": 1620,
+          "eligible": true,
+          "close": 60.2134567890123,
+          "fast": 60.1494567890123,
+          "slow": 60.127956789012295,
+          "event": "UP",
+          "side": "above"
+        },
+        {
+          "time": 1680,
+          "eligible": true,
+          "close": 60.0934567890123,
+          "fast": 60.143456789012305,
+          "slow": 60.1219567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 1740,
+          "eligible": true,
+          "close": 60.1634567890123,
+          "fast": 60.1374567890123,
+          "slow": 60.1254567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 1800,
+          "eligible": true,
+          "close": 60.0434567890123,
+          "fast": 60.131456789012304,
+          "slow": 60.119456789012304,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 1860,
+          "eligible": true,
+          "close": 60.1134567890123,
+          "fast": 60.1254567890123,
+          "slow": 60.1229567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 1920,
+          "eligible": true,
+          "close": 60.1834567890123,
+          "fast": 60.119456789012304,
+          "slow": 60.126456789012295,
+          "event": "DOWN",
+          "side": "below"
+        },
+        {
+          "time": 1980,
+          "eligible": true,
+          "close": 60.0634567890123,
+          "fast": 60.1134567890123,
+          "slow": 60.1204567890123,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 2040,
+          "eligible": true,
+          "close": 60.1334567890123,
+          "fast": 60.1074567890123,
+          "slow": 60.1239567890123,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 2100,
+          "eligible": true,
+          "close": 60.2034567890123,
+          "fast": 60.1394567890123,
+          "slow": 60.1274567890123,
+          "event": "UP",
+          "side": "above"
+        },
+        {
+          "time": 2160,
+          "eligible": true,
+          "close": 60.0834567890123,
+          "fast": 60.1334567890123,
+          "slow": 60.1214567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 2220,
+          "eligible": true,
+          "close": 60.1534567890123,
+          "fast": 60.12745678901231,
+          "slow": 60.1249567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 2280,
+          "eligible": true,
+          "close": 60.0334567890123,
+          "fast": 60.1214567890123,
+          "slow": 60.1189567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 2340,
+          "eligible": true,
+          "close": 60.1034567890123,
+          "fast": 60.1154567890123,
+          "slow": 60.12245678901229,
+          "event": "DOWN",
+          "side": "below"
+        },
+        {
+          "time": 2400,
+          "eligible": true,
+          "close": 60.1734567890123,
+          "fast": 60.1094567890123,
+          "slow": 60.1259567890123,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 2460,
+          "eligible": true,
+          "close": 60.0534567890123,
+          "fast": 60.1034567890123,
+          "slow": 60.119956789012306,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 2520,
+          "eligible": true,
+          "close": 60.1234567890123,
+          "fast": 60.0974567890123,
+          "slow": 60.1234567890123,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 2580,
+          "eligible": true,
+          "close": 60.1934567890123,
+          "fast": 60.12945678901231,
+          "slow": 60.1269567890123,
+          "event": "UP",
+          "side": "above"
+        },
+        {
+          "time": 2640,
+          "eligible": true,
+          "close": 60.0734567890123,
+          "fast": 60.1234567890123,
+          "slow": 60.120956789012304,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 2700,
+          "eligible": true,
+          "close": 60.1434567890123,
+          "fast": 60.11745678901231,
+          "slow": 60.1244567890123,
+          "event": "DOWN",
+          "side": "below"
+        },
+        {
+          "time": 2760,
+          "eligible": true,
+          "close": 60.2134567890123,
+          "fast": 60.1494567890123,
+          "slow": 60.127956789012295,
+          "event": "UP",
+          "side": "above"
+        },
+        {
+          "time": 2820,
+          "eligible": true,
+          "close": 60.0934567890123,
+          "fast": 60.14345678901229,
+          "slow": 60.1219567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 2880,
+          "eligible": true,
+          "close": 60.1634567890123,
+          "fast": 60.1374567890123,
+          "slow": 60.1254567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 2940,
+          "eligible": true,
+          "close": 60.0434567890123,
+          "fast": 60.131456789012304,
+          "slow": 60.119456789012304,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 3000,
+          "eligible": true,
+          "close": 60.1134567890123,
+          "fast": 60.1254567890123,
+          "slow": 60.1229567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 3060,
+          "eligible": true,
+          "close": 60.1834567890123,
+          "fast": 60.11945678901229,
+          "slow": 60.12645678901231,
+          "event": "DOWN",
+          "side": "below"
+        },
+        {
+          "time": 3120,
+          "eligible": true,
+          "close": 60.0634567890123,
+          "fast": 60.1134567890123,
+          "slow": 60.1204567890123,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 3180,
+          "eligible": true,
+          "close": 60.1334567890123,
+          "fast": 60.1074567890123,
+          "slow": 60.1239567890123,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 3240,
+          "eligible": true,
+          "close": 60.2034567890123,
+          "fast": 60.1394567890123,
+          "slow": 60.12745678901231,
+          "event": "UP",
+          "side": "above"
+        },
+        {
+          "time": 3300,
+          "eligible": true,
+          "close": 60.0834567890123,
+          "fast": 60.1334567890123,
+          "slow": 60.1214567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 3360,
+          "eligible": true,
+          "close": 60.1534567890123,
+          "fast": 60.1274567890123,
+          "slow": 60.1249567890123,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 3420,
+          "eligible": true,
+          "close": 60.0334567890123,
+          "fast": 60.1214567890123,
+          "slow": 60.118956789012294,
+          "event": null,
+          "side": "above"
+        },
+        {
+          "time": 3480,
+          "eligible": true,
+          "close": 60.1034567890123,
+          "fast": 60.1154567890123,
+          "slow": 60.122456789012304,
+          "event": "DOWN",
+          "side": "below"
+        },
+        {
+          "time": 3540,
+          "eligible": true,
+          "close": 60.1734567890123,
+          "fast": 60.1094567890123,
+          "slow": 60.12595678901231,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 3600,
+          "eligible": true,
+          "close": 60.0534567890123,
+          "fast": 60.103456789012306,
+          "slow": 60.119956789012306,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 3660,
+          "eligible": true,
+          "close": 60.1234567890123,
+          "fast": 60.0974567890123,
+          "slow": 60.1234567890123,
+          "event": null,
+          "side": "below"
+        },
+        {
+          "time": 3720,
+          "eligible": true,
+          "close": 60.1934567890123,
+          "fast": 60.129456789012295,
+          "slow": 60.12695678901231,
+          "event": "UP",
+          "side": "above"
+        },
+        {
+          "time": 3780,
+          "eligible": true,
+          "close": 60.0734567890123,
+          "fast": 60.1234567890123,
+          "slow": 60.120956789012304,
+          "event": null,
+          "side": "above"
+        }
+      ],
+      "production": [
+        {
+          "time": 0,
+          "fast_exact": null,
+          "slow_exact": null,
+          "eligible": true,
+          "fast": null,
+          "slow": null,
+          "close": 60.0334567890123,
+          "close_exact": "60.0334567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 60,
+          "fast_exact": null,
+          "slow_exact": null,
+          "eligible": true,
+          "fast": null,
+          "slow": null,
+          "close": 60.1034567890123,
+          "close_exact": "60.1034567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 120,
+          "fast_exact": null,
+          "slow_exact": null,
+          "eligible": true,
+          "fast": null,
+          "slow": null,
+          "close": 60.1734567890123,
+          "close_exact": "60.1734567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 180,
+          "fast_exact": null,
+          "slow_exact": null,
+          "eligible": true,
+          "fast": null,
+          "slow": null,
+          "close": 60.0534567890123,
+          "close_exact": "60.0534567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 240,
+          "fast_exact": "60.0974567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.0974567890123,
+          "slow": null,
+          "close": 60.1234567890123,
+          "close_exact": "60.1234567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 300,
+          "fast_exact": "60.1294567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1294567890123,
+          "slow": null,
+          "close": 60.1934567890123,
+          "close_exact": "60.1934567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 360,
+          "fast_exact": "60.1234567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1234567890123,
+          "slow": null,
+          "close": 60.0734567890123,
+          "close_exact": "60.0734567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 420,
+          "fast_exact": "60.1174567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1174567890123,
+          "slow": null,
+          "close": 60.1434567890123,
+          "close_exact": "60.1434567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 480,
+          "fast_exact": "60.1494567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1494567890123,
+          "slow": null,
+          "close": 60.2134567890123,
+          "close_exact": "60.2134567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 540,
+          "fast_exact": "60.1434567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1434567890123,
+          "slow": null,
+          "close": 60.0934567890123,
+          "close_exact": "60.0934567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 600,
+          "fast_exact": "60.1374567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1374567890123,
+          "slow": null,
+          "close": 60.1634567890123,
+          "close_exact": "60.1634567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 660,
+          "fast_exact": "60.1314567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1314567890123,
+          "slow": null,
+          "close": 60.0434567890123,
+          "close_exact": "60.0434567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 720,
+          "fast_exact": "60.1254567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1254567890123,
+          "slow": null,
+          "close": 60.1134567890123,
+          "close_exact": "60.1134567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 780,
+          "fast_exact": "60.1194567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1194567890123,
+          "slow": null,
+          "close": 60.1834567890123,
+          "close_exact": "60.1834567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 840,
+          "fast_exact": "60.1134567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1134567890123,
+          "slow": null,
+          "close": 60.0634567890123,
+          "close_exact": "60.0634567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 900,
+          "fast_exact": "60.1074567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1074567890123,
+          "slow": null,
+          "close": 60.1334567890123,
+          "close_exact": "60.1334567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 960,
+          "fast_exact": "60.1394567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1394567890123,
+          "slow": null,
+          "close": 60.2034567890123,
+          "close_exact": "60.2034567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 1020,
+          "fast_exact": "60.1334567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1334567890123,
+          "slow": null,
+          "close": 60.0834567890123,
+          "close_exact": "60.0834567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 1080,
+          "fast_exact": "60.1274567890123",
+          "slow_exact": null,
+          "eligible": true,
+          "fast": 60.1274567890123,
+          "slow": null,
+          "close": 60.1534567890123,
+          "close_exact": "60.1534567890123",
+          "event": null,
+          "side": "warming",
+          "confirmed": true
+        },
+        {
+          "time": 1140,
+          "fast_exact": "60.1214567890123",
+          "slow_exact": "60.1189567890123",
+          "eligible": true,
+          "fast": 60.1214567890123,
+          "slow": 60.1189567890123,
+          "close": 60.0334567890123,
+          "close_exact": "60.0334567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 1200,
+          "fast_exact": "60.1154567890123",
+          "slow_exact": "60.1224567890123",
+          "eligible": true,
+          "fast": 60.1154567890123,
+          "slow": 60.1224567890123,
+          "close": 60.1034567890123,
+          "close_exact": "60.1034567890123",
+          "event": "DOWN",
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 1260,
+          "fast_exact": "60.1094567890123",
+          "slow_exact": "60.1259567890123",
+          "eligible": true,
+          "fast": 60.1094567890123,
+          "slow": 60.1259567890123,
+          "close": 60.1734567890123,
+          "close_exact": "60.1734567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 1320,
+          "fast_exact": "60.1034567890123",
+          "slow_exact": "60.1199567890123",
+          "eligible": true,
+          "fast": 60.1034567890123,
+          "slow": 60.1199567890123,
+          "close": 60.0534567890123,
+          "close_exact": "60.0534567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 1380,
+          "fast_exact": "60.0974567890123",
+          "slow_exact": "60.1234567890123",
+          "eligible": true,
+          "fast": 60.0974567890123,
+          "slow": 60.1234567890123,
+          "close": 60.1234567890123,
+          "close_exact": "60.1234567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 1440,
+          "fast_exact": "60.1294567890123",
+          "slow_exact": "60.1269567890123",
+          "eligible": true,
+          "fast": 60.1294567890123,
+          "slow": 60.1269567890123,
+          "close": 60.1934567890123,
+          "close_exact": "60.1934567890123",
+          "event": "UP",
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 1500,
+          "fast_exact": "60.1234567890123",
+          "slow_exact": "60.1209567890123",
+          "eligible": true,
+          "fast": 60.1234567890123,
+          "slow": 60.1209567890123,
+          "close": 60.0734567890123,
+          "close_exact": "60.0734567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 1560,
+          "fast_exact": "60.1174567890123",
+          "slow_exact": "60.1244567890123",
+          "eligible": true,
+          "fast": 60.1174567890123,
+          "slow": 60.1244567890123,
+          "close": 60.1434567890123,
+          "close_exact": "60.1434567890123",
+          "event": "DOWN",
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 1620,
+          "fast_exact": "60.1494567890123",
+          "slow_exact": "60.1279567890123",
+          "eligible": true,
+          "fast": 60.1494567890123,
+          "slow": 60.1279567890123,
+          "close": 60.2134567890123,
+          "close_exact": "60.2134567890123",
+          "event": "UP",
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 1680,
+          "fast_exact": "60.1434567890123",
+          "slow_exact": "60.1219567890123",
+          "eligible": true,
+          "fast": 60.1434567890123,
+          "slow": 60.1219567890123,
+          "close": 60.0934567890123,
+          "close_exact": "60.0934567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 1740,
+          "fast_exact": "60.1374567890123",
+          "slow_exact": "60.1254567890123",
+          "eligible": true,
+          "fast": 60.1374567890123,
+          "slow": 60.1254567890123,
+          "close": 60.1634567890123,
+          "close_exact": "60.1634567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 1800,
+          "fast_exact": "60.1314567890123",
+          "slow_exact": "60.1194567890123",
+          "eligible": true,
+          "fast": 60.1314567890123,
+          "slow": 60.1194567890123,
+          "close": 60.0434567890123,
+          "close_exact": "60.0434567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 1860,
+          "fast_exact": "60.1254567890123",
+          "slow_exact": "60.1229567890123",
+          "eligible": true,
+          "fast": 60.1254567890123,
+          "slow": 60.1229567890123,
+          "close": 60.1134567890123,
+          "close_exact": "60.1134567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 1920,
+          "fast_exact": "60.1194567890123",
+          "slow_exact": "60.1264567890123",
+          "eligible": true,
+          "fast": 60.1194567890123,
+          "slow": 60.1264567890123,
+          "close": 60.1834567890123,
+          "close_exact": "60.1834567890123",
+          "event": "DOWN",
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 1980,
+          "fast_exact": "60.1134567890123",
+          "slow_exact": "60.1204567890123",
+          "eligible": true,
+          "fast": 60.1134567890123,
+          "slow": 60.1204567890123,
+          "close": 60.0634567890123,
+          "close_exact": "60.0634567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 2040,
+          "fast_exact": "60.1074567890123",
+          "slow_exact": "60.1239567890123",
+          "eligible": true,
+          "fast": 60.1074567890123,
+          "slow": 60.1239567890123,
+          "close": 60.1334567890123,
+          "close_exact": "60.1334567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 2100,
+          "fast_exact": "60.1394567890123",
+          "slow_exact": "60.1274567890123",
+          "eligible": true,
+          "fast": 60.1394567890123,
+          "slow": 60.1274567890123,
+          "close": 60.2034567890123,
+          "close_exact": "60.2034567890123",
+          "event": "UP",
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 2160,
+          "fast_exact": "60.1334567890123",
+          "slow_exact": "60.1214567890123",
+          "eligible": true,
+          "fast": 60.1334567890123,
+          "slow": 60.1214567890123,
+          "close": 60.0834567890123,
+          "close_exact": "60.0834567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 2220,
+          "fast_exact": "60.1274567890123",
+          "slow_exact": "60.1249567890123",
+          "eligible": true,
+          "fast": 60.1274567890123,
+          "slow": 60.1249567890123,
+          "close": 60.1534567890123,
+          "close_exact": "60.1534567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 2280,
+          "fast_exact": "60.1214567890123",
+          "slow_exact": "60.1189567890123",
+          "eligible": true,
+          "fast": 60.1214567890123,
+          "slow": 60.1189567890123,
+          "close": 60.0334567890123,
+          "close_exact": "60.0334567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 2340,
+          "fast_exact": "60.1154567890123",
+          "slow_exact": "60.1224567890123",
+          "eligible": true,
+          "fast": 60.1154567890123,
+          "slow": 60.1224567890123,
+          "close": 60.1034567890123,
+          "close_exact": "60.1034567890123",
+          "event": "DOWN",
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 2400,
+          "fast_exact": "60.1094567890123",
+          "slow_exact": "60.1259567890123",
+          "eligible": true,
+          "fast": 60.1094567890123,
+          "slow": 60.1259567890123,
+          "close": 60.1734567890123,
+          "close_exact": "60.1734567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 2460,
+          "fast_exact": "60.1034567890123",
+          "slow_exact": "60.1199567890123",
+          "eligible": true,
+          "fast": 60.1034567890123,
+          "slow": 60.1199567890123,
+          "close": 60.0534567890123,
+          "close_exact": "60.0534567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 2520,
+          "fast_exact": "60.0974567890123",
+          "slow_exact": "60.1234567890123",
+          "eligible": true,
+          "fast": 60.0974567890123,
+          "slow": 60.1234567890123,
+          "close": 60.1234567890123,
+          "close_exact": "60.1234567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 2580,
+          "fast_exact": "60.1294567890123",
+          "slow_exact": "60.1269567890123",
+          "eligible": true,
+          "fast": 60.1294567890123,
+          "slow": 60.1269567890123,
+          "close": 60.1934567890123,
+          "close_exact": "60.1934567890123",
+          "event": "UP",
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 2640,
+          "fast_exact": "60.1234567890123",
+          "slow_exact": "60.1209567890123",
+          "eligible": true,
+          "fast": 60.1234567890123,
+          "slow": 60.1209567890123,
+          "close": 60.0734567890123,
+          "close_exact": "60.0734567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 2700,
+          "fast_exact": "60.1174567890123",
+          "slow_exact": "60.1244567890123",
+          "eligible": true,
+          "fast": 60.1174567890123,
+          "slow": 60.1244567890123,
+          "close": 60.1434567890123,
+          "close_exact": "60.1434567890123",
+          "event": "DOWN",
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 2760,
+          "fast_exact": "60.1494567890123",
+          "slow_exact": "60.1279567890123",
+          "eligible": true,
+          "fast": 60.1494567890123,
+          "slow": 60.1279567890123,
+          "close": 60.2134567890123,
+          "close_exact": "60.2134567890123",
+          "event": "UP",
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 2820,
+          "fast_exact": "60.1434567890123",
+          "slow_exact": "60.1219567890123",
+          "eligible": true,
+          "fast": 60.1434567890123,
+          "slow": 60.1219567890123,
+          "close": 60.0934567890123,
+          "close_exact": "60.0934567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 2880,
+          "fast_exact": "60.1374567890123",
+          "slow_exact": "60.1254567890123",
+          "eligible": true,
+          "fast": 60.1374567890123,
+          "slow": 60.1254567890123,
+          "close": 60.1634567890123,
+          "close_exact": "60.1634567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 2940,
+          "fast_exact": "60.1314567890123",
+          "slow_exact": "60.1194567890123",
+          "eligible": true,
+          "fast": 60.1314567890123,
+          "slow": 60.1194567890123,
+          "close": 60.0434567890123,
+          "close_exact": "60.0434567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 3000,
+          "fast_exact": "60.1254567890123",
+          "slow_exact": "60.1229567890123",
+          "eligible": true,
+          "fast": 60.1254567890123,
+          "slow": 60.1229567890123,
+          "close": 60.1134567890123,
+          "close_exact": "60.1134567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 3060,
+          "fast_exact": "60.1194567890123",
+          "slow_exact": "60.1264567890123",
+          "eligible": true,
+          "fast": 60.1194567890123,
+          "slow": 60.1264567890123,
+          "close": 60.1834567890123,
+          "close_exact": "60.1834567890123",
+          "event": "DOWN",
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 3120,
+          "fast_exact": "60.1134567890123",
+          "slow_exact": "60.1204567890123",
+          "eligible": true,
+          "fast": 60.1134567890123,
+          "slow": 60.1204567890123,
+          "close": 60.0634567890123,
+          "close_exact": "60.0634567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 3180,
+          "fast_exact": "60.1074567890123",
+          "slow_exact": "60.1239567890123",
+          "eligible": true,
+          "fast": 60.1074567890123,
+          "slow": 60.1239567890123,
+          "close": 60.1334567890123,
+          "close_exact": "60.1334567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 3240,
+          "fast_exact": "60.1394567890123",
+          "slow_exact": "60.1274567890123",
+          "eligible": true,
+          "fast": 60.1394567890123,
+          "slow": 60.1274567890123,
+          "close": 60.2034567890123,
+          "close_exact": "60.2034567890123",
+          "event": "UP",
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 3300,
+          "fast_exact": "60.1334567890123",
+          "slow_exact": "60.1214567890123",
+          "eligible": true,
+          "fast": 60.1334567890123,
+          "slow": 60.1214567890123,
+          "close": 60.0834567890123,
+          "close_exact": "60.0834567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 3360,
+          "fast_exact": "60.1274567890123",
+          "slow_exact": "60.1249567890123",
+          "eligible": true,
+          "fast": 60.1274567890123,
+          "slow": 60.1249567890123,
+          "close": 60.1534567890123,
+          "close_exact": "60.1534567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 3420,
+          "fast_exact": "60.1214567890123",
+          "slow_exact": "60.1189567890123",
+          "eligible": true,
+          "fast": 60.1214567890123,
+          "slow": 60.1189567890123,
+          "close": 60.0334567890123,
+          "close_exact": "60.0334567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 3480,
+          "fast_exact": "60.1154567890123",
+          "slow_exact": "60.1224567890123",
+          "eligible": true,
+          "fast": 60.1154567890123,
+          "slow": 60.1224567890123,
+          "close": 60.1034567890123,
+          "close_exact": "60.1034567890123",
+          "event": "DOWN",
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 3540,
+          "fast_exact": "60.1094567890123",
+          "slow_exact": "60.1259567890123",
+          "eligible": true,
+          "fast": 60.1094567890123,
+          "slow": 60.1259567890123,
+          "close": 60.1734567890123,
+          "close_exact": "60.1734567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 3600,
+          "fast_exact": "60.1034567890123",
+          "slow_exact": "60.1199567890123",
+          "eligible": true,
+          "fast": 60.1034567890123,
+          "slow": 60.1199567890123,
+          "close": 60.0534567890123,
+          "close_exact": "60.0534567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 3660,
+          "fast_exact": "60.0974567890123",
+          "slow_exact": "60.1234567890123",
+          "eligible": true,
+          "fast": 60.0974567890123,
+          "slow": 60.1234567890123,
+          "close": 60.1234567890123,
+          "close_exact": "60.1234567890123",
+          "event": null,
+          "side": "below",
+          "confirmed": true
+        },
+        {
+          "time": 3720,
+          "fast_exact": "60.1294567890123",
+          "slow_exact": "60.1269567890123",
+          "eligible": true,
+          "fast": 60.1294567890123,
+          "slow": 60.1269567890123,
+          "close": 60.1934567890123,
+          "close_exact": "60.1934567890123",
+          "event": "UP",
+          "side": "above",
+          "confirmed": true
+        },
+        {
+          "time": 3780,
+          "fast_exact": "60.1234567890123",
+          "slow_exact": "60.1209567890123",
+          "eligible": true,
+          "fast": 60.1234567890123,
+          "slow": 60.1209567890123,
+          "close": 60.0734567890123,
+          "close_exact": "60.0734567890123",
+          "event": null,
+          "side": "above",
+          "confirmed": true
+        }
+      ],
+      "maximum_absolute_difference": 1.4210854715202004e-14,
+      "tolerance": 1e-10,
+      "mismatches": [],
+      "confirmed_crosses": [
+        {
+          "time": 1200,
+          "direction": "DOWN"
+        },
+        {
+          "time": 1440,
+          "direction": "UP"
+        },
+        {
+          "time": 1560,
+          "direction": "DOWN"
+        },
+        {
+          "time": 1620,
+          "direction": "UP"
+        },
+        {
+          "time": 1920,
+          "direction": "DOWN"
+        },
+        {
+          "time": 2100,
+          "direction": "UP"
+        },
+        {
+          "time": 2340,
+          "direction": "DOWN"
+        },
+        {
+          "time": 2580,
+          "direction": "UP"
+        },
+        {
+          "time": 2700,
+          "direction": "DOWN"
+        },
+        {
+          "time": 2760,
+          "direction": "UP"
+        },
+        {
+          "time": 3060,
+          "direction": "DOWN"
+        },
+        {
+          "time": 3240,
+          "direction": "UP"
+        },
+        {
+          "time": 3480,
+          "direction": "DOWN"
+        },
+        {
+          "time": 3720,
+          "direction": "UP"
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "batch_incremental": {
+    "algorithms": {
+      "incremental": "bounded Decimal deque with trailing sums",
+      "batch": "separate direct-window slicing/sums; shared authoritative account"
+    },
+    "prefixes_compared": 14,
+    "includes": "warm-up, equality, opposite crosses, absent interval, excluded gap, decimal closes",
+    "mismatches": [],
+    "passed": true
+  },
+  "mandatory_accounting": {
+    "classification": "SYNTHETIC mandatory assignment fixture",
+    "expected_source": "Literal values supplied in the user's Assignment 4.2 prompt; not generated by production",
+    "expected": {
+      "fast": [
+        null,
+        11,
+        9,
+        10,
+        12.5,
+        12,
+        10,
+        9
+      ],
+      "slow": [
+        null,
+        null,
+        10,
+        10,
+        11,
+        12,
+        11,
+        "29/3"
+      ],
+      "events": [
+        null,
+        null,
+        null,
+        null,
+        "UP",
+        null,
+        "DOWN",
+        null
+      ],
+      "bar_5_close": {
+        "cash": "1000",
+        "quantity": 0,
+        "order_status": "pending"
+      },
+      "bar_6_open": {
+        "cash": "971",
+        "quantity": 2,
+        "cost_basis": "29"
+      },
+      "bar_6_close": {
+        "equity": "993",
+        "realized_pnl": "0",
+        "unrealized_pnl": "-7"
+      },
+      "bar_7_close": {
+        "quantity": 2,
+        "order_status": "pending"
+      },
+      "bar_8_open": {
+        "cash": "990",
+        "quantity": 0,
+        "realized_pnl": "-10"
+      },
+      "final": {
+        "cash": "990",
+        "equity": "990",
+        "quantity": 0,
+        "realized_pnl": "-10",
+        "unrealized_pnl": "0",
+        "fees": "2"
+      },
+      "summary": {
+        "orders": 2,
+        "fills": 2,
+        "round_trips": 1,
+        "return_pct": "-1"
+      }
+    },
+    "actual": {
+      "bar_5_close": {
+        "cash": "1000",
+        "quantity": 0,
+        "order_status": "pending"
+      },
+      "bar_6_open": {
+        "cash": "971",
+        "quantity": 2,
+        "cost_basis": "29"
+      },
+      "bar_6_close": {
+        "equity": "993",
+        "realized_pnl": "0",
+        "unrealized_pnl": "-7"
+      },
+      "bar_7_close": {
+        "quantity": 2,
+        "order_status": "pending"
+      },
+      "bar_8_open": {
+        "cash": "990",
+        "quantity": 0,
+        "realized_pnl": "-10"
+      },
+      "fast": [
+        null,
+        11.0,
+        9.0,
+        10.0,
+        12.5,
+        12.0,
+        10.0,
+        9.0
+      ],
+      "slow": [
+        null,
+        null,
+        10.0,
+        10.0,
+        11.0,
+        12.0,
+        11.0,
+        9.666666666666666
+      ],
+      "events": [
+        null,
+        null,
+        null,
+        null,
+        "UP",
+        null,
+        "DOWN",
+        null
+      ],
+      "final": {
+        "cash": "990",
+        "equity": "990",
+        "quantity": 0,
+        "realized_pnl": "-10",
+        "unrealized_pnl": "0",
+        "fees": "2"
+      },
+      "summary": {
+        "orders": 2,
+        "fills": 2,
+        "round_trips": 1,
+        "return_pct": "-1"
+      }
+    },
+    "orders": [
+      {
+        "id": "714db19dd61d3bb3:signal:240:UP:order",
+        "signal_id": "714db19dd61d3bb3:signal:240:UP",
+        "symbol": "TEST",
+        "side": "BUY",
+        "quantity": 2,
+        "submitted_ms": 300000,
+        "source_ms": 300000,
+        "confirmation_event_id": "bar:240:close",
+        "candle_time": 240,
+        "status": "filled",
+        "reason": null,
+        "fill_id": "714db19dd61d3bb3:signal:240:UP:order:fill"
+      },
+      {
+        "id": "714db19dd61d3bb3:signal:360:DOWN:order",
+        "signal_id": "714db19dd61d3bb3:signal:360:DOWN",
+        "symbol": "TEST",
+        "side": "SELL",
+        "quantity": 2,
+        "submitted_ms": 420000,
+        "source_ms": 420000,
+        "confirmation_event_id": "bar:360:close",
+        "candle_time": 360,
+        "status": "filled",
+        "reason": null,
+        "fill_id": "714db19dd61d3bb3:signal:360:DOWN:order:fill"
+      }
+    ],
+    "fills": [
+      {
+        "id": "714db19dd61d3bb3:signal:240:UP:order:fill",
+        "order_id": "714db19dd61d3bb3:signal:240:UP:order",
+        "signal_id": "714db19dd61d3bb3:signal:240:UP",
+        "symbol": "TEST",
+        "side": "BUY",
+        "quantity": 2,
+        "price": "14",
+        "fee": "1",
+        "gross": "28",
+        "execution_ms": 300000,
+        "available_ms": 300000,
+        "event_id": "bar:300:open",
+        "time": 300,
+        "cash_after": "971",
+        "quantity_after": 2,
+        "cost_basis_after": "29",
+        "realized_pnl_after": "0"
+      },
+      {
+        "id": "714db19dd61d3bb3:signal:360:DOWN:order:fill",
+        "order_id": "714db19dd61d3bb3:signal:360:DOWN:order",
+        "signal_id": "714db19dd61d3bb3:signal:360:DOWN",
+        "symbol": "TEST",
+        "side": "SELL",
+        "quantity": 2,
+        "price": "10",
+        "fee": "1",
+        "gross": "20",
+        "execution_ms": 420000,
+        "available_ms": 420000,
+        "event_id": "bar:420:open",
+        "time": 420,
+        "cash_after": "990",
+        "quantity_after": 0,
+        "cost_basis_after": "0",
+        "realized_pnl_after": "-10"
+      }
+    ],
+    "mismatches": [],
+    "passed": true
+  },
+  "causality": {
+    "cutoff": "after synthetic bar 6 closes, before finish cleanup",
+    "appended_and_altered_future_leaves_prefix_unchanged": true,
+    "late_revision_reason": "late_revision_ignored",
+    "repeat_run_economic_and_identity_results_equal": true,
+    "passed": true
+  },
+  "historical_dataset": null,
+  "passed": true
+}

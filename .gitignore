@@ -8,3 +8,6 @@ __pycache__/
 .DS_Store
 data/*.sqlite*
 *.log
+.cache/
+frontend/test-results/
+frontend/playwright-report/

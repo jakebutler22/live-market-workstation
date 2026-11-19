@@ -1,0 +1,21 @@
+{
+  "reviewed_on": "2026-11-18T23:51:44.249396+00:00",
+  "authorization": "User delegated the pending review to Codex and requested presentation polish; this is not a claim of personal human review. Exact follow-up is preserved in prompts/04-review-and-polish.md.",
+  "review_method": "Main Codex integration review plus an independent read-only backend/data/workflow agent; inspect scoped Git diff, existing tests, actual saved outputs and read-only canonical SQLite. Presentation will be verified after the visual pass.",
+  "findings": [],
+  "result": "No material backend correctness, security, causality or isolation finding. No backend changes requested.",
+  "independent_checks": {
+    "real_historical_account_snapshots": 358,
+    "worked_example_account_snapshots": 8,
+    "account_invariant_failures": 0,
+    "paper_review_cursor": 3333,
+    "paper_confirmed_bars": 131,
+    "paper_signals": 2,
+    "paper_fills": 1,
+    "paper_account_invariant_failures": 0,
+    "paper_fill_timing_violations": 0,
+    "sqlite_integrity": "ok"
+  },
+  "preservation": "Original 4.1 provider.py, market.py, store.py, root report and evidence unchanged. Captures retained locally.",
+  "remaining_at_review": "Finish presentation build/browser checks, refresh recording and source manifest, freeze/push implementation, inspect exact hosted Actions run, verify anonymous publication links and finalize report."
+}

@@ -8,8 +8,8 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     proxy: {
-      '/api': 'http://127.0.0.1:8000',
-      '/ws': { target: 'ws://127.0.0.1:8000', ws: true },
+      '/api': process.env.API_TARGET || 'http://127.0.0.1:8000',
+      '/ws': { target: (process.env.API_TARGET || 'http://127.0.0.1:8000').replace('http', 'ws'), ws: true },
     },
   },
 })

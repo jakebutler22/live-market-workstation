@@ -1,0 +1,95 @@
+{
+  "id": "worked-eight",
+  "label": "SYNTHETIC \u00b7 supplied eight-bar accounting check",
+  "symbol": "TEST",
+  "interval": 60,
+  "timezone": "UTC",
+  "synthetic": true,
+  "currency": "USD",
+  "source": "Independent expected values supplied in assignment prompt",
+  "provenance": "Synthetic deterministic validation fixture; not Yahoo data.",
+  "adjustment": "Not applicable",
+  "bars": [
+    {
+      "time": 1794265200,
+      "end_ms": 1794265260000,
+      "open": 12,
+      "high": 12,
+      "low": 12,
+      "close": 12,
+      "volume": 100,
+      "eligible": true
+    },
+    {
+      "time": 1794265260,
+      "end_ms": 1794265320000,
+      "open": 12,
+      "high": 12,
+      "low": 10,
+      "close": 10,
+      "volume": 100,
+      "eligible": true
+    },
+    {
+      "time": 1794265320,
+      "end_ms": 1794265380000,
+      "open": 10,
+      "high": 10,
+      "low": 8,
+      "close": 8,
+      "volume": 100,
+      "eligible": true
+    },
+    {
+      "time": 1794265380,
+      "end_ms": 1794265440000,
+      "open": 8,
+      "high": 12,
+      "low": 8,
+      "close": 12,
+      "volume": 100,
+      "eligible": true
+    },
+    {
+      "time": 1794265440,
+      "end_ms": 1794265500000,
+      "open": 12,
+      "high": 13,
+      "low": 12,
+      "close": 13,
+      "volume": 100,
+      "eligible": true
+    },
+    {
+      "time": 1794265500,
+      "end_ms": 1794265560000,
+      "open": 14,
+      "high": 14,
+      "low": 11,
+      "close": 11,
+      "volume": 100,
+      "eligible": true
+    },
+    {
+      "time": 1794265560,
+      "end_ms": 1794265620000,
+      "open": 11,
+      "high": 11,
+      "low": 9,
+      "close": 9,
+      "volume": 100,
+      "eligible": true
+    },
+    {
+      "time": 1794265620,
+      "end_ms": 1794265680000,
+      "open": 10,
+      "high": 10,
+      "low": 9,
+      "close": 9,
+      "volume": 100,
+      "eligible": true
+    }
+  ],
+  "snapshot_sha256": "300b5647c947c919edf7c9c7591e1cb9cb6fc076304c82d752c10a11c28cea5a"
+}

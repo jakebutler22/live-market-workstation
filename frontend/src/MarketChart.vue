@@ -1,10 +1,12 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { CandlestickSeries, ColorType, CrosshairMode, HistogramSeries, createChart } from 'lightweight-charts'
+import { CandlestickSeries, ColorType, CrosshairMode, HistogramSeries, LineSeries, LineStyle, createChart, createSeriesMarkers } from 'lightweight-charts'
 
 const emit = defineEmits(['inspect', 'performance'])
 const container = ref(null)
-let chart, priceSeries, volumeSeries, observer
+let chart, priceSeries, volumeSeries, fastSeries, slowSeries, markers, observer
+let overlay = { points: [], signals: [], fills: [], config: {} }
+let fastPoints = new Map(), slowPoints = new Map(), markerKey = ''
 let candleMap = new Map()
 let fitted = false
 let snapshots = 0
@@ -35,6 +37,7 @@ function snapshot(candles = []) {
   const values = sorted()
   priceSeries.setData(values.map(pricePoint))
   volumeSeries.setData(values.map(volumePoint))
+  syncStrategy(true)
   fitted = false
   if (values.length) { chart.timeScale().fitContent(); fitted = true }
   publishMetrics(start)
@@ -75,7 +78,45 @@ function update(candles = []) {
   if (!fitted && candleMap.size) { chart?.timeScale().fitContent(); fitted = true }
   publishMetrics(start)
 }
+function lineData(point, key) { return point[key] == null ? { time: point.time } : { time: point.time, value: Number(point[key]) } }
+function syncLine(series, prior, values, key, reset) {
+  const next = new Map(values.map(point => [point.time, point[key]]))
+  const previousTimes = [...prior.keys()]
+  const nextTimes = [...next.keys()]
+  const rebuild = reset || previousTimes.some((time, index) => time !== nextTimes[index]) || nextTimes.length < previousTimes.length
+  if (rebuild) series.setData(values.map(point => lineData(point, key)))
+  else {
+    const lastTime = previousTimes.at(-1) ?? -Infinity
+    for (const point of values) {
+      if (!prior.has(point.time) || prior.get(point.time) !== point[key]) series.update(lineData(point, key), point.time < lastTime)
+    }
+  }
+  return next
+}
+function syncStrategy(reset = false) {
+  if (!fastSeries || !slowSeries) return
+  const points = overlay.points.filter(point => candleMap.has(point.time)).sort((a, b) => a.time - b.time)
+  fastPoints = syncLine(fastSeries, fastPoints, points, 'fast', reset)
+  slowPoints = syncLine(slowSeries, slowPoints, points, 'slow', reset)
+  const signals = overlay.signals.map(signal => ({ time: Number(signal.time ?? signal.candle_time), id: String(signal.id), position: signal.direction === 'UP' ? 'belowBar' : 'aboveBar', shape: signal.direction === 'UP' ? 'arrowUp' : 'arrowDown', color: signal.direction === 'UP' ? colors.up : colors.down, text: signal.direction, size: 1 }))
+  const fills = overlay.fills.map(fill => ({ time: Math.floor(Number(fill.execution_ms ?? Number(fill.time) * 1000) / 60000) * 60, id: String(fill.id), position: fill.side === 'BUY' ? 'belowBar' : 'aboveBar', shape: 'square', color: '#8FB4FF', text: `${fill.side} FILL`, size: 0.75 }))
+  const visible = [...signals, ...fills].filter(marker => candleMap.has(marker.time)).sort((a, b) => a.time - b.time || a.id.localeCompare(b.id))
+  const nextMarkerKey = JSON.stringify(visible)
+  if (reset || markerKey !== nextMarkerKey) { markers.setMarkers(visible); markerKey = nextMarkerKey }
+}
+function strategy(points = [], signals = [], fills = [], config = {}) {
+  overlay = { points, signals, fills, config }
+  syncStrategy()
+}
+function clearStrategy() { strategy([], [], [], {}) }
 function fit() { chart?.timeScale().fitContent() }
+function focus(time) {
+  if (!chart || !Number.isFinite(time) || !candleMap.size) return
+  const times = [...candleMap.keys()]
+  const from = Math.max(Math.min(...times), time - 20 * 60)
+  const to = Math.min(Math.max(...times), time + 12 * 60)
+  if (from < to) chart.timeScale().setVisibleRange({ from, to })
+}
 function inspect(param) { emit('inspect', typeof param.time === 'number' ? param.time : null) }
 
 onMounted(() => {
@@ -90,6 +131,9 @@ onMounted(() => {
   })
   priceSeries = chart.addSeries(CandlestickSeries, { upColor: colors.up, downColor: colors.down, borderVisible: false, wickUpColor: colors.up, wickDownColor: colors.down, priceFormat: { type: 'price', precision: 2, minMove: 0.01 }, lastValueVisible: true })
   volumeSeries = chart.addSeries(HistogramSeries, { priceFormat: { type: 'volume' }, priceLineVisible: false, lastValueVisible: false }, 1)
+  fastSeries = chart.addSeries(LineSeries, { color: '#8FB4FF', lineWidth: 2, lineStyle: LineStyle.Solid, priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: true }, 0)
+  slowSeries = chart.addSeries(LineSeries, { color: '#D8B36A', lineWidth: 2, lineStyle: LineStyle.Dashed, priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: true }, 0)
+  markers = createSeriesMarkers(priceSeries, [], { autoScale: true })
   priceSeries.priceScale().applyOptions({ scaleMargins: { top: 0.08, bottom: 0.08 } })
   volumeSeries.priceScale().applyOptions({ scaleMargins: { top: 0.22, bottom: 0 } })
   chart.subscribeCrosshairMove(inspect)
@@ -104,10 +148,10 @@ onMounted(() => {
   observer.observe(container.value)
   if (candleMap.size) snapshot(sorted())
 })
-onBeforeUnmount(() => { observer?.disconnect(); chart?.unsubscribeCrosshairMove(inspect); chart?.remove() })
-defineExpose({ snapshot, update, fit })
+onBeforeUnmount(() => { observer?.disconnect(); chart?.unsubscribeCrosshairMove(inspect); markers?.detach(); chart?.remove() })
+defineExpose({ snapshot, update, fit, focus, strategy, clearStrategy })
 </script>
 
 <template>
-  <div ref="container" class="market-chart" role="img" aria-label="Candlestick chart with aligned volume pane. All times are UTC. The selected candle and recent candle table provide text values." />
+  <div ref="container" class="market-chart" role="img" aria-label="Candlestick chart, aligned volume, fast solid blue and slow dashed gold moving averages, confirmed crossover arrows and square simulated fills. All times are UTC. Inspector and ledger provide accessible text values." />
 </template>

@@ -1,0 +1,42 @@
+name: Workstation verification
+on:
+  push:
+    branches: ['codex/assignment-4-2']
+  pull_request:
+    branches: ['codex/assignment-4-2']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install locked local dependencies
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install -r requirements.lock
+          npm --prefix frontend ci
+      - name: Rules, accounting, persistence and independent numerical comparison
+        run: |
+          .venv/bin/python -m pytest -q
+          .venv/bin/python -m scripts.verify_strategy
+          npm --prefix frontend run build
+      - name: Install isolated browser
+        working-directory: frontend
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ../.cache/ms-playwright
+        run: npx playwright install --with-deps chromium
+      - name: Real frontend and backend browser checks without Yahoo
+        working-directory: frontend
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ../.cache/ms-playwright
+        run: npx playwright test

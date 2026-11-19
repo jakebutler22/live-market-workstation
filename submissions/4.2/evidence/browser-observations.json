@@ -1,0 +1,42 @@
+{
+  "observed_on": "2026-11-18",
+  "browser": "Codex in-app browser with actual running localhost5173 / FastAPI8000",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "result": "Historical screenshot and actual 55-second recording inspected: two SMA lines, distinct crossover/fill shapes, account/trace/assumption visible."
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "document_scroll_width": 1280,
+      "body_scroll_width": 1280,
+      "visible_control_heights_css_px": [
+        24,
+        28,
+        30,
+        34
+      ],
+      "result": "No document-width overflow; chart and equity table readable; right inspector scrolls. Screenshot laptop-screen.jpg."
+    }
+  ],
+  "keyboard": "Real Playwright laptop test focused Run backtest and activated with Enter; expected results observed. Essential native select/buttons retained visible focus styling. No screen-reader session claimed. Actual CUA equity-table End key reached scrollTop10582 of10769, final row2026-11-11 03:22 with9990.75equity/9388.05cash/10shares.",
+  "console": {
+    "warnings": [],
+    "errors": [],
+    "method": "CUA tab.dev.logs warn/error after historical + fixture UI operations; Playwright also asserts no page errors in fixture test."
+  },
+  "chart_measurements_ms": [
+    {
+      "value": 1.8,
+      "context": "Final polished historical first-UP view/footer; selected signal and both lines visible."
+    },
+    {
+      "value": 2.7,
+      "context": "Final recording full historical rerun/footer; explicit user fit, not per-tick network latency."
+    }
+  ],
+  "limitations": "Chart update durations are browser-side instrumentation, not network-to-screen latency. Literal zoom and screen-reader session not measured. No zero-latency claim.",
+  "presentation": "Final November18 user-requested polish: natural headings, readable essential text, quieter IDs and four-step trade story; no numerical or provider changes."
+}

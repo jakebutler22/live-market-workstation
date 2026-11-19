@@ -1,0 +1,29 @@
+<script setup>
+import { computed, ref, watch } from 'vue'
+const props = defineProps({ result: Object, mode: String })
+const emit = defineEmits(['inspect'])
+const selectedId = ref(null)
+const rows = computed(() => (props.result?.signals || []).slice().reverse().map(signal => {
+  const order = props.result?.orders?.find(item => item.signal_id === signal.id || item.id === signal.order_id)
+  const fill = props.result?.fills?.find(item => item.signal_id === signal.id || item.order_id === order?.id)
+  return { signal, order, fill }
+}))
+const inspected = computed(() => rows.value.find(row => row.signal.id === selectedId.value) || rows.value[0])
+watch(() => props.mode, () => { selectedId.value = null })
+function number(value, precision = 2) { return value == null ? '—' : Number(value).toLocaleString('en-US', { minimumFractionDigits: precision, maximumFractionDigits: precision }) }
+function utc(value) { return value == null ? '—' : new Date(Number(value)).toISOString().slice(0, 23).replace('T', ' ') }
+function select(row) { selectedId.value = row.signal.id; emit('inspect', Number(row.signal.time ?? row.signal.candle_time)) }
+function reason(value) {
+  return ({ flat_no_shorting: 'No position to sell.', already_long_no_pyramiding: 'Already holding this position.', insufficient_cash_including_fee: 'Not enough cash after fees.', end_of_recording_no_subsequent_eligible_price: 'The recording ended before an eligible fill.', outside_selected_trading_range: 'Outside this run’s trading range.', another_order_pending: 'An earlier order is still pending.' })[value] || value?.replaceAll('_', ' ') || ''
+}
+</script>
+
+<template>
+  <div class="strategy-ledger" data-testid="strategy-ledger">
+    <div class="ledger-scroll"><table><caption class="sr-only">Confirmed crossover signals linked to their simulated orders and later fills. Select a signal to inspect execution chronology and the resulting account.</caption><thead><tr><th>Signal · UTC</th><th>Direction</th><th>Fast / slow</th><th>Paper order</th><th>Status</th><th>Later fill</th><th>Fee</th><th>Cash after</th></tr></thead><tbody><tr v-for="row in rows" :key="row.signal.id" :class="{ selected: inspected?.signal.id === row.signal.id }"><td><button class="interval-button mono" @click="select(row)" :aria-pressed="inspected?.signal.id === row.signal.id" :aria-label="`Inspect ${row.signal.direction} signal ${row.signal.id}`" data-testid="signal-row">{{ utc(row.signal.source_ms).slice(11, 19) }}</button></td><td :class="row.signal.direction === 'UP' ? 'positive' : 'negative'">{{ row.signal.direction === 'UP' ? '↑ UP' : '↓ DOWN' }}</td><td>{{ number(row.signal.fast, 4) }} / {{ number(row.signal.slow, 4) }}</td><td>{{ row.order ? `${row.order.side} ${row.order.quantity}` : 'Indicator only' }}</td><td>{{ row.order?.status || 'Confirmed' }}</td><td>{{ row.fill ? `${row.fill.side} @ ${number(row.fill.price)}` : row.order?.status === 'pending' ? 'Awaiting later data' : '—' }}</td><td>{{ number(row.fill?.fee) }}</td><td>{{ number(row.fill?.cash_after) }}</td></tr><tr v-if="!rows.length"><td colspan="8" class="table-empty">{{ mode === 'replay' ? 'No confirmed crossover in these replayed candles.' : 'Waiting for a confirmed crossover. Equal averages and warm-up periods produce no signal.' }}</td></tr></tbody></table></div>
+    <div v-if="inspected" class="signal-trace" data-testid="trace-details">
+      <div class="trace-story"><div><span>1 · Crossover confirmed</span><strong>{{ inspected.signal.direction === 'UP' ? 'Fast moved above slow' : 'Fast moved below slow' }}</strong><small>{{ utc(inspected.signal.confirmation_ms).slice(11, 19) }} UTC</small></div><div><span>2 · The paper order</span><strong class="mono">{{ inspected.order ? `${inspected.order.side} ${inspected.order.quantity} · ${inspected.order.status}` : 'No order in replay' }}</strong><small>{{ reason(inspected.order?.reason) || (inspected.order ? 'Sent after confirmation' : 'Indicators only') }}</small></div><div><span>3 · Filled later</span><strong class="mono">{{ inspected.fill ? `${number(inspected.fill.price)} · fee ${number(inspected.fill.fee)}` : 'No fill' }}</strong><small>{{ inspected.fill ? 'Source time ' + utc(inspected.fill.execution_ms).slice(11, 19) + ' UTC' : inspected.order?.status === 'pending' ? 'Waiting for eligible later data' : 'No shares changed hands' }}</small></div><div><span>4 · The account afterward</span><strong class="mono">{{ inspected.fill ? `${number(inspected.fill.quantity_after, 0)} shares · ${number(inspected.fill.cash_after)} cash` : 'Account unchanged' }}</strong><small>{{ inspected.fill ? 'Cash includes the execution fee' : 'A signal alone is not a trade' }}</small></div></div>
+      <details class="quiet-details trace-records"><summary>Signal &amp; execution records</summary><dl><div><dt>Signal ID</dt><dd class="mono">{{ inspected.signal.id }}</dd></div><div><dt>Confirmed / UTC</dt><dd class="mono">{{ utc(inspected.signal.confirmation_ms) }}</dd></div><template v-if="inspected.order"><div><dt>Order ID</dt><dd class="mono">{{ inspected.order.id }}</dd></div><div><dt>Submitted / UTC</dt><dd class="mono">{{ utc(inspected.order.submitted_ms) }}</dd></div></template><template v-if="inspected.fill"><div><dt>Execution price · unrounded</dt><dd class="mono">{{ inspected.fill.price }}</dd></div><div><dt>Fill ID</dt><dd class="mono">{{ inspected.fill.id }}</dd></div><div><dt>Fill source / UTC</dt><dd class="mono">{{ utc(inspected.fill.execution_ms) }}</dd></div><div><dt>Available / UTC</dt><dd class="mono">{{ utc(inspected.fill.available_ms) }}</dd></div><div><dt>Cost basis after fill</dt><dd class="mono">{{ number(inspected.fill.cost_basis_after) }}</dd></div><div><dt>Realized P&amp;L after fill</dt><dd class="mono">{{ number(inspected.fill.realized_pnl_after) }}</dd></div></template></dl></details>
+    </div>
+  </div>
+</template>

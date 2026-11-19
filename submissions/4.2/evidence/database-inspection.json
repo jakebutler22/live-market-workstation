@@ -1,0 +1,83 @@
+{
+  "captured_at": "2026-11-18T23:35:16.638221+00:00",
+  "method": "Read-only SQLite inspection after the actual backend process restart; compare frozen saved result with persisted JSON and actual running HTTP retrieval. Capture continues independently.",
+  "sql": [
+    "PRAGMA integrity_check",
+    "SELECT kind,last_event_id,result FROM strategy_runs WHERE id=?",
+    "SELECT count(*) FROM events",
+    "SELECT count(*) FROM candle_versions"
+  ],
+  "integrity": "ok",
+  "capture_event_count": 2945,
+  "candle_version_count": 2906,
+  "historical_checks": [
+    {
+      "id": "bt-1467499c08ac8d946575",
+      "kind": "backtest",
+      "last_event_id": 0,
+      "saved_json_equals_sqlite": true,
+      "saved_json_equals_running_http": true,
+      "summary": {
+        "starting_equity": "10000",
+        "ending_equity": "9990.74999237060544",
+        "total_pnl": "-9.25000762939456",
+        "return_pct": "-0.0925000762939456",
+        "orders": 14,
+        "fills": 11,
+        "round_trips": 5,
+        "open_position": 10,
+        "signals": 14,
+        "fees": "11",
+        "eligible_bars": 358,
+        "warmup_remaining": 15,
+        "finished": true
+      }
+    },
+    {
+      "id": "bt-380e3073f3fcc7d32d79",
+      "kind": "backtest",
+      "last_event_id": 0,
+      "saved_json_equals_sqlite": true,
+      "saved_json_equals_running_http": true,
+      "summary": {
+        "starting_equity": "1000",
+        "ending_equity": "990",
+        "total_pnl": "-10",
+        "return_pct": "-1",
+        "orders": 2,
+        "fills": 2,
+        "round_trips": 1,
+        "open_position": 0,
+        "signals": 2,
+        "fees": "2",
+        "eligible_bars": 8,
+        "warmup_remaining": 0,
+        "finished": true
+      }
+    }
+  ],
+  "paper": {
+    "last_event_id": 2945,
+    "signals": 2,
+    "fills": 1,
+    "first_fill": {
+      "id": "paper-v1:signal:1794275160:UP:order:fill",
+      "order_id": "paper-v1:signal:1794275160:UP:order",
+      "signal_id": "paper-v1:signal:1794275160:UP",
+      "symbol": "BHP.AX",
+      "side": "BUY",
+      "quantity": 10,
+      "price": "60.24",
+      "fee": "1",
+      "gross": "602.4",
+      "execution_ms": 1794275223000,
+      "available_ms": 1794276424239,
+      "event_id": 2207,
+      "time": 1794275223,
+      "cash_after": "9396.6",
+      "quantity_after": 10,
+      "cost_basis_after": "603.4",
+      "realized_pnl_after": "0"
+    }
+  }
+}

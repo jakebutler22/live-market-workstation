@@ -1,6 +1,6 @@
-# Assignment 4.1 design and data pipeline
+# Live Market Workstation design and data pipeline
 
-This localhost application records Yahoo Finance observations, builds one-minute candles, and replays the recorded availability sequence. It has no trading, strategy, order, account, or AI features. The default instrument is **BHP.AX**, an ASX equity quoted in AUD, with volume measured in shares. The captured source was active but approximately 20 minutes delayed. Receiving delayed messages is not evidence of fresh prices; the interface keeps source age visible.
+The preserved Assignment 4.1 foundation records Yahoo Finance observations, builds one-minute candles, and replays the recorded availability sequence. The original 4.1 implementation had no trading/account features. Assignment 4.2 adds a simulated SMA strategy and historical engine as described in the final section; AI features remain out of scope. The default instrument is **BHP.AX**, an ASX equity quoted in AUD, with volume measured in shares. The captured source was active but approximately 20 minutes delayed. Receiving delayed messages is not evidence of fresh prices; the interface keeps source age visible.
 
 ## File responsibilities
 
@@ -107,7 +107,7 @@ On an induced interruption, the backend stops Yahoo streaming and reconciliation
 
 ## Interface tokens, accessibility, and update cost
 
-The actual tokens live in `frontend/src/tokens.css`. Long/short names are design-system terms only; this assignment has no trading controls.
+The actual tokens live in `frontend/src/tokens.css`. Long/short names are design-system terms; 4.1 had no trading controls, and 4.2 is long-only simulated accounting without a manual order ticket.
 
 | Token | CSS variable | Value |
 | --- | --- | --- |
@@ -131,3 +131,63 @@ The chart is created once with one candlestick series and an aligned volume pane
 The footer reports chart-update call duration measured with `performance.now`; backend status reports measured ingestion processing time. These measure local JavaScript/backend work, not completed screen paint or end-to-end Yahoo latency. During the actual browser audit, snapshot footers showed 0.00–0.20 ms chart-update calls; this is an observed sample, not a guaranteed frame budget. Actual verification results and remaining limits are in [verification.md](verification.md); source samples and browser/database evidence are in the repository's `evidence/` area.
 
 The final browser audit caught two concrete defects: global table-cell styling widened a Lightweight Charts internal pane divider to 29 px, and mode reconnection briefly retained old replay status. Table styles are now scoped to the application's records table; the divider is 1 px. A mode reset clears previous status/timestamps/counts before its new snapshot, showing unknown/connecting rather than a stale replay value. Both fixes were checked in the actual browser and followed by a production build. [Curated browser observations](../evidence/browser-audit.md).
+
+## Assignment 4.2 extension
+
+The original root 4.1 report, recording, evidence and capture are preserved. The current implementation extends the same chart/feed/replay. Local numerical, independent-reference and browser outputs below are observed; exact hosted CI/publication verification remains in progress in [verification-4-2.md](verification-4-2.md).
+
+### Responsibilities and storage
+
+| File/object | 4.2 responsibility |
+|---|---|
+| `backend/strategy.py` | Pure Decimal configuration/validation, full-window SMA, equality-memory crossovers, pending orders, fills, fees/basis/P&L, audit/equity snapshots; no network/database/wall-clock dependency. |
+| `backend/trading.py` | Original availability-ordered paper adapter, allowlisted dataset loading, deterministic isolated backtest IDs, SQLite results and chart/paper overview. |
+| `backend/service.py` | Sends accepted stored events to the paper adapter and publishes account/indicator state alongside existing market updates. |
+| `backend/main.py` | Strategy overview, bounded historical runs/retrieval and read-only replay indicator route. `CAPTURE_ENABLED=0` disables upstream startup for deterministic tests without disabling real local APIs. |
+| `fixtures/historical/bhp-4-1.json` | Genuine read-only finalized Yahoo OHLC snapshot: 358 minute bars, immutable snapshot hash/provenance. |
+| `fixtures/worked-eight.json` | Labeled synthetic assignment fixture with independent expected numerical/accounting values. |
+| `strategy_runs` | SQLite `id TEXT PRIMARY KEY`, `kind`, `snapshot_id`, `last_event_id INTEGER`, `result TEXT` (JSON); stores `paper-v1` and isolated historical results in the existing configured database. |
+
+`GET /api/strategy` returns paper state, datasets and chart points/signals/fills/config. `POST /api/backtests` accepts an allowlisted `dataset_id` (`yahoo-4-1` or `worked-eight`), optional fast/slow integers and UTC millisecond range. HTTP windows are bounded to `1 ≤ fast < slow ≤ 200`; engine configuration additionally validates its internal limits. Range end is exclusive by candle-start time. `GET /api/backtests/{id}` retrieves a stored historical result. `POST /api/indicators` accepts up to 600 candles and computes read-only batch indicator points; it cannot write orders or paper state. Historical engine inputs are bounded to 100,000 bars.
+
+Historical run identity hashes snapshot SHA, strategy version `4.2-v1`, full configuration and selected range; cash/size/fees are fixed per allowlisted dataset. Repeating the same request returns its stored result, preserving economic determinism and keeping `paper-v1` isolated. The paper result is saved in the same SQLite file and rebuilt deterministically from original immutable market events on startup, so refresh/restart does not duplicate trades. The ledger is a frozen decision projection of original inputs, not a recomputation from corrected latest candles.
+
+```mermaid
+flowchart LR
+  Q[Immutable quote event IDs] --> A[Availability-ordered paper adapter]
+  H[Finalized Yahoo minute snapshot] --> B[Historical open then close adapter]
+  A --> S[Shared Decimal SMA and ledger]
+  B --> S
+  S --> P[SQLite strategy_runs and isolated results]
+  P --> V[Existing Vue chart and account/backtest inspectors]
+  R[Independent pandas reference] --> T[Verification evidence]
+  S --> T
+```
+
+### Indicator and accounting rules
+
+Defaults for real BHP.AX paper/history are SMA(5)/SMA(20), AUD 10,000 starting cash, 10-share entry, AUD 1 per actual fill and zero slippage. The synthetic fixture uses 2/3, USD 1,000, two shares and USD 1 fees. Numeric inputs become Decimal from their stored string representation; calculations use precision 40. Indicator output keeps exact decimal strings plus floats for chart rendering. Display rounding never drives decisions. A fast/slow difference within `1e-10` is equal.
+
+Each average includes its just-confirmed close and needs a full eligible window; otherwise it is null. The first nonzero side initializes without signaling. Equality retains that side; only a later opposite side emits one UP/DOWN. Gaps/ineligible bars reset windows and side. Duplicate completions, late revisions and older bars cannot rewrite emitted points or issue repeat orders. A new configuration/run keeps old rationale intact.
+
+UP while flat creates a fixed-size BUY; DOWN while long sells the full position. Other signals create reasoned skipped orders (flat/no shorting, already long/no pyramiding, outside selected range or another pending order). Fill-time affordability includes the fee. Rejections change neither cash nor holdings. Entry fees are capitalized in total cost basis; exit fees reduce proceeds once. Marks preserve source time. Every snapshot exposes cash, held quantity, basis, mark/time, realized/unrealized P&L, fee total and equity; flat unrealized is zero. The invariants are equity = cash + marked holdings and equity − starting cash = realized + unrealized. Fills and completed round trips are separate counts.
+
+### Paper availability versus historical final bars
+
+Paper follows original market event IDs. Vendor bars do not feed paper decisions or fills. Finalized vendor aggregates can update the current account mark only when their interval end is no later than their receipt time and no older than the current mark. `mark_source`, `mark_event_id`, `mark_available_ms` and source time disclose that valuation input; this cannot change prior signals/orders/fills/equity snapshots. Initial capture-partial and flagged outage intervals are excluded; other fully observed sampled intervals may qualify without claiming complete exchange-trade coverage. A new interval's first accepted quote confirms the preceding sampled close. That event has already been consumed and cannot fill a new decision; only a subsequent accepted non-late quote can. Quotes with a correction link or source time older than the last processed source time are retained by 4.1 but ignored by paper, with an audit reason. Existing pending orders can execute before this quote confirms a later bar. The current forming bar never orders.
+
+Paper's original sampled closes can differ from the visible corrected/finalized vendor chart; the UI must label that distinction. Late corrections never rewrite issued signals, orders, fills or historical account snapshots. A missing-minute jump or marked outage resets warm-up rather than filling fictional prices.
+
+The genuine snapshot `yahoo-4-1` contains **358** finalized vendor bars from **2026-11-09 23:00 through 2026-11-11 03:22 UTC**, AUD/share units, raw Yahoo OHLC without application adjustment. Snapshot SHA-256: `919fe8716db104587c8f376b0552b865a61cd44f15cae0393b4c4f874bc5fa4d`. It was extracted read-only from original canonical 4.1 capture; vendor revision receipt history is not reconstructed. Source event IDs are retained. Recorded capture gaps are provenance, while genuine final vendor bars can still supply historical data; structural missing-minute gaps reset historical windows.
+
+Historical chronology is explicit: at a new eligible bar open fill an already-pending order; only then reveal its close, update confirmed SMA and create a later pending decision. Final OHLC is assumed available at close. Earlier bars may warm up a selected start but cannot create actionable pre-start trades. A final pending order expires without a subsequent eligible price. Open positions are marked at the final known close; no forced liquidation occurs.
+
+### Observed local verification and publication boundary
+
+The default genuine historical run returned **9,990.74999237060544 AUD equity**, total P&L **−9.25000762939456 AUD**, return **−0.0925000762939456%**, 14 signals/orders, 11 fills, five completed round trips, 10 shares open and 11 AUD fees. Cash was 9,388.04998779296874; open basis 600.8500061035156; mark 60.27000045776367; realized P&L −11.10000610351566 and unrealized +1.8499984741211. The first historical UP at source candle time `1794266820` created a buy filled at next open `1794266880`, 59.875 × 10 plus 1 fee, leaving cash 9,400.25 and basis 599.75. The same economic result was observed through the actual browser; saved run `bt-1467499c08ac8d946575` and its snapshot are reproducible offline. Hosted Actions still requires the final pushed implementation SHA.
+
+The supplied eight-bar fixture returned 990 equity, −10 realized, zero shares, two fees/two fills and one completed round trip. Final local checks passed: 45 backend tests +19 subtests, three independent pandas cases (maximum difference 1.4210854715202004e-14 at 1e-10 tolerance, no mismatches), 14 exact batch/incremental prefixes, two actual frontend/backend browser tests and a production build. Browser inspection confirmed both labeled SMA lines, UP/DOWN arrows, separate square fill markers and the linked account trace. Tests cover forming reversals, duplicate completions, affordability, final unfilled orders, future-data/revision prefix immutability, isolated repeat runs/restart and mark-only vendor updates. The workflow triggers on pushes to the submitted branch and uses disposable offline services; its exact hosted result, the milestone review/commit and anonymous access to the already-recorded 55-second 4.2 video remain pending. Actual evidence and commands are in [verification-4-2.md](verification-4-2.md).
+
+### Final presentation review
+
+The user delegated the review and requested a more natural interface (`prompts/04-review-and-polish.md`). The final pass uses sentence-case headings, larger essential text, a readable four-step crossover/order/fill/account story and expandable source/execution records. IDs and full timestamps remain available; the record shows unrounded execution prices. The original tokens, chart semantics, backend accounting and live/replay separation are unchanged. The final 1440×900 and 1280×800 screens, keyboard access, build and browser checks were observed again after these edits. AI assistance remains disclosed in `AI-USE.md`.

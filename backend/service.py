@@ -2,12 +2,14 @@ import asyncio
 import time
 from .store import Store
 from .provider import YahooProvider, now_ms
+from .trading import Trading
 
 
 class Service:
     def __init__(self, config):
         self.config = config
         self.store = Store(config.db_path, config.symbol)
+        self.trading = Trading(self.store)
         self.state = "connecting"
         self.error = None
         self.volume_error = None
@@ -53,8 +55,11 @@ class Service:
         async with self.lock:
             event, candles = self.store.append(kind,payload,received or now_ms())
             if event:
+                self.trading.consume(event)
                 self.last_duration_ms = round((time.perf_counter()-started)*1000,3)
-                await self.broadcast({"type":"update","event":event,"candles":candles,"status":self.status()})
+                paper = self.trading.paper()
+                await self.broadcast({"type":"update","event":event,"candles":candles,"status":self.status(),
+                    "strategy":paper,"indicators":{k:paper[k] for k in ("points","signals","fills","config")}})
             return event, candles
 
     async def set_feed(self,state,error):

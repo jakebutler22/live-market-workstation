@@ -144,3 +144,171 @@ pre { font-family: var(--mono); font-size: 10px; line-height: 1.6; background: v
 @media (max-width: 1050px) { .workspace { height: auto; min-height: 0; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; } .chart-panel { min-height: 650px; } .inspector { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; overflow: visible; } .replay-panel { margin-top: 0; } .strip-note, .utc-label { display: none; } .topbar { gap: 14px; } .brand { font-size: 10px; } .statusbar { flex-wrap: wrap; } }
 @media (max-width: 700px) { .topbar { flex-wrap: wrap; gap: 10px; } .brand { flex: 1; } .instrument { order: 3; border: 0; padding-left: 0; width: 100%; } .mode-switch { margin-left: 0; } .inspector { grid-template-columns: minmax(0, 1fr); } .connection-strip { flex-wrap: wrap; gap: 8px; padding: 7px 12px; } .chart-heading { gap: 8px; } .headline-price { font-size: 22px; } .fit-button { margin-left: auto; } .ohlcv-strip { gap: 8px 12px; } .ohlcv-strip .inspection-time { width: 100%; } .inspection-time small { display: inline; margin-left: 5px; } .chart-stage { min-height: 350px; } .chart-caption { line-height: 1.7; } .event-summary { gap: 8px 12px; } .event-identity { max-width: 100%; } .statusbar > span { white-space: normal; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+
+/* Assignment 4.2 extends the same terminal; chart, capture and tokens stay shared. */
+.workspace { min-height: 756px; }
+.chart-panel { min-height: 688px; }
+.chart-stage { min-height: 280px; }
+.strategy-chart-strip { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 7px 12px; min-height: 32px; border-bottom: 1px solid var(--border); color: var(--muted); font-size: 9px; }
+.strategy-chart-strip > span { white-space: nowrap; }
+.strategy-chart-strip strong { display: inline-block; min-width: 66px; color: var(--text); font-weight: 400; margin-left: 4px; }
+.line-key { display: inline-block; width: 15px; vertical-align: middle; border-top: 2px solid var(--focus); margin-right: 5px; }
+.slow-line { border-top-color: var(--warning); border-top-style: dashed; }
+.fill-key { color: var(--focus); }
+.strategy-input-label { margin-left: auto; font-size: 8px; letter-spacing: .05em; }
+.simulated-tag { color: var(--focus); border-color: #415878; }
+.strategy-policy { display: flex; flex-wrap: wrap; gap: 4px 10px; justify-content: space-between; padding: 10px 12px 8px; }
+.strategy-policy strong { font-family: var(--mono); font-size: 12px; font-weight: 500; }
+.strategy-policy > span { font-size: 9px; color: var(--muted); line-height: 1.6; }
+.indicator-values { display: grid; grid-template-columns: 1fr 1fr; padding: 0 12px 9px; gap: 8px; }
+.indicator-values > div { display: flex; flex-direction: column; gap: 5px; }
+.indicator-values span { color: var(--muted); font-size: 9px; }
+.indicator-values strong { font-size: 13px; font-weight: 400; min-height: 17px; }
+.strategy-basis { font-size: 9px; line-height: 1.6; color: var(--muted); margin: 0 12px 10px; padding: 7px 8px; border-left: 2px solid var(--control-boundary); background: var(--background); }
+.paper-equity { border-top: 1px solid var(--border); padding: 10px 12px 0; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.paper-equity > div:first-child { display: flex; flex-direction: column; gap: 5px; }
+.paper-equity span { color: var(--muted); font-size: 8px; letter-spacing: .06em; }
+.paper-equity strong { font-size: 23px; font-weight: 400; min-width: 130px; }
+.paper-return { font-size: 12px; text-align: right; }
+.paper-return small { display: block; margin-top: 5px; font-size: 10px; }
+.account-list { padding-top: 6px; padding-bottom: 6px; }
+.paper-rules { margin: 2px 12px 9px; padding: 7px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 7px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.paper-rules span { color: var(--muted); font-size: 8px; display: flex; flex-wrap: wrap; gap: 3px 6px; justify-content: space-between; }
+.paper-rules strong { font-size: 9px; color: var(--text); font-weight: 400; }
+.mark-provenance { margin: 0 12px 10px; border-top: 1px solid var(--border); padding-top: 7px; }
+.mark-provenance > span { color: var(--muted); font-size: 8px; letter-spacing: .06em; }
+.mark-provenance p { font-size: 9px; line-height: 1.6; margin-top: 4px; overflow-wrap: anywhere; }
+.mark-provenance p.mono { color: var(--muted); font-size: 8px; }
+.dataset-control { padding: 10px 12px 0; display: flex; flex-direction: column; gap: 6px; }
+.dataset-control label { font-size: 10px; color: var(--muted); }
+.dataset-control select { width: 100%; font-size: 10px; padding: 5px 6px; text-overflow: ellipsis; }
+.dataset-description { padding: 9px 12px; }
+.dataset-type { font-size: 8px; letter-spacing: .04em; color: var(--muted); }
+.dataset-type.warning { color: var(--warning); }
+.dataset-description p { color: var(--muted); font-size: 9px; line-height: 1.6; margin-top: 5px; overflow-wrap: anywhere; }
+.dataset-description p.mono { font-size: 8px; }
+.backtest-run-info { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 0 12px 8px; font-size: 9px; color: var(--muted); }
+.backtest-run-info strong { color: var(--text); font-weight: 400; font-size: 8px; overflow-wrap: anywhere; }
+.backtest-run-info > span:first-child { min-width: 0; }
+.backtest-run-info button { flex-shrink: 0; }
+.records-heading { padding: 5px 8px; }
+.records-tabs { display: flex; gap: 6px; }
+.records-tabs button { border-color: transparent; background: transparent; color: var(--muted); font-size: 9px; letter-spacing: .05em; min-height: 28px; padding: 4px 6px; }
+.records-tabs button.active { color: var(--focus); border-bottom-color: var(--focus); border-radius: 0; }
+.records-tabs button span { font-family: var(--mono); font-size: 9px; margin-left: 5px; background: #1C2A40; padding: 1px 4px; }
+.strategy-ledger { height: 187px; display: flex; flex-direction: column; overflow: auto; scrollbar-color: var(--control-boundary) var(--panel); }
+.equity-table { height: 187px; max-height: 187px; }
+.ledger-scroll { overflow: auto; min-height: 66px; flex: 1; scrollbar-color: var(--control-boundary) var(--panel); }
+.strategy-ledger table { width: 100%; }
+.strategy-ledger .signal-id { color: var(--muted); font-size: 8px; margin-left: 5px; }
+.strategy-ledger td { font-size: 10px; }
+.signal-trace { flex-shrink: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 9px 12px; border-top: 1px solid var(--border); background: #0E1319; }
+.signal-trace > div { min-width: 0; display: flex; flex-direction: column; gap: 5px; padding-right: 8px; border-right: 1px solid var(--border); }
+.signal-trace > div:last-child { border: 0; padding: 0; }
+.signal-trace span { font-size: 8px; letter-spacing: .04em; color: var(--muted); }
+.signal-trace strong { font-size: 9px; font-weight: 400; line-height: 1.5; overflow-wrap: anywhere; }
+.signal-trace small { font-size: 8px; line-height: 1.5; color: var(--muted); overflow-wrap: anywhere; }
+@media (max-width: 1270px) { .topbar { gap: 12px; } .instrument { padding-left: 12px; } .brand small { font-size: 7px; } .mode-switch button { min-width: 58px; padding: 4px 7px; } .strategy-input-label { display: none; } }
+@media (max-width: 1050px) { .workspace { height: auto; min-height: 0; } .chart-panel { min-height: 720px; } .inspector { grid-template-columns: repeat(2, minmax(0, 1fr)); } .strategy-chart-strip { gap: 8px 12px; } }
+@media (max-width: 700px) { .inspector { grid-template-columns: minmax(0, 1fr); } .chart-panel { min-height: 760px; } .chart-stage { min-height: 300px; } .signal-trace { grid-template-columns: 1fr 1fr; } .signal-trace > div:nth-child(2) { border-right: 0; } .strategy-ledger { height: 220px; } .strategy-chart-strip { gap: 7px; } .strategy-chart-strip strong { min-width: auto; } .records-tabs button { padding: 4px; font-size: 8px; } .records-heading { gap: 4px; } }
+
+/* Product hierarchy: readable essentials, quieter records, the same terminal palette. */
+h2 { font-size: 12px; font-weight: 600; letter-spacing: 0; }
+.topbar { gap: 20px; }
+.brand { font-size: 14px; letter-spacing: -.015em; }
+.brand strong { font-weight: 600; }
+.brand small { font-size: 11px; letter-spacing: 0; margin-top: 4px; }
+.instrument { gap: 10px; }
+.instrument > span { font-size: 11px; letter-spacing: 0; }
+.utc-label { font-size: 11px; }
+.connection-strip { font-size: 11px; min-height: 36px; }
+.state-label { font-size: 11px; text-transform: none; letter-spacing: 0; }
+.strip-note { font-size: 10px; letter-spacing: 0; }
+.workspace { grid-template-columns: minmax(0, 1fr) 324px; }
+.panel-heading { padding-left: 14px; padding-right: 14px; }
+.compact-heading { min-height: 40px; }
+.chart-heading h1 { font-size: 18px; }
+.chart-heading h1 span { font-size: 14px; }
+.chart-heading p { font-size: 11px; line-height: 1.5; }
+.headline-price { font-size: 28px; }
+.headline-price small { font-size: 10px; letter-spacing: 0; }
+.quiet-button, .secondary-button, .primary-button { font-size: 11px; }
+.mini-tag { font-size: 9px; letter-spacing: .025em; padding: 3px 5px; }
+.ohlcv-strip { gap: 15px; padding: 9px 14px; font-size: 12px; }
+.ohlcv-strip span { font-size: 10px; }
+.ohlcv-strip .inspection-time { font-size: 12px; }
+.inspection-time small { font-size: 10px; }
+.strategy-chart-strip { padding: 8px 14px; font-size: 10px; gap: 10px; }
+.strategy-input-label { font-size: 10px; letter-spacing: 0; }
+.chart-caption { font-size: 10px; padding-left: 14px; padding-right: 14px; }
+.volume-pane-label, .volume-pane-label span { font-size: 9px; letter-spacing: 0; }
+.strategy-policy { padding: 11px 14px 10px; }
+.strategy-policy strong { font-family: var(--sans); font-size: 14px; font-weight: 500; }
+.strategy-policy > span { font-size: 11px; }
+.indicator-values { padding: 0 14px 11px; gap: 12px; }
+.indicator-values span { font-size: 11px; }
+.indicator-values strong { font-size: 15px; }
+.strategy-basis { font-size: 11px; line-height: 1.55; margin: 0 14px 11px; padding: 0; border: 0; background: transparent; }
+.paper-equity { padding: 12px 14px 2px; }
+.paper-equity span { font-size: 11px; letter-spacing: 0; }
+.paper-equity strong { font-size: 27px; }
+.paper-return { font-size: 13px; }
+.paper-return > span { display: block; color: var(--muted); font-family: var(--sans); font-size: 10px; margin-bottom: 4px; }
+.paper-return small { font-size: 11px; }
+.info-list { padding-left: 14px; padding-right: 14px; font-size: 12px; }
+.info-list > div { padding: 4px 0; }
+.account-list { padding-top: 5px; padding-bottom: 7px; }
+.account-mark { padding: 0 14px; font-size: 11px; color: var(--muted); line-height: 1.7; }
+.account-mark strong { color: var(--text); font-weight: 400; }
+.account-mark > span { display: block; font-size: 10px; }
+.mark-source { color: var(--muted); padding: 4px 14px 0; font-size: 10px; line-height: 1.5; }
+.quiet-details { position: static; margin: 0; }
+.quiet-details[open] { width: auto; }
+.quiet-details > summary { padding: 5px 0; min-height: 28px; font-size: 11px; font-weight: 400; color: var(--muted); }
+.quiet-details > summary:hover { color: var(--text); }
+.strategy-details { margin: 7px 14px 10px; border-top: 1px solid var(--border); padding-top: 3px; }
+.strategy-details .microcopy, .strategy-details .mark-provenance { padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0; }
+.strategy-details .paper-rules { margin: 4px 0 8px; border-top: 0; }
+.paper-rules span { font-size: 10px; }
+.paper-rules strong { font-size: 10px; }
+.mark-provenance > span, .mark-provenance p, .mark-provenance p.mono { font-size: 10px; letter-spacing: 0; }
+.dataset-control { padding: 11px 14px 0; }
+.dataset-control label { font-size: 11px; }
+.dataset-control select { font-size: 12px; min-height: 34px; }
+.dataset-description { padding: 9px 14px; }
+.dataset-type { font-size: 11px; letter-spacing: 0; }
+.dataset-description p { font-size: 11px; line-height: 1.6; }
+.dataset-description p.mono { font-size: 10px; }
+.dataset-details { margin-top: 3px; }
+.full-width { margin-left: 14px; margin-right: 14px; width: calc(100% - 28px); }
+.backtest-run-info { padding-left: 14px; padding-right: 14px; }
+.backtest-run-info strong { display: block; font-size: 10px; padding: 3px 0; }
+.microcopy { font-size: 11px; padding-left: 14px; padding-right: 14px; line-height: 1.55; }
+.replay-intro { font-size: 12px; line-height: 1.6; }
+.recording-time > span, .provenance > span, .time-block span { font-size: 10px; letter-spacing: 0; }
+.recording-time strong, .time-block strong { font-size: 11px; }
+.feed-controls > span { font-size: 10px; }
+.provenance p { font-size: 11px; }
+.records-tabs button { font-size: 11px; letter-spacing: 0; padding: 5px 8px; }
+.candle-records th { font-size: 10px; letter-spacing: 0; height: 28px; }
+.candle-records td { font-size: 11px; height: 30px; }
+.interval-button { font-size: 11px; }
+.table-state { font-size: 10px; }
+.signal-trace { display: block; padding: 8px 14px 3px; }
+.signal-trace > .trace-story { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding: 0; border: 0; }
+.trace-story > div { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.trace-story span { font-size: 10px; letter-spacing: 0; }
+.trace-story strong { font-size: 11px; line-height: 1.4; }
+.trace-story small { font-size: 10px; line-height: 1.4; }
+.trace-records { margin-top: 5px; }
+.trace-records > summary { font-size: 10px; min-height: 24px; padding: 4px 0; }
+.trace-records dl { font-size: 11px; margin: 5px 0; }
+.trace-records dl > div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px; margin: 6px 0; }
+.trace-records dd { text-align: left; }
+.event-summary h2 { font-size: 11px; letter-spacing: 0; }
+.event-summary > span { font-size: 10px; }
+.event-identity { display: none; }
+.statusbar { font-size: 10px; }
+@media (max-width: 1270px) { .workspace { grid-template-columns: minmax(0, 1fr) 306px; } .topbar { gap: 12px; } .brand { font-size: 13px; } .brand small { font-size: 10px; } .ohlcv-strip { gap: 12px; } }
+@media (max-width: 1050px) { .workspace { grid-template-columns: minmax(0, 1fr); } .strategy-input-label { display: none; } }
+@media (max-width: 700px) { .brand { font-size: 12px; } .brand small { font-size: 10px; } .signal-trace > .trace-story { grid-template-columns: 1fr 1fr; gap: 10px; } .records-tabs button { padding: 5px; font-size: 10px; } .trace-records dl > div { grid-template-columns: 1fr; gap: 4px; } }

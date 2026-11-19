@@ -1,0 +1,117 @@
+{
+  "decoded_sample_count": 160,
+  "decoded_selected_pts": 54.656666666666666,
+  "duration_seconds": 55,
+  "interpretation": "At 50 seconds the correct held sample is 47.07: the next actual screenshot was captured at 50.093. The final-stage screenshots are present from 50.093 through the final still hold.",
+  "matching_source_screenshot": "00158.jpg",
+  "matching_source_timestamp": 54.657,
+  "max_presentation_timestamp_error_seconds": 0.0006666666666674814,
+  "movie": "demo.mp4",
+  "samples_after_45_seconds": [
+    {
+      "duration": 0,
+      "pts": 45.098333333333336
+    },
+    {
+      "duration": 0,
+      "pts": 45.401666666666664
+    },
+    {
+      "duration": 0,
+      "pts": 45.70333333333333
+    },
+    {
+      "duration": 0,
+      "pts": 46.01166666666666
+    },
+    {
+      "duration": 0,
+      "pts": 46.31333333333333
+    },
+    {
+      "duration": 0,
+      "pts": 46.62
+    },
+    {
+      "duration": 0,
+      "pts": 47.07
+    },
+    {
+      "duration": 0,
+      "pts": 50.093333333333334
+    },
+    {
+      "duration": 0,
+      "pts": 50.376666666666665
+    },
+    {
+      "duration": 0,
+      "pts": 50.7
+    },
+    {
+      "duration": 0,
+      "pts": 51.01
+    },
+    {
+      "duration": 0,
+      "pts": 51.31333333333333
+    },
+    {
+      "duration": 0,
+      "pts": 51.623333333333335
+    },
+    {
+      "duration": 0,
+      "pts": 51.916666666666664
+    },
+    {
+      "duration": 0,
+      "pts": 52.225
+    },
+    {
+      "duration": 0,
+      "pts": 52.526666666666664
+    },
+    {
+      "duration": 0,
+      "pts": 52.833333333333336
+    },
+    {
+      "duration": 0,
+      "pts": 53.138333333333335
+    },
+    {
+      "duration": 0,
+      "pts": 53.443333333333335
+    },
+    {
+      "duration": 0,
+      "pts": 53.748333333333335
+    },
+    {
+      "duration": 0,
+      "pts": 54.053333333333335
+    },
+    {
+      "duration": 0,
+      "pts": 54.361666666666665
+    },
+    {
+      "duration": 0,
+      "pts": 54.656666666666666
+    },
+    {
+      "duration": 0,
+      "pts": 54.961666666666666
+    }
+  ],
+  "strictly_increasing_pts": true,
+  "verification_image": "demo-final-frame.jpg",
+  "verification_target_seconds": 54.8,
+  "actual_screenshot_count": 160,
+  "all_actual_screenshots_present": true,
+  "encoder_append_calls": 161,
+  "redundant_final_hold_sample": "The extra duplicate appended at 54.999983s quantizes to the 55s end boundary and is trimmed. It is not an actual captured screenshot. The last actual sample at54.961667s holds through the 55s asset end.",
+  "final_source_stage_visually_verified": true,
+  "orientation": "Upright; decoded screenshot visually matches original without transformation."
+}

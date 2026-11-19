@@ -1,0 +1,112 @@
+{
+  "captured_at": "2026-11-18T23:32:13.352115+00:00",
+  "label": "Real Yahoo WebSocket observation during 4.2 regression check; ASX published 20-minute delay",
+  "database_event": {
+    "id": 2796,
+    "source": "Yahoo Finance",
+    "symbol": "BHP.AX",
+    "kind": "quote",
+    "source_ms": 1795043376000,
+    "received_ms": 1795044578235,
+    "identity": "b98b26a1e629d520fb00ebb5df46de388e1d62d5c69b6b8089c6a514ee0060d0",
+    "fingerprint": "b98b26a1e629d520fb00ebb5df46de388e1d62d5c69b6b8089c6a514ee0060d0",
+    "revision": 1,
+    "supersedes_id": null,
+    "payload": {
+      "price": 52.06,
+      "raw": {
+        "change": -2.2799988,
+        "change_percent": -4.1958017,
+        "day_volume": "1775906",
+        "exchange": "ASX",
+        "id": "BHP.AX",
+        "last_size": "120",
+        "market_hours": 1,
+        "price": 52.06,
+        "price_hint": "2",
+        "quote_type": 8,
+        "time": "1795043376000"
+      },
+      "source_ms": 1795043376000
+    }
+  },
+  "matching_candle_versions": [
+    {
+      "time": 1795043340,
+      "end_ms": 1795043400000,
+      "open": 52.04,
+      "high": 52.07,
+      "low": 52.04,
+      "close": 52.06,
+      "volume": null,
+      "volume_source": "unavailable",
+      "volume_event_id": null,
+      "volume_asof_ms": null,
+      "price_source": "sampled Yahoo quotes",
+      "elapsed": true,
+      "partial": true,
+      "capture_midinterval": true,
+      "gap": false,
+      "quote_count": 15,
+      "last_quote_event_id": 2796,
+      "revision": 15,
+      "last_event_id": 2796
+    }
+  ],
+  "screenshot": "live-paper-screen.jpg",
+  "observed_browser": "LIVE receiving; app socket connected; source2026-11-18 23:09:36Z, receipt23:29:38.235Z, event2796; chart52.06 / same candle inspector event2796; source age20m2s",
+  "database_integrity": "ok",
+  "screenshot_note": "Screenshot was captured after the AX observation of event2796. It shows later event2803: raw51.975 displayed51.98, source23:09:53Z receipt23:29:54Z. Both immutable event/candle traces are included; no claim of atomic screenshots.",
+  "screenshot_database_event": {
+    "id": 2803,
+    "source": "Yahoo Finance",
+    "symbol": "BHP.AX",
+    "kind": "quote",
+    "source_ms": 1795043393000,
+    "received_ms": 1795044594256,
+    "identity": "bde3127959374a1e61c555894f6943d26b7cb57febf2d0cc736e20a12497017e",
+    "fingerprint": "bde3127959374a1e61c555894f6943d26b7cb57febf2d0cc736e20a12497017e",
+    "revision": 1,
+    "supersedes_id": null,
+    "payload": {
+      "price": 51.975,
+      "raw": {
+        "change": -2.3650017,
+        "change_percent": -4.3522296,
+        "day_volume": "1842715",
+        "exchange": "ASX",
+        "id": "BHP.AX",
+        "last_size": "15",
+        "market_hours": 1,
+        "price": 51.975,
+        "price_hint": "2",
+        "quote_type": 8,
+        "time": "1795043393000"
+      },
+      "source_ms": 1795043393000
+    }
+  },
+  "screenshot_matching_candle_versions": [
+    {
+      "time": 1795043340,
+      "end_ms": 1795043400000,
+      "open": 52.04,
+      "high": 52.07,
+      "low": 51.97,
+      "close": 51.975,
+      "volume": null,
+      "volume_source": "unavailable",
+      "volume_event_id": null,
+      "volume_asof_ms": null,
+      "price_source": "sampled Yahoo quotes",
+      "elapsed": true,
+      "partial": true,
+      "capture_midinterval": true,
+      "gap": false,
+      "quote_count": 22,
+      "last_quote_event_id": 2803,
+      "revision": 22,
+      "last_event_id": 2803
+    }
+  ]
+}

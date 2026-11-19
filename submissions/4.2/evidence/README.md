@@ -1,0 +1,36 @@
+# Assignment 4.2 evidence log
+
+**Local implementation verification passed; review/commit, exact hosted Actions and anonymous access to the recorded 4.2 video remain pending.** Work is on `codex/assignment-4-2`, based on `c8311ace2c955e95751960765266033b60d50913`, in the existing public `jakebutler22/live-market-workstation` repository. Root 4.1 report/evidence/video remain unchanged and canonical captures are retained.
+
+Start with the [genuine 55-second demonstration](demo.mp4) / [capture metadata](video-metadata.json), [numerical checks](numerical-verification.json), [backend output](backend-tests.txt), [browser output](browser-tests.txt), [historical result](historical-result.json) and [historical screen](historical-screen.jpg). These distinguish synthetic verification, genuine final-bar history and actual live/paper availability.
+
+| Requirement/decision | Actual evidence/result |
+|---|---|
+| Scope and checkpoints | `prompts/03-assignment-4-2.md` is the exact new user brief. AGENTS now authorizes 4.2 while protecting 4.1; the new milestone personal review is pending. |
+| Dependency approval | User-approved project-local Playwright 1.65.1 / Chromium 159.0.8154.6 and project cache; npm audit zero vulnerabilities. Python 3.14.7/pandas 3.1.1/Node 24.12.0/npm 11.6.2 reused. |
+| Independent reference | [Actual input/reference/production comparison](numerical-verification.json): three synthetic cases, max 1.4210854715202004e-14 at 1e-10 tolerance, no warm-up/value/crossover mismatches. |
+| Batch/incremental | [14 compared prefixes](numerical-verification.json): independent deque versus direct-window calculations, shared authoritative account; no mismatches including ties/gaps/precision. |
+| Rules/accounting/causality | [45 tests +19 subtests passed](backend-tests.txt), no skips; forming reversal, duplicate completion, affordability, final signal, future/revision prefixes, gap resets, isolation/restart and mark-only current valuation covered. A non-failing test-client deprecation warning is preserved. |
+| Supplied eight-bar accounting | [Synthetic result](worked-eight-result.json), ID **bt-380e3073f3fcc7d32d79**; numerical file records each independently supplied checkpoint. Final $990/−$10 realized/zero shares/$2 fees/two fills/one round trip/−1%. |
+| Genuine historical result | [358-bar Yahoo snapshot](../../../fixtures/historical/bhp-4-1.json), `yahoo-4-1` / hash `919fe871...bc5fa4d`; [run bt-1467499c08ac8d946575](historical-result.json): AUD 9,990.74999237060544 / −0.0925000762939456%, 11 fills/five round trips/ten open shares. |
+| Signal→later fill→account | [Paper availability trace](paper-availability-trace.json): confirmation quote **2206** cannot fill; later quote **2207** fills at 60.24 ×10 +1 fee, cash 9,396.6/basis 603.4. Historical first buy at 59.875 ×10 +1 gives cash 9,400.25/basis 599.75. |
+| SQLite after real process restart | [Read-only SQL/HTTP inspection](database-inspection.json): integrity `ok`; both saved final-run JSON results equal persisted SQLite and the restarted running HTTP retrieval; canonical captures retained. |
+| Current mark provenance | Paper trace exposes original decision/fill plus separately timed current mark, source/event/availability. Known finalized vendor bars may mark but never trade/rewrite past snapshots; targeted backend regression passes. |
+| Browser flow and chart | [Two end-to-end tests passed in 2.5s](browser-tests.txt), real local frontend/backend and disposable offline DB. [Historical screenshot](historical-screen.jpg) shows SMA5/20 and separate crosses/fills; [worked example](worked-example-screen.jpg) shows SMA2/3 and linked later-fill/account trace. |
+| Browser layout/console/timing | [Actual measurements](browser-observations.json), [laptop screen](laptop-screen.jpg): 1280×800, document width 1280, controls 24–34 px, console warnings/errors empty. Chart API samples 0.10 ms live / 3.10 ms historical / 26.10 ms explicit full rerun are not network latency/full paint. |
+| Existing feed/replay | [Live paper screenshot](live-paper-screen.jpg): genuine November 18 Yahoo receiving/source age/published delay, app connected and new saved quotes; [paper screenshot](paper-screen.jpg). [Exact observed new quote2796 trace](live-regression-trace.json) matches price 52.06 / source 23:09:36 UTC / receipt 23:29:38.235 UTC and candle v15; integrity ok. The screenshot shows representative later receiving updates. End-to-end laptop test also exercises LIVE and original-time REPLAY after history. |
+| Frontend build | [23 modules / 290.11 kB JS / 97.60 kB gzip](frontend-build.txt), production build passed. |
+| Push automation | `.github/workflows/verify.yml` triggers on `push` to `codex/assignment-4-2`, installs locked dependencies, runs backend/reference/build/browser checks with disposable offline services. Local equivalents pass; exact hosted run still pending. |
+| Recorded demonstration | [Actual 55-second MP4](demo.mp4), [poster](demo-poster.jpg), [metadata](video-metadata.json): 160 real screenshots / 55.185 captured seconds, 1440×900 H.264, silent, 1,949,799 bytes; decoded frames checked. SHA `5b95acd7ba1eed72bdb03face9dac1da8d07cc0575a8ca67f4d65d74475f9c36`. Publication/access URL pending. |
+| Submission | Separate 4.2 report and [recorded sequence](../demo-run-sheet.md) prepared; frozen SHA, exact hosted Actions and public access still require the new milestone review/push. |
+
+## Genuine failures and revisions
+
+- A relative Playwright browser cache resolved under a different web-server working directory; deriving the absolute project cache fixed launch.
+- Waiting for full page load on initial cold navigation consumed about 29 seconds despite fast successful APIs. `domcontentloaded` plus explicit real-UI assertions fixed navigation/reload. The harness AutoLoop ended after two correction cycles and success.
+- New finalized Yahoo bars initially left the existing position valued at an old sampled quote. A current-mark-only update now carries source/event/availability provenance while preserving signals/fills/past equity; a targeted test and the final full suite passed.
+- Backtest cache identity now includes strategy version/full configuration and validated snapshot checksum. Saved run IDs above replace the early IDs; economics are unchanged.
+
+Actual current marks can change with new captured data after these files were saved. That does not alter the recorded original trade. Full standalone report links will be pinned to the frozen tested implementation; protected 4.1 artifacts were not rewritten.
+
+Final delegated review: [engineering findings](engineering-review.json), [source freeze](source-manifest.json), [video timing/final-stage proof](video-timing-verification.json). The user requested the natural presentation pass in `prompts/04-review-and-polish.md`; final build/browser tests and replacement recording were verified afterward. The original live screenshots remain genuine earlier observations, and the final historical/worked/laptop screens show the refined presentation.

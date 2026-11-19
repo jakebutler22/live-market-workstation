@@ -1,0 +1,102 @@
+{
+  "report_commit": "f4876cb47c5a0354091a05b3f04d26246806ff9f",
+  "report_url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/f4876cb47c5a0354091a05b3f04d26246806ff9f/submissions/4.2/report.md",
+  "report_sha256": "162bc56f06ecce90a8f687f5728c259a98148c9ae99c6469ec3f72cf707d28e8",
+  "checks": [
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/actions/runs/44425505313",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/.github/workflows/verify.yml",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/fixtures/historical/bhp-4-1.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/backend-tests.txt",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/browser-tests.txt",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/database-inspection.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/historical-result.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/historical-screen.jpg",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/laptop-screen.jpg",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/live-regression-trace.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/numerical-verification.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/paper-availability-trace.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/video-metadata.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/18f89d505464d704a73b485dc03b4cebdd1baed2/tests/test_strategy.py",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8640b231f0993b6b216919309274f74312382950/AI-USE.md",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8640b231f0993b6b216919309274f74312382950/README.md",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8640b231f0993b6b216919309274f74312382950/docs/design-pipeline.md",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8640b231f0993b6b216919309274f74312382950/docs/verification-4-2.md",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8640b231f0993b6b216919309274f74312382950/submissions/4.2/evidence/hosted-actions.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/blob/8640b231f0993b6b216919309274f74312382950/submissions/4.2/evidence/publication-access.json",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/commit/18f89d505464d704a73b485dc03b4cebdd1baed2",
+      "status": 200
+    },
+    {
+      "url": "https://github.com/jakebutler22/live-market-workstation/tree/codex/assignment-4-2",
+      "status": 200
+    },
+    {
+      "url": "https://raw.githubusercontent.com/jakebutler22/live-market-workstation/18f89d505464d704a73b485dc03b4cebdd1baed2/submissions/4.2/evidence/demo.mp4",
+      "status": 200
+    }
+  ],
+  "checked_at": "2026-11-19T00:07:03.425337+00:00",
+  "implementation_sha": "18f89d505464d704a73b485dc03b4cebdd1baed2",
+  "result": "All23distinctGitHub report links returned HTTP200 anonymously; published final report equals local bytes. No draft placeholders or local evidence URLs. All40frozen source hashes match tested implementation."
+}
